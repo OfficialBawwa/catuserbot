@@ -40,7 +40,7 @@ async def download_video(v_url):
         await edit_or_reply(v_url, "What I am Supposed to find? Give link")
         return
     ytype = v_url.pattern_match.group(1).lower()
-    v_url = await edit_or_reply(v_url, "`Preparing to download...`")
+    v_url = await edit_or_reply(v_url, "__Preparing to download...__")
     reply_to_id = await reply_id(v_url)
     if ytype == "a":
         opts = {
@@ -83,34 +83,34 @@ async def download_video(v_url):
         song = False
         video = True
     try:
-        await v_url.edit("`Fetching data, please wait..`")
+        await v_url.edit("__Fetching data, please wait..__")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
-        await v_url.edit(f"`{str(DE)}`")
+        await v_url.edit(f"__{str(DE)}__")
         return
     except ContentTooShortError:
-        await v_url.edit("`The download content was too short.`")
+        await v_url.edit("__The download content was too short.__")
         return
     except GeoRestrictedError:
         await v_url.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+            "__Video is not available from your geographic location due to geographic restrictions imposed by a website.__"
         )
         return
     except MaxDownloadsReached:
-        await v_url.edit("`Max-downloads limit has been reached.`")
+        await v_url.edit("__Max-downloads limit has been reached.__")
         return
     except PostProcessingError:
-        await v_url.edit("`There was an error during post processing.`")
+        await v_url.edit("__There was an error during post processing.__")
         return
     except UnavailableVideoError:
-        await v_url.edit("`Media is not available in the requested format.`")
+        await v_url.edit("__Media is not available in the requested format.__")
         return
     except XAttrMetadataError as XAME:
-        await v_url.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        await v_url.edit(f"__{XAME.code}: {XAME.msg}\n{XAME.reason}__")
         return
     except ExtractorError:
-        await v_url.edit("`There was an error during info extraction.`")
+        await v_url.edit("__There was an error during info extraction.__")
         return
     except Exception as e:
         await v_url.edit(f"{str(type(e)): {str(e)}}")
@@ -123,7 +123,7 @@ async def download_video(v_url):
         catthumb = None
     if song:
         await v_url.edit(
-            f"`Preparing to upload song:`\
+            f"__Preparing to upload song:__\
         \n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*"
         )
@@ -149,7 +149,7 @@ async def download_video(v_url):
         os.remove(f"{ytdl_data['id']}.mp3")
     elif video:
         await v_url.edit(
-            f"`Preparing to upload video:`\
+            f"__Preparing to upload video:__\
         \n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*"
         )
@@ -183,9 +183,9 @@ async def yt_search(event):
         query = str(event.pattern_match.group(2))
     if not query:
         return await edit_delete(
-            event, "`Reply to a message or pass a query to search!`"
+            event, "__Reply to a message or pass a query to search!__"
         )
-    video_q = await edit_or_reply(event, "`Searching...`")
+    video_q = await edit_or_reply(event, "__Searching...__")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim <= 0:
@@ -196,7 +196,7 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=parse_pre)
-    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Results:**\n{full_response}"
+    reply_text = f"**•  Search Query:**\n__{query}__\n\n**•  Results:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
 
 
@@ -209,7 +209,7 @@ async def kakashi(event):
     link = event.pattern_match.group(1)
     if "www.instagram.com" not in link:
         await edit_or_reply(
-            event, "` I need a Instagram link to download it's Video...`(*_*)"
+            event, "__ I need a Instagram link to download it's Video...__(*_*)"
         )
     else:
         start = datetime.now()
@@ -223,7 +223,7 @@ async def kakashi(event):
             details = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("**Error:** `unblock` @instasavegrambot `and retry!`")
+            await catevent.edit("**Error:** __unblock__ @instasavegrambot __and retry!__")
             return
         await catevent.delete()
         cat = await event.client.send_file(
@@ -243,14 +243,14 @@ async def kakashi(event):
 
 CMD_HELP.update(
     {
-        "ytdl": "**Plugin :** `ytdl`\
-    \n\n  •  **Syntax :** `.yta link`\
+        "ytdl": "**Plugin :** __ytdl__\
+    \n\n  •  **Syntax :** __.yta link__\
     \n  •  **Function : **__downloads the audio from the given link(Suports the all sites which support youtube-dl)__\
-    \n\n  •  **Syntax : **`.ytv link`\
+    \n\n  •  **Syntax : **__.ytv link__\
     \n  •  **Function : **__downloads the video from the given link(Suports the all sites which support youtube-dl)__\
-    \n\n  •  **Syntax : **`.yts query`/`.yts count query`\
+    \n\n  •  **Syntax : **__.yts query__/__.yts count query__\
     \n  •  **Function : **__Fetches youtube search results with views and duration with required no of count results by default it fetches 10 results__\
-    \n\n  •  **Syntax : **`.insta` <link>\
+    \n\n  •  **Syntax : **__.insta__ <link>\
     \n  •  **Function : **__Downloads the video from the given instagram link__\
     "
     }

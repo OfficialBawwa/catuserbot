@@ -11,7 +11,7 @@ async def corona(event):
         country = (event.pattern_match.group(1)).title()
     else:
         country = "World"
-    catevent = await edit_or_reply(event, "`Collecting data...`")
+    catevent = await edit_or_reply(event, "__Collecting data...__")
     covid = Covid(source="worldometers")
     try:
         country_data = covid.get_status_by_country_name(country)
@@ -21,14 +21,14 @@ async def corona(event):
         hmm1 = country_data["confirmed"] + country_data["new_cases"]
         hmm2 = country_data["deaths"] + country_data["new_deaths"]
         data = ""
-        data += f"\n⚠️ Confirmed   : <code>{hmm1}</code>"
-        data += f"\n😔 Active           : <code>{country_data['active']}</code>"
-        data += f"\n⚰️ Deaths         : <code>{hmm2}</code>"
-        data += f"\n🤕 Critical          : <code>{country_data['critical']}</code>"
-        data += f"\n😊 Recovered   : <code>{country_data['recovered']}</code>"
-        data += f"\n💉 Total tests    : <code>{country_data['total_tests']}</code>"
-        data += f"\n🥺 New Cases   : <code>{country_data['new_cases']}</code>"
-        data += f"\n😟 New Deaths : <code>{country_data['new_deaths']}</code>"
+        data += f"\n⚠️ Confirmed   : __{hmm1}__"
+        data += f"\n😔 Active           : __{country_data['active']}__"
+        data += f"\n⚰️ Deaths         : __{hmm2}__"
+        data += f"\n🤕 Critical          : __{country_data['critical']}__"
+        data += f"\n😊 Recovered   : __{country_data['recovered']}__"
+        data += f"\n💉 Total tests    : __{country_data['total_tests']}__"
+        data += f"\n🥺 New Cases   : __{country_data['new_cases']}__"
+        data += f"\n😟 New Deaths : __{country_data['new_deaths']}__"
         await catevent.edit(
             "<b>Corona Virus Info of {}:\n{}</b>".format(country, data),
             parse_mode="html",
@@ -40,18 +40,18 @@ async def corona(event):
             cat2 = int(data["new_death"]) - int(data["death"])
             cat3 = int(data["new_cured"]) - int(data["cured"])
             result = f"<b>Corona virus info of {data['state_name']}\
-                \n\n⚠️ Confirmed   : <code>{data['new_positive']}</code>\
-                \n😔 Active           : <code>{data['new_active']}</code>\
-                \n⚰️ Deaths         : <code>{data['new_death']}</code>\
-                \n😊 Recovered   : <code>{data['new_cured']}</code>\
-                \n🥺 New Cases   : <code>{cat1}</code>\
-                \n😟 New Deaths : <code>{cat2}</code>\
-                \n😃 New cured  : <code>{cat3}</code> </b>"
+                \n\n⚠️ Confirmed   : __{data['new_positive']}__\
+                \n😔 Active           : __{data['new_active']}__\
+                \n⚰️ Deaths         : __{data['new_death']}__\
+                \n😊 Recovered   : __{data['new_cured']}__\
+                \n🥺 New Cases   : __{cat1}__\
+                \n😟 New Deaths : __{cat2}__\
+                \n😃 New cured  : __{cat3}__ </b>"
             await catevent.edit(result, parse_mode="html")
         else:
             await edit_delete(
                 catevent,
-                "`Corona Virus Info of {} is not avaiable or unable to fetch`".format(
+                "__Corona Virus Info of {} is not avaiable or unable to fetch__".format(
                     country
                 ),
                 5,
@@ -60,10 +60,10 @@ async def corona(event):
 
 CMD_HELP.update(
     {
-        "covid": "**Plugin : **`covid`\
-        \n\n  •  **Syntax : **`.covid <country name>`\
+        "covid": "**Plugin : **__covid__\
+        \n\n  •  **Syntax : **__.covid <country name>__\
         \n  •  **Function :** __Get an information about covid-19 data in the given country.__\
-        \n\n  •  **Syntax : **`.covid <state name>`\
+        \n\n  •  **Syntax : **__.covid <state name>__\
         \n  •  **Function :** __Get an information about covid-19 data in the given state of India only.__\
         "
     }

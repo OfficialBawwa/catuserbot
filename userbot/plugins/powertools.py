@@ -14,7 +14,7 @@ async def _(event):
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted")
     await edit_or_reply(
         event,
-        "Restarted. `.ping` me or `.help` to check if I am online, actually it takes 1-2 min for restarting",
+        "Restarted. __.ping__ me or __.help__ to check if I am online, actually it takes 1-2 min for restarting",
     )
     await bot.disconnect()
     execl(sys.executable, sys.executable, *sys.argv)
@@ -27,7 +27,7 @@ async def _(event):
         return
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
-    await edit_or_reply(event, "`Turning off bot now ...Manually turn me on later`")
+    await edit_or_reply(event, "__Turning off bot now ...Manually turn me on later__")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
@@ -40,26 +40,26 @@ async def _(event):
     if event.fwd_from:
         return
     if " " not in event.pattern_match.group(1):
-        return await edit_or_reply(event, "Syntax: `.sleep time`")
+        return await edit_or_reply(event, "Syntax: __.sleep time__")
     counter = int(event.pattern_match.group(1))
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             "You put the bot to sleep for " + str(counter) + " seconds",
         )
-    event = await edit_or_reply(event, f"`ok, let me sleep for {counter} seconds`")
+    event = await edit_or_reply(event, f"__ok, let me sleep for {counter} seconds__")
     sleep(counter)
-    await event.edit("`OK, I'm awake now.`")
+    await event.edit("__OK, I'm awake now.__")
 
 
 CMD_HELP.update(
     {
-        "powertools": "**Plugin : **`powertools`\
-        \n\n  •  **Syntax : **`.restart`\
+        "powertools": "**Plugin : **__powertools__\
+        \n\n  •  **Syntax : **__.restart__\
         \n  •  **Function : **__Restarts the bot !!__\
-        \n\n  •  **Syntax : **`.sleep <seconds>`\
+        \n\n  •  **Syntax : **__.sleep <seconds>__\
         \n  •  **Function: **__Userbots get tired too. Let yours snooze for a few seconds.__\
-        \n\n  •  **Syntax : **`.shutdown`\
+        \n\n  •  **Syntax : **__.shutdown__\
         \n**  •  Function : **__To turn off the dyno of heroku. you cant turn on by bot you need to got to heroku and turn on or use__ @hk_heroku_bot"
     }
 )

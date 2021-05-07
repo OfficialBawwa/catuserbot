@@ -23,7 +23,7 @@ async def _(event):
             await event.reply(i.original.action.message)
     else:
         event = await edit_or_reply(
-            event, "`You need administrative permissions in order to do this command`"
+            event, "__You need administrative permissions in order to do this command__"
         )
         await asyncio.sleep(3)
         await event.delete()
@@ -31,8 +31,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "undlt": "**Plugin :** `undlt`\
-        \n**Syntax : **`.undlt <count>`\
+        "undlt": "**Plugin :** __undlt__\
+        \n**Syntax : **__.undlt <count>__\
         \n**Usage: **Fetches last <count> number of deleted messages and sends you(you must be admin in that group)  \
 "
     }

@@ -47,7 +47,7 @@ async def _(event):
         )
         await event.delete()
     else:
-        await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
+        await edit_or_reply(event, "__{}__: {}".format(input_str, r.text))
 
 
 @bot.on(admin_cmd(pattern="commit$", outgoing=True))
@@ -56,11 +56,11 @@ async def download(event):
     if event.fwd_from:
         return
     if Config.GITHUB_ACCESS_TOKEN is None:
-        await edit_delete(event, "`Please ADD Proper Access Token from github.com`", 5)
+        await edit_delete(event, "__Please ADD Proper Access Token from github.com__", 5)
         return
     if Config.GIT_REPO_NAME is None:
         await edit_delete(
-            event, "`Please ADD Proper Github Repo Name of your userbot`", 5
+            event, "__Please ADD Proper Github Repo Name of your userbot__", 5
         )
         return
     mone = await edit_or_reply(event, "Processing ...")
@@ -76,7 +76,7 @@ async def download(event):
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            "Downloaded to __{}__ in {} seconds.".format(downloaded_file_name, ms)
         )
         await mone.edit("Committing to Github....")
         await git_commit(downloaded_file_name, mone)
@@ -98,7 +98,7 @@ async def git_commit(file_name, mone):
     for i in content_list:
         create_file = True
         if i == 'ContentFile(path="' + file_name + '")':
-            return await mone.edit("`File Already Exists`")
+            return await mone.edit("__File Already Exists__")
     file_name = "userbot/plugins/" + file_name
     if create_file:
         print(file_name)
@@ -110,23 +110,23 @@ async def git_commit(file_name, mone):
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
             await mone.edit(
-                f"`Commited On Your Github Repo`\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
+                f"__Commited On Your Github Repo__\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
         except BaseException:
             print("Cannot Create Plugin")
             await mone.edit("Cannot Upload Plugin")
     else:
-        return await mone.edit("`Committed Suicide`")
+        return await mone.edit("__Committed Suicide__")
 
 
 CMD_HELP.update(
     {
-        "github": "**Plugin : **`github`\
-        \n\n**Syntax : **`.github USERNAME`\
+        "github": "**Plugin : **__github__\
+        \n\n**Syntax : **__.github USERNAME__\
         \n**Function : ** __Get information about an user on GitHub of given username__\
-        \n\n**Syntax : **`.commit reply to python file to upload to github`\
+        \n\n**Syntax : **__.commit reply to python file to upload to github__\
         \n**Function : **__It uploads the given file to your github repo in **userbot/plugins** folder\
-        \nTo work commit plugin set `GITHUB_ACCESS_TOKEN` and `GIT_REPO_NAME` Variables in Heroku vars First__\
+        \nTo work commit plugin set __GITHUB_ACCESS_TOKEN__ and __GIT_REPO_NAME__ Variables in Heroku vars First__\
     "
     }
 )

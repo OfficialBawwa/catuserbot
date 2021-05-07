@@ -140,10 +140,10 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "imposter": "**Plugin :** `imposter__`\
-\n\n**Syntax : **`.imp` / `.impn` <text>\
+        "imposter": "**Plugin :** __imposter____\
+\n\n**Syntax : **__.imp__ / __.impn__ <text>\
 \n**Usage : ** Find imposter with stickers.\
-\n\n**Syntax : **`.timp` / `.timpn` <text>\
+\n\n**Syntax : **__.timp__ / __.timpn__ <text>\
 \n**Usage : ** Find imposter only text."
     }
 )

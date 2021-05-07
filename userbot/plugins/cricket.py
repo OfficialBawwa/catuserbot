@@ -13,7 +13,7 @@ async def _(event):
         return
     chat = "@cricbuzz_bot"
     reply_to_id = event.message
-    catevent = await edit_or_reply(event, "```Gathering info...```")
+    catevent = await edit_or_reply(event, "______Gathering info...______")
     async with event.client.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
@@ -44,7 +44,7 @@ async def _(event):
     details = event.pattern_match.group(1)
     chat = "@cricbuzz_bot"
     reply_to_id = event.message
-    catevent = await edit_or_reply(event, "```Gathering info...```")
+    catevent = await edit_or_reply(event, "______Gathering info...______")
     async with event.client.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
@@ -69,11 +69,11 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "cricket": "**Plugin :** `cricket`\
-      \n\n**  • Syntax : **`.score` \
+        "cricket": "**Plugin :** __cricket__\
+      \n\n**  • Syntax : **__.score__ \
       \n**  • Function : **__To see score of ongoing matches.__\
-      \n\n**  • Syntax : **`.cric <commnd>`\
+      \n\n**  • Syntax : **__.cric <commnd>__\
       \n**  • Function : **__That will send details like scoreboard or commentary.__\
-      \n\n**  • Example :-** `.cric /scorecard_30....`"
+      \n\n**  • Example :-** __.cric /scorecard_30....__"
     }
 )

@@ -21,7 +21,7 @@ opener.addheaders = [("User-agent", useragent)]
 @bot.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"gs (.*)"))
 async def gsearch(q_event):
-    catevent = await edit_or_reply(q_event, "`searching........`")
+    catevent = await edit_or_reply(q_event, "__searching........__")
     match = q_event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
@@ -39,16 +39,16 @@ async def gsearch(q_event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            msg += f"👉[{title}]({link})\n`{desc}`\n\n"
+            msg += f"👉[{title}]({link})\n__{desc}__\n\n"
         except IndexError:
             break
     await catevent.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+        "**Search Query:**\n__" + match + "__\n\n**Results:**\n" + msg, link_preview=False
     )
     if BOTLOG:
         await q_event.client.send_message(
             BOTLOG_CHATID,
-            "Google Search query `" + match + "` was executed successfully",
+            "Google Search query __" + match + "__ was executed successfully",
         )
 
 
@@ -105,7 +105,7 @@ async def _(event):
             img_size = img_size_div.find_all("div")
         except Exception:
             return await edit_delete(
-                catevent, "`Sorry. I am unable to find similar images`"
+                catevent, "__Sorry. I am unable to find similar images__"
             )
         end = datetime.now()
         ms = (end - start).seconds
@@ -129,14 +129,14 @@ async def _(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await edit_or_reply(img, "`Reply to photo or sticker nigger.`")
+        await edit_or_reply(img, "__Reply to photo or sticker nigger.__")
         return
     if photo:
-        catevent = await edit_or_reply(img, "`Processing...`")
+        catevent = await edit_or_reply(img, "__Processing...__")
         try:
             image = Image.open(photo)
         except OSError:
-            await catevent.edit("`Unsupported , most likely.`")
+            await catevent.edit("__Unsupported , most likely.__")
             return
         name = "okgoogle.png"
         image.save(name, "PNG")
@@ -148,20 +148,20 @@ async def _(img):
         fetchUrl = response.headers["Location"]
         if response != 400:
             await img.edit(
-                "`Image successfully uploaded to Google. Maybe.`"
-                "\n`Parsing source now. Maybe.`"
+                "__Image successfully uploaded to Google. Maybe.__"
+                "\n__Parsing source now. Maybe.__"
             )
         else:
-            await catevent.edit("`Google told me to fuck off.`")
+            await catevent.edit("__Google told me to fuck off.__")
             return
         os.remove(name)
         match = await ParseSauce(fetchUrl + "&preferences?hl=en&fg=1#languages")
         guess = match["best_guess"]
         imgspage = match["similar_images"]
         if guess and imgspage:
-            await catevent.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
+            await catevent.edit(f"[{guess}]({fetchUrl})\n\n__Looking for this Image...__")
         else:
-            await catevent.edit("`Can't find this piece of shit.`")
+            await catevent.edit("__Can't find this piece of shit.__")
             return
 
         lim = img.pattern_match.group(1) or 3
@@ -219,12 +219,12 @@ async def scam(results, lim):
 
 CMD_HELP.update(
     {
-        "google": "**Plugin :**`google`\
-        \n\n•  **Syntax :** `.gs <limit> <query>` or `.gs <limit> (replied message)`\
+        "google": "**Plugin :**__google__\
+        \n\n•  **Syntax :** __.gs <limit> <query>__ or __.gs <limit> (replied message)__\
         \n•  **Function : **will google  search and sends you top 10 results links.\
-        \n\n•  **Syntax :** `.grs` reply to image\
+        \n\n•  **Syntax :** __.grs__ reply to image\
         \n•  **Function : **will google reverse search the image and shows you the result.\
-        \n\n•  **Syntax : **`.reverse limit`\
+        \n\n•  **Syntax : **__.reverse limit__\
         \n•  **Function : **Reply to a pic/sticker to revers-search it on Google Images !!"
     }
 )

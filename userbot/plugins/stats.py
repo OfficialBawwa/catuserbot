@@ -8,7 +8,7 @@ from telethon.tl.types import Channel, Chat, User
 # =========================================================== #
 #                           STRINGS                           #
 # =========================================================== #
-STAT_INDICATION = "`Collecting stats, Wait man`"
+STAT_INDICATION = "__Collecting stats, Wait man__"
 CHANNELS_STR = "**The list of channels in which you are their are here **\n\n"
 CHANNELS_ADMINSTR = "**The list of channels in which you are admin are here **\n\n"
 CHANNELS_OWNERSTR = "**The list of channels in which you are owner are here **\n\n"
@@ -66,17 +66,17 @@ async def stats(event):
     full_name = inline_mention(await event.client.get_me())
     response = f"📌 **Stats for {full_name}** \n\n"
     response += f"**Private Chats:** {private_chats} \n"
-    response += f"   ★ `Users: {private_chats - bots}` \n"
-    response += f"   ★ `Bots: {bots}` \n"
+    response += f"   ★ __Users: {private_chats - bots}__ \n"
+    response += f"   ★ __Bots: {bots}__ \n"
     response += f"**Groups:** {groups} \n"
     response += f"**Channels:** {broadcast_channels} \n"
     response += f"**Admin in Groups:** {admin_in_groups} \n"
-    response += f"   ★ `Creator: {creator_in_groups}` \n"
-    response += f"   ★ `Admin Rights: {admin_in_groups - creator_in_groups}` \n"
+    response += f"   ★ __Creator: {creator_in_groups}__ \n"
+    response += f"   ★ __Admin Rights: {admin_in_groups - creator_in_groups}__ \n"
     response += f"**Admin in Channels:** {admin_in_broadcast_channels} \n"
-    response += f"   ★ `Creator: {creator_in_channels}` \n"
+    response += f"   ★ __Creator: {creator_in_channels}__ \n"
     response += (
-        f"   ★ `Admin Rights: {admin_in_broadcast_channels - creator_in_channels}` \n"
+        f"   ★ __Admin Rights: {admin_in_broadcast_channels - creator_in_channels}__ \n"
     )
     response += f"**Unread:** {unread} \n"
     response += f"**Unread Mentions:** {unread_mentions} \n\n"
@@ -206,7 +206,7 @@ async def _(event):
     if not input_str and not reply_message:
         await edit_delete(
             event,
-            "`reply to  user's text message to get name/username history or give userid/username`",
+            "__reply to  user's text message to get name/username history or give userid/username__",
         )
     if input_str:
         try:
@@ -216,18 +216,18 @@ async def _(event):
                 u = await event.client.get_entity(input_str)
             except ValueError:
                 await edit_delete(
-                    event, "`Give userid or username to find name history`"
+                    event, "__Give userid or username to find name history__"
                 )
             uid = u.id
     else:
         uid = reply_message.sender_id
     chat = "@tgscanrobot"
-    catevent = await edit_or_reply(event, "`Processing...`")
+    catevent = await edit_or_reply(event, "__Processing...__")
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message(f"{uid}")
         except Exception:
-            await edit_delete(catevent, "`unblock `@tgscanrobot` and then try`")
+            await edit_delete(catevent, "__unblock __@tgscanrobot__ and then try__")
         response = await conv.get_response()
         await event.client.send_read_acknowledge(conv.chat_id)
         await catevent.edit(response.text)
@@ -246,14 +246,14 @@ def user_full_name(user):
 
 CMD_HELP.update(
     {
-        "stats": "**Plugin : **`stats`\
-    \n\n  •  **Syntax : **`.stat`\
+        "stats": "**Plugin : **__stats__\
+    \n\n  •  **Syntax : **__.stat__\
     \n  •  **Function : **__Shows you the count of  your groups, channels, private chats...etc__\
-    \n\n  •  **Syntax : **`.stat (g|ga|go)`\
+    \n\n  •  **Syntax : **__.stat (g|ga|go)__\
     \n  •  **Function : **__Shows you the list of all groups  in which you are if you use g , all groups in which you are admin if you use ga and all groups created by you if you use go__\
-    \n\n  •  **Syntax : **`.stat (c|ca|co)`\
+    \n\n  •  **Syntax : **__.stat (c|ca|co)__\
     \n  •  **Function : **__Shows you the list of all channels in which you are if you use c , all channels in which you are admin if you use ca and all channels created by you if you use co__\
-    \n\n  •  **Syntax : **`.ustat (reply/userid/username)`\
+    \n\n  •  **Syntax : **__.ustat (reply/userid/username)__\
     \n  •  **Function : **__Shows the list of public groups of that paticular user__\
     "
     }

@@ -15,11 +15,11 @@ async def media_to_pic(event, reply):
     if mediatype not in ["Photo", "Round Video", "Gif", "Sticker", "Video"]:
         await edit_delete(
             event,
-            "`In the replied message. I cant extract any image to procced further reply to proper media`",
+            "__In the replied message. I cant extract any image to procced further reply to proper media__",
         )
         return None
     catmedia = await reply.download_media(file="./temp")
-    catevent = await edit_or_reply(event, f"`Transfiguration Time! Converting....`")
+    catevent = await edit_or_reply(event, f"__Transfiguration Time! Converting....__")
     catfile = os.path.join("./temp/", "meme.png")
     if mediatype == "Sticker":
         if catmedia.endswith(".tgs"):
@@ -35,7 +35,7 @@ async def media_to_pic(event, reply):
         await take_screen_shot(catmedia, 0, catfile)
         if not os.path.exists(catfile):
             await edit_delete(
-                catevent, f"`Sorry. I can't extract a image from this {mediatype}`"
+                catevent, f"__Sorry. I can't extract a image from this {mediatype}__"
             )
             return None
     else:

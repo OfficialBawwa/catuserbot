@@ -193,20 +193,20 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "animation2": """**Plugin : **`animation2`
+        "animation2": """**Plugin : **__animation2__
         
 **Commands in animation2 are **
-  •  `.think`
-  •  `.lmao`
-  •  `.nothappy`
-  •  `.clock`
-  •  `.muah`
-  •  `.heart`
-  •  `.gym`
-  •  `.earth`
-  •  `.moon`
-  •  `.smoon`
-  •  `.tmoon`
+  •  __.think__
+  •  __.lmao__
+  •  __.nothappy__
+  •  __.clock__
+  •  __.muah__
+  •  __.heart__
+  •  __.gym__
+  •  __.earth__
+  •  __.moon__
+  •  __.smoon__
+  •  __.tmoon__
   
 **Function : **__Different kinds of animation commands check yourself for their animation .__"""
     }

@@ -19,15 +19,15 @@ async def stickerchat(catquotes):
     reply = await catquotes.get_reply_message()
     if not reply:
         await edit_or_reply(
-            catquotes, "`I cant quote the message . reply to a message`"
+            catquotes, "__I cant quote the message . reply to a message__"
         )
         return
     fetchmsg = reply.message
     repliedreply = None
     if reply.media and reply.media.document.mime_type in ("mp4"):
-        await edit_or_reply(catquotes, "`this format is not supported now`")
+        await edit_or_reply(catquotes, "__this format is not supported now__")
         return
-    catevent = await edit_or_reply(catquotes, "`Making quote...`")
+    catevent = await edit_or_reply(catquotes, "__Making quote...__")
     user = (
         await event.client.get_entity(reply.forward.sender)
         if reply.fwd_from
@@ -52,15 +52,15 @@ async def stickerchat(catquotes):
     reply = await catquotes.get_reply_message()
     if not reply:
         await edit_or_reply(
-            catquotes, "`I cant quote the message . reply to a message`"
+            catquotes, "__I cant quote the message . reply to a message__"
         )
         return
     fetchmsg = reply.message
     repliedreply = await reply.get_reply_message()
     if reply.media and reply.media.document.mime_type in ("mp4"):
-        await edit_or_reply(catquotes, "`this format is not supported now`")
+        await edit_or_reply(catquotes, "__this format is not supported now__")
         return
-    catevent = await edit_or_reply(catquotes, "`Making quote...`")
+    catevent = await edit_or_reply(catquotes, "__Making quote...__")
     user = (
         await event.client.get_entity(reply.forward.sender)
         if reply.fwd_from
@@ -106,10 +106,10 @@ async def _(event):
         message = input_str
     else:
         return await edit_delete(
-            event, "`Either reply to message or give input to function properly`"
+            event, "__Either reply to message or give input to function properly__"
         )
     chat = "@QuotLyBot"
-    catevent = await edit_or_reply(event, "```Making a Quote```")
+    catevent = await edit_or_reply(event, "______Making a Quote______")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -121,11 +121,11 @@ async def _(event):
                 await event.client.send_message(conv.chat_id, message)
             else:
                 return await edit_delete(
-                    catevent, "`I guess you have used a invalid syntax`"
+                    catevent, "__I guess you have used a invalid syntax__"
                 )
             response = await response
         except YouBlockedUserError:
-            await catevent.edit("```Please unblock me (@QuotLyBot) u Nigga```")
+            await catevent.edit("______Please unblock me (@QuotLyBot) u Nigga______")
             return
         await event.client.send_read_acknowledge(conv.chat_id)
         await catevent.delete()
@@ -136,12 +136,12 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "quotly": "**Plugin :** `quotly`\
-        \n\n**•  Syntax : **`.q reply to messge`\
+        "quotly": "**Plugin :** __quotly__\
+        \n\n**•  Syntax : **__.q reply to messge__\
         \n**•  Function : **__Makes your message as sticker quote__\
-        \n\n**•  Syntax : **`.rq reply to messge`\
+        \n\n**•  Syntax : **__.rq reply to messge__\
         \n**•  Function : **__Makes your message along with the previous replied message as sticker quote__\
-        \n\n**•  Syntax : **`.qbot reply to messge`\
+        \n\n**•  Syntax : **__.qbot reply to messge__\
         \n**•  Function : **__Makes your message as sticker quote by @quotlybot__\
         "
     }

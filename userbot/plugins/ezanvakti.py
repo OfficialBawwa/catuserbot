@@ -13,7 +13,7 @@ async def get_adzan(adzan):
     request = requests.get(url)
     if request.status_code != 200:
         await edit_delete(
-            adzan, f"`Couldn't fetch any data about the city {LOKASI}`", 5
+            adzan, f"__Couldn't fetch any data about the city {LOKASI}__", 5
         )
         return
     result = json.loads(request.text)
@@ -37,8 +37,8 @@ async def get_adzan(adzan):
 
 CMD_HELP.update(
     {
-        "ezanvakti": "**Plugin : **`ezanvakti`\
-    \n\n**Syntax : **`.ezanvakti <city name>`\
+        "ezanvakti": "**Plugin : **__ezanvakti__\
+    \n\n**Syntax : **__.ezanvakti <city name>__\
     \n**Function : **__Shows you the Islamic prayer times of the given city name__"
     }
 )

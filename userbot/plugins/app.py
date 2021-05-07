@@ -55,13 +55,13 @@ async def apk(event):
         app_details = "<a href='" + app_icon + "'>📲&#8203;</a>"
         app_details += " <b>" + app_name + "</b>"
         app_details += (
-            "\n\n<code>Developer :</code> <a href='"
+            "\n\n__Developer :__ <a href='"
             + app_dev_link
             + "'>"
             + app_dev
             + "</a>"
         )
-        app_details += "\n<code>Rating :</code> " + app_rating.replace(
+        app_details += "\n__Rating :__ " + app_rating.replace(
             "Rated ", "⭐ "
         ).replace(" out of ", "/").replace(" stars", "", 1).replace(
             " stars", "⭐ "
@@ -69,7 +69,7 @@ async def apk(event):
             "five", "5"
         )
         app_details += (
-            "\n<code>Features :</code> <a href='"
+            "\n__Features :__ <a href='"
             + app_link
             + "'>View in Play Store</a>"
         )
@@ -125,13 +125,13 @@ async def apkr(event):
         app_details = "<a href='" + app_icon + "'>📲&#8203;</a>"
         app_details += " <b>" + app_name + "</b>"
         app_details += (
-            "\n\n<code>Developer :</code> <a href='"
+            "\n\n__Developer :__ <a href='"
             + app_dev_link
             + "'>"
             + app_dev
             + "</a>"
         )
-        app_details += "\n<code>Rating :</code> " + app_rating.replace(
+        app_details += "\n__Rating :__ " + app_rating.replace(
             "Rated ", "⭐ "
         ).replace(" out of ", "/").replace(" stars", "", 1).replace(
             " stars", "⭐ "
@@ -139,7 +139,7 @@ async def apkr(event):
             "five", "5"
         )
         app_details += (
-            "\n<code>Features :</code> <a href='"
+            "\n__Features :__ <a href='"
             + app_link
             + "'>View in Play Store</a>"
         )
@@ -154,10 +154,10 @@ async def apkr(event):
 
 CMD_HELP.update(
     {
-        "app": "**Plugin :** `app`\
-        \n**Syntax : **`.app [app name]`\
+        "app": "**Plugin :** __app__\
+        \n**Syntax : **__.app [app name]__\
         \n**Usage: **searches the app in the playstore and provides the link to the app in playstore and fetchs app details \
-        \n\n**Syntax : **`.appr [app name]`\
+        \n\n**Syntax : **__.appr [app name]__\
         \n**Usage: **searches the app in the playstore and provides the link to the app in playstore and fetchs app details with Xpl0iter request link. \
         "
     }

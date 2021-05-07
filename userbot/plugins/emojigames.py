@@ -182,15 +182,15 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "emojigames": "**Syntax :** `.🎯 [1-6]` or `.dart [1-6]`\
+        "emojigames": "**Syntax :** __.🎯 [1-6]__ or __.dart [1-6]__\
     \n**Usage : **each number shows different animation for dart\
-    \n\n**Syntax : **`.🎲 [1-6]` or `.dice [1-6]`\
+    \n\n**Syntax : **__.🎲 [1-6]__ or __.dice [1-6]__\
     \n**Usage : **each number shows different animation for dice\
-    \n\n**Syntax : **`.🏀 [1-5]` or `.bb [1-5]`\
+    \n\n**Syntax : **__.🏀 [1-5]__ or __.bb [1-5]__\
     \n**Usage : **each number shows different animation for basket ball\
-    \n\n**Syntax : **`.⚽️ [1-5] `or `.fb [1-5]`\
+    \n\n**Syntax : **__.⚽️ [1-5] __or __.fb [1-5]__\
     \n**Usage : **each number shows different animation for football\
-    \n\n**Syntax : **`.🎰 [1-64] `or `.jp [1-64]`\
+    \n\n**Syntax : **__.🎰 [1-64] __or __.jp [1-64]__\
     \n**Usage : **each number shows different animation for slot machine(jackpot)\
     "
     }

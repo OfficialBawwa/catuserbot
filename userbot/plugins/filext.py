@@ -20,7 +20,7 @@ async def _(event):
         ext_details = soup.find_all("td", {"colspan": "3"})[-1].text
         await edit_or_reply(
             event,
-            "**File Extension**: `{}`\n**Description**: `{}`".format(
+            "**File Extension**: __{}__\n**Description**: __{}__".format(
                 input_str, ext_details
             ),
         )
@@ -35,9 +35,9 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "filext": """**Plugin : **`filext`
+        "filext": """**Plugin : **__filext__
     
-  • **Syntax : **`.filext <extension name>`
+  • **Syntax : **__.filext <extension name>__
   • **Function : **__Shows you the detailed information that extension type__"""
     }
 )

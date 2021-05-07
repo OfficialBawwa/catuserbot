@@ -52,7 +52,7 @@ async def vapor(vpr):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(vpr, "`Ｇｉｖｅ ｓｏｍｅ ｔｅｘｔ ｆｏｒ ｖａｐｏｒ！`")
+        await edit_or_reply(vpr, "__Ｇｉｖｅ ｓｏｍｅ ｔｅｘｔ ｆｏｒ ｖａｐｏｒ！__")
         return
 
     for charac in message:
@@ -188,18 +188,18 @@ async def stylish_generator(event):
 
 CMD_HELP.update(
     {
-        "fonts": """**Plugin : **`fonts`
+        "fonts": """**Plugin : **__fonts__
 
 **Commands found in fonts are**
-  •  `.fmusical`
-  •  `.ancient`
-  •  `.vapor`
-  •  `.smallcaps`
-  •  `.blackbf`
-  •  `.bubbles`
-  •  `.tanf`
-  •  `.boxf`
-  •  `.smothtext`
+  •  __.fmusical__
+  •  __.ancient__
+  •  __.vapor__
+  •  __.smallcaps__
+  •  __.blackbf__
+  •  __.bubbles__
+  •  __.tanf__
+  •  __.boxf__
+  •  __.smothtext__
 
 **Function : **__Reply the command to the text message or give input along with command to convert that text to given font style__"""
     }

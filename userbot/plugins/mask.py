@@ -18,13 +18,13 @@ from . import awooify, baguette, iphonex, lolice
 async def _(catbot):
     reply_message = await catbot.get_reply_message()
     if not reply_message.media or not reply_message:
-        await edit_or_reply(catbot, "```reply to media message```")
+        await edit_or_reply(catbot, "______reply to media message______")
         return
     chat = "@hazmat_suit_bot"
     if reply_message.sender.bot:
-        await edit_or_reply(catbot, "```Reply to actual users message.```")
+        await edit_or_reply(catbot, "______Reply to actual users message.______")
         return
-    event = await catbot.edit("```Processing```")
+    event = await catbot.edit("______Processing______")
     async with catbot.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -33,11 +33,11 @@ async def _(catbot):
             await catbot.client.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.edit("```Please unblock @hazmat_suit_bot and try again```")
+            await event.edit("______Please unblock @hazmat_suit_bot and try again______")
             return
         if response.text.startswith("Forward"):
             await event.edit(
-                "```can you kindly disable your forward privacy settings for good?```"
+                "______can you kindly disable your forward privacy settings for good?______"
             )
         else:
             await catbot.client.send_file(event.chat_id, response.message.media)
@@ -250,7 +250,7 @@ async def catbot(catmemes):
 
 CMD_HELP.update(
     {
-        "mask": "`.mask` reply to any image file:\
+        "mask": "__.mask__ reply to any image file:\
       \nUSAGE:makes an image a different style try out your own.\
       "
     }

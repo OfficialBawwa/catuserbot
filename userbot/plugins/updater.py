@@ -55,10 +55,10 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
+        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n__{changelog}__"
     )
     if len(changelog_str) > 4096:
-        await event.edit("`Changelog is too big, view the file to see it.`")
+        await event.edit("__Changelog is too big, view the file to see it.__")
         with open("output.txt", "w+") as file:
             file.write(changelog_str)
         await event.client.send_file(
@@ -97,7 +97,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "`Successfully Updated!\n" "Bot is restarting... Wait for a minute!`"
+        "__Successfully Updated!\n" "Bot is restarting... Wait for a minute!__"
     )
     # Spin a new instance of bot
     args = [sys.executable, "-m", "userbot"]
@@ -110,30 +110,30 @@ async def update(event, repo, ups_rem, ac_br):
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "`Checking for updates, please wait....`")
+    event = await edit_or_reply(event, "__Checking for updates, please wait....__")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
-            event, "`Set the required vars first to update the bot`"
+            event, "__Set the required vars first to update the bot__"
         )
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = "__Oops.. Updater cannot continue due to "
+        txt += "some problems occured__\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
+        await event.edit(f"{txt}\n__directory {error} is not found__")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
+        await event.edit(f"{txt}\n__Early failure! {error}__")
         return repo.__del__()
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately, the directory {error} "
+                f"__Unfortunately, the directory {error} "
                 "does not seem to be a git repository.\n"
                 "But we can fix that by force updating the userbot using "
-                ".update now.`"
+                ".update now.__"
             )
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
@@ -146,10 +146,10 @@ async def upstream(event):
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
             "**[UPDATER]:**\n"
-            f"`Looks like you are using your own custom branch ({ac_br}). "
+            f"__Looks like you are using your own custom branch ({ac_br}). "
             "in that case, Updater is unable to identify "
             "which branch is to be merged. "
-            "please checkout to any official branch`"
+            "please checkout to any official branch__"
         )
         return repo.__del__()
     try:
@@ -162,21 +162,21 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`CATUSERBOT is`  **up-to-date**  `with`  "
+            "\n__CATUSERBOT is__  **up-to-date**  __with__  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond("do `.update deploy` to update the catuserbot")
+        return await event.respond("do __.update deploy__ to update the catuserbot")
 
     if force_update:
         await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
+            "__Force-Syncing to latest stable userbot code, please wait...__"
         )
     if conf == "now":
-        await event.edit("`Updating userbot, please wait....`")
+        await event.edit("__Updating userbot, please wait....__")
         await update(event, repo, ups_rem, ac_br)
     return
 
@@ -188,8 +188,8 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         heroku_applications = heroku.apps()
         if HEROKU_APP_NAME is None:
             await event.edit(
-                "`Please set up the` **HEROKU_APP_NAME** `Var`"
-                " to be able to deploy your userbot...`"
+                "__Please set up the__ **HEROKU_APP_NAME** __Var__"
+                " to be able to deploy your userbot...__"
             )
             repo.__del__()
             return
@@ -199,11 +199,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 break
         if heroku_app is None:
             await event.edit(
-                f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
+                f"{txt}\n" "__Invalid Heroku credentials for deploying userbot dyno.__"
             )
             return repo.__del__()
         await event.edit(
-            "`Userbot dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .`"
+            "__Userbot dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .__"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -218,25 +218,25 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
         except Exception as error:
-            await event.edit(f"{txt}\n`Here is the error log:\n{error}`")
+            await event.edit(f"{txt}\n__Here is the error log:\n{error}__")
             return repo.__del__()
         build_status = app.builds(order_by="created_at", sort="desc")[0]
         if build_status.status == "failed":
             await event.edit(
-                "`Build failed!\n" "Cancelled or there were some errors...`"
+                "__Build failed!\n" "Cancelled or there were some errors...__"
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit("`Successfully deployed!\n" "Restarting, please wait...`")
+        await event.edit("__Successfully deployed!\n" "Restarting, please wait...__")
     else:
-        await event.edit("`Please set up`  **HEROKU_API_KEY**  ` Var...`")
+        await event.edit("__Please set up__  **HEROKU_API_KEY**  __ Var...__")
     return
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"update deploy$"))
 @bot.on(sudo_cmd(pattern="update deploy$", allow_sudo=True))
 async def upstream(event):
-    event = await edit_or_reply(event, "`Pulling the catpack repo wait a sec ....`")
+    event = await edit_or_reply(event, "__Pulling the catpack repo wait a sec ....__")
     off_repo = "https://github.com/Mr-confused/catpack"
     os.chdir("/app")
     catcmd = f"rm -rf .git"
@@ -245,14 +245,14 @@ async def upstream(event):
     except BaseException:
         pass
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = "__Oops.. Updater cannot continue due to "
+        txt += "some problems occured__\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
+        await event.edit(f"{txt}\n__directory {error} is not found__")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
+        await event.edit(f"{txt}\n__Early failure! {error}__")
         return repo.__del__()
     except InvalidGitRepositoryError:
         repo = Repo.init()
@@ -268,7 +268,7 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit("`Deploying userbot, please wait....`")
+    await event.edit("__Deploying userbot, please wait....__")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
@@ -278,33 +278,33 @@ async def variable(var):
     if Config.HEROKU_API_KEY is None:
         return await edit_delete(
             var,
-            "Set the required var in heroku to function this normally `HEROKU_API_KEY`.",
+            "Set the required var in heroku to function this normally __HEROKU_API_KEY__.",
         )
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
     else:
         return await edit_delete(
             var,
-            "Set the required var in heroku to function this normally `HEROKU_APP_NAME`.",
+            "Set the required var in heroku to function this normally __HEROKU_APP_NAME__.",
         )
     heroku_var = app.config()
-    await edit_or_reply(var, f"`Changing goodcat to badcat wait for 2-3 minutes.`")
+    await edit_or_reply(var, f"__Changing goodcat to badcat wait for 2-3 minutes.__")
     heroku_var["UPSTREAM_REPO"] = "https://github.com/Jisan09/catuserbot"
 
 
 CMD_HELP.update(
     {
-        "updater": "**Plugin : **`updater`"
-        "\n\n•  **Syntax : **`.update`"
+        "updater": "**Plugin : **__updater__"
+        "\n\n•  **Syntax : **__.update__"
         "\n•  **Function :** Checks if the main userbot repository has any updates "
         "and shows a changelog if so."
-        "\n\n•  **Syntax : **`.update now`"
+        "\n\n•  **Syntax : **__.update now__"
         "\n•  **Function :** Update your userbot, "
         "if there are any updates in your userbot repository.if you restart these goes back to last time when you deployed"
-        "\n\n•  **Syntax : **`.update deploy`"
+        "\n\n•  **Syntax : **__.update deploy__"
         "\n•  **Function :** Deploy your userbot.So even you restart it doesnt go back to previous version"
         "\nThis will triggered deploy always, even no updates."
-        "\n\n•  **Syntax : **`.badcat`"
+        "\n\n•  **Syntax : **__.badcat__"
         "\n•  **Function :** Shifts from official cat repo to jisan's repo(for gali commands)"
     }
 )

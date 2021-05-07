@@ -72,7 +72,7 @@ async def echo(cat):
         output_str = "echo enabled users:\n\n"
         for echos in lsts:
             output_str += (
-                f"[User](tg://user?id={echos.user_id}) in chat `{echos.chat_id}`\n"
+                f"[User](tg://user?id={echos.user_id}) in chat __{echos.chat_id}__\n"
             )
     else:
         output_str = "No echo enabled users "
@@ -110,11 +110,11 @@ async def samereply(cat):
 
 CMD_HELP.update(
     {
-        "echo": "**Syntax :** `.addecho` reply to user to whom you want to enable\
+        "echo": "**Syntax :** __.addecho__ reply to user to whom you want to enable\
     \n**Usage : **replays his every message for whom you enabled echo\
-    \n\n**Syntax : **`.rmecho` reply to user to whom you want to stop\
+    \n\n**Syntax : **__.rmecho__ reply to user to whom you want to stop\
     \n**Usage : **Stops replaying his messages\
-    \n\n**Syntax : **`.listecho`\
+    \n\n**Syntax : **__.listecho__\
     \n**Usage : **shows the list of users for whom you enabled echo\
     "
     }

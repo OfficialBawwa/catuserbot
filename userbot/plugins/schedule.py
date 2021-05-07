@@ -19,8 +19,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "schedule": "**Plugin : **`schedule`\
-    \n\n**Syntax : **`.schd <time_in_seconds>  <message to send>`\
+        "schedule": "**Plugin : **__schedule__\
+    \n\n**Syntax : **__.schd <time_in_seconds>  <message to send>__\
     \n**Function : **Send you the given message after that particular time\
     "
     }

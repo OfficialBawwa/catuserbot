@@ -58,11 +58,11 @@ async def autopic(event):
         if gvarstatus("autopic_counter") is None:
             addgvar("autopic_counter", 30)
     if gvarstatus("autopic") is not None and gvarstatus("autopic") == "true":
-        return await edit_delete(event, f"`Autopic is already enabled`")
+        return await edit_delete(event, f"__Autopic is already enabled__")
     addgvar("autopic", True)
     if input_str:
         addgvar("autopic_counter", input_str)
-    await edit_delete(event, f"`Autopic has been started by my Master`")
+    await edit_delete(event, f"__Autopic has been started by my Master__")
     await autopicloop()
 
 
@@ -75,9 +75,9 @@ async def main(event):
     while not downloader.isFinished():
         pass
     if gvarstatus("digitalpic") is not None and gvarstatus("digitalpic") == "true":
-        return await edit_delete(event, f"`Digitalpic is already enabled`")
+        return await edit_delete(event, f"__Digitalpic is already enabled__")
     addgvar("digitalpic", True)
-    await edit_delete(event, f"`digitalpfp has been started by my Master`")
+    await edit_delete(event, f"__digitalpfp has been started by my Master__")
     await digitalpicloop()
 
 
@@ -96,9 +96,9 @@ async def autopic(event):
     while not downloader.isFinished():
         pass
     if gvarstatus("bloom") is not None and gvarstatus("bloom") == "true":
-        return await edit_delete(event, f"`Bloom is already enabled`")
+        return await edit_delete(event, f"__Bloom is already enabled__")
     addgvar("bloom", True)
-    await edit_delete(event, f"`Bloom has been started by my Master`")
+    await edit_delete(event, f"__Bloom has been started by my Master__")
     await bloom_pfploop()
 
 
@@ -107,9 +107,9 @@ async def _(event):
     if event.fwd_from:
         return
     if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
-        return await edit_delete(event, f"`Autoname is already enabled`")
+        return await edit_delete(event, f"__Autoname is already enabled__")
     addgvar("autoname", True)
-    await edit_delete(event, "`AutoName has been started by my Master `")
+    await edit_delete(event, "__AutoName has been started by my Master __")
     await autoname_loop()
 
 
@@ -118,9 +118,9 @@ async def _(event):
     if event.fwd_from:
         return
     if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
-        return await edit_delete(event, f"`Autobio is already enabled`")
+        return await edit_delete(event, f"__Autobio is already enabled__")
     addgvar("autobio", True)
-    await edit_delete(event, "`Autobio has been started by my Master `")
+    await edit_delete(event, "__Autobio has been started by my Master __")
     await autobio_loop()
 
 
@@ -139,8 +139,8 @@ async def _(event):  # sourcery no-metrics
                     os.remove(autopic_path)
                 except BaseException:
                     return
-            return await edit_delete(event, "`Autopic has been stopped now`")
-        return await edit_delete(event, "`Autopic haven't enabled`")
+            return await edit_delete(event, "__Autopic has been stopped now__")
+        return await edit_delete(event, "__Autopic haven't enabled__")
     if input_str == "digitalpfp":
         if gvarstatus("digitalpic") is not None and gvarstatus("digitalpic") == "true":
             delgvar("digitalpic")
@@ -149,8 +149,8 @@ async def _(event):  # sourcery no-metrics
                     await bot.get_profile_photos("me", limit=1)
                 )
             )
-            return await edit_delete(event, "`Digitalpfp has been stopped now`")
-        return await edit_delete(event, "`Digitalpfp haven't enabled`")
+            return await edit_delete(event, "__Digitalpfp has been stopped now__")
+        return await edit_delete(event, "__Digitalpfp haven't enabled__")
     if input_str == "bloom":
         if gvarstatus("bloom") is not None and gvarstatus("bloom") == "true":
             delgvar("bloom")
@@ -161,24 +161,24 @@ async def _(event):  # sourcery no-metrics
                     os.remove(autopic_path)
                 except BaseException:
                     return
-            return await edit_delete(event, "`Bloom has been stopped now`")
-        return await edit_delete(event, "`Bloom haven't enabled`")
+            return await edit_delete(event, "__Bloom has been stopped now__")
+        return await edit_delete(event, "__Bloom haven't enabled__")
     if input_str == "autoname":
         if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
             delgvar("autoname")
             await event.client(
                 functions.account.UpdateProfileRequest(first_name=DEFAULTUSER)
             )
-            return await edit_delete(event, "`Autoname has been stopped now`")
-        return await edit_delete(event, "`Autoname haven't enabled`")
+            return await edit_delete(event, "__Autoname has been stopped now__")
+        return await edit_delete(event, "__Autoname haven't enabled__")
     if input_str == "autobio":
         if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
             delgvar("autobio")
             await event.client(
                 functions.account.UpdateProfileRequest(about=DEFAULTUSERBIO)
             )
-            return await edit_delete(event, "`Autobio has been stopped now`")
-        return await edit_delete(event, "`Autobio haven't enabled`")
+            return await edit_delete(event, "__Autobio has been stopped now__")
+        return await edit_delete(event, "__Autobio haven't enabled__")
 
 
 async def autopicloop():
@@ -187,7 +187,7 @@ async def autopicloop():
         if BOTLOG:
             return await bot.send_message(
                 BOTLOG_CHATID,
-                "**Error**\n`For functing of autopic you need to set DEFAULT_PIC var in Heroku vars`",
+                "**Error**\n__For functing of autopic you need to set DEFAULT_PIC var in Heroku vars__",
             )
         return
     if gvarstatus("autopic") is not None:
@@ -264,7 +264,7 @@ async def bloom_pfploop():
         if BOTLOG:
             return await bot.send_message(
                 BOTLOG_CHATID,
-                "**Error**\n`For functing of bloom you need to set DEFAULT_PIC var in Heroku vars`",
+                "**Error**\n__For functing of bloom you need to set DEFAULT_PIC var in Heroku vars__",
             )
         return
     while BLOOMSTART:
@@ -343,24 +343,24 @@ bot.loop.create_task(autobio_loop())
 
 CMD_HELP.update(
     {
-        "autoprofile": """**Plugin : **`autoprofile`
+        "autoprofile": """**Plugin : **__autoprofile__
 
-•  **Syntax : **`.autopic angle`
-•  **Function : **__Rotating image along with the time on it with given angle if no angle is given then doesnt rotate. You need to set __`DEFAULT_PIC`__ in heroku__
+•  **Syntax : **__.autopic angle__
+•  **Function : **__Rotating image along with the time on it with given angle if no angle is given then doesnt rotate. You need to set ____DEFAULT_PIC____ in heroku__
 
-•  **Syntax : **`.digitalpfp`
+•  **Syntax : **__.digitalpfp__
 •  **Function : **__Your profile pic changes to digitaltime profile picutre__
 
-•  **Syntax : **`.bloom`
-•  **Function : **__Random colour profile pics will be set along with time on it. You need to set__ `DEFAULT_PIC`__ in heroku__
+•  **Syntax : **__.bloom__
+•  **Function : **__Random colour profile pics will be set along with time on it. You need to set__ __DEFAULT_PIC____ in heroku__
 
-•  **Syntax : **`.autoname`
-•  **Function : **__for time along with name, you must set __`AUTONAME`__ in the heroku vars first for this to work__
+•  **Syntax : **__.autoname__
+•  **Function : **__for time along with name, you must set ____AUTONAME____ in the heroku vars first for this to work__
 
-•  **Syntax : **`.autobio`
-•  **Function : **__for time along with your bio, Set __`DEFAULT_BIO`__ in the heroku vars first__
+•  **Syntax : **__.autobio__
+•  **Function : **__for time along with your bio, Set ____DEFAULT_BIO____ in the heroku vars first__
 
-•  **Syntax : **`.end function`
+•  **Syntax : **__.end function__
 •  **Function : **__To stop the given functions like autopic ,difitalpfp , bloom , autoname and autobio__
 
 **⚠️DISCLAIMER⚠️**

@@ -84,7 +84,7 @@ async def _(event):
     try:
         streams = get_stream_data(query)
     except Exception as e:
-        return await et.edit(f"**Error :** `{str(e)}`")
+        return await et.edit(f"**Error :** __{str(e)}__")
     title = streams["title"]
     thumb_link = streams["movie_thumb"]
     release_year = streams["release_year"]
@@ -103,7 +103,7 @@ async def _(event):
     if release_date is None:
         release_date = release_year
 
-    output_ = f"**Movie:**\n`{title}`\n**Release Date:**\n`{release_date}`"
+    output_ = f"**Movie:**\n__{title}__\n**Release Date:**\n__{release_date}__"
     if imdb_score:
         output_ = output_ + f"\n**IMDB: **{imdb_score}"
     if tmdb_score:
@@ -128,8 +128,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "watch": "**Plugin :** `watch`\
-    \n\n**Syntax :** `.watch query`\
+        "watch": "**Plugin :** __watch__\
+    \n\n**Syntax :** __.watch query__\
     \n**Usage : **Fetches the list of sites(standard) where you can watch that movie\
     "
     }

@@ -19,18 +19,18 @@ async def glitch(cat):
     catinput = cat.pattern_match.group(2)
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     catid = await reply_id(cat)
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     if catinput:
         if not catinput.isdigit():
-            await cat.edit("`You input is invalid, check help`")
+            await cat.edit("__You input is invalid, check help__")
             return
         catinput = int(catinput)
         if not 0 < catinput < 9:
-            await cat.edit("`Invalid Range...`")
+            await cat.edit("__Invalid Range...__")
             return
     else:
         catinput = 2
@@ -70,11 +70,11 @@ async def glitch(cat):
 
 CMD_HELP.update(
     {
-        "glitch": "**Plugin : **`glitch`\
-    \n\n  •  **Syntax : **`.glitch` reply to media file\
+        "glitch": "**Plugin : **__glitch__\
+    \n\n  •  **Syntax : **__.glitch__ reply to media file\
     \n  •   **Function :** glitches the given mediafile (gif , stickers , image, videos) to a gif and glitch range is from 1 to 8.\
     If nothing is mentioned then by default it is 2\
-    \n\n  •  **Syntax : **`.glitchs` reply to media file\
+    \n\n  •  **Syntax : **__.glitchs__ reply to media file\
     \n  •  **Function :** glitches the given mediafile (gif , stickers , image, videos) to a sticker and glitch range is from 1 to 8.\
     If nothing is mentioned then by default it is 2\
     "

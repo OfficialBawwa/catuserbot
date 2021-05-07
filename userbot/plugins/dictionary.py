@@ -17,7 +17,7 @@ async def _(event):
         word = response["list"][0]["word"]
         definition = response["list"][0]["definition"]
         example = response["list"][0]["example"]
-        result = "**Text: {}**\n**Meaning:**\n`{}`\n\n**Example:**\n`{}`".format(
+        result = "**Text: {}**\n**Meaning:**\n__{}__\n\n**Example:**\n__{}__".format(
             _format.replacetext(word),
             _format.replacetext(definition),
             _format.replacetext(example),
@@ -26,7 +26,7 @@ async def _(event):
     except Exception as e:
         await edit_delete(
             event,
-            text="`The Unban Dictionary API could not be reached`",
+            text="__The Unban Dictionary API could not be reached__",
         )
         print(e)
 
@@ -52,10 +52,10 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "dictionary": "**Plugin :** `dictionary`\
-    \n\n  •  **Syntax :** `.ud query`\
+        "dictionary": "**Plugin :** __dictionary__\
+    \n\n  •  **Syntax :** __.ud query__\
     \n  •  **Function : **fetches meaning from Urban dictionary\
-    \n\n  •  **Syntax : **`.meaning query`\
+    \n\n  •  **Syntax : **__.meaning query__\
     \n  •  **Function : **Fetches meaning of the given word\
     "
     }

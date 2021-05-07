@@ -17,7 +17,7 @@ async def itachi(event):
         args = get.text
     if not args:
         await edit_or_reply(
-            event, "`What am I Supposed to do with this stupid, Give me a text. `"
+            event, "__What am I Supposed to do with this stupid, Give me a text. __"
         )
         return
     result = ""
@@ -40,7 +40,7 @@ async def itachi(event):
         args = get.text
     if not args:
         await edit_or_reply(
-            event, "`What am I Supposed to do with this stupid, Give me a text. `"
+            event, "__What am I Supposed to do with this stupid, Give me a text. __"
         )
         return
     try:
@@ -68,10 +68,10 @@ def char_is_emoji(character):
 
 CMD_HELP.update(
     {
-        "emojify": "**Plugin :** `emojify`\
-      \n\n**Syntax :** `.emoji` <text>\
+        "emojify": "**Plugin :** __emojify__\
+      \n\n**Syntax :** __.emoji__ <text>\
       \n****Usage : **Converts your text to big emoji text, with default emoji. \
-      \n\n**Syntax :** `.cmoji` <emoji> <text>\
+      \n\n**Syntax :** __.cmoji__ <emoji> <text>\
       \n****Usage : **Converts your text to big emoji text, with your custom emoji.\
       "
     }

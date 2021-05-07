@@ -18,16 +18,16 @@ PM = f"""Hello. You are accessing the availabe menu of my master, {DEFAULTUSER}.
 __Let's make this smooth and let me know why you are here.__
 **Choose one of the following reasons why you are here:**
 
-`a`. To chat with my master
-`b`. To spam my master's inbox.
-`c`. To enquire something
-`d`. To request something\n"""
+__a__. To chat with my master
+__b__. To spam my master's inbox.
+__c__. To enquire something
+__d__. To request something\n"""
 ONE = """__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within next few years. He/She is a busy man, unlike you probably.__
 
 **⚠️ You will be blocked and reported if you spam. ⚠️**\n\n"""
-TWO = " `███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ `\n\n**So uncool, this is not your home. Go bother someone else. You have been blocked and reported until further notice.**"
+TWO = " __███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ __\n\n**So uncool, this is not your home. Go bother someone else. You have been blocked and reported until further notice.**"
 THREE = "__Okay. My master has not seen your message yet.He/She usually responds to people,though idk about retarted ones.__\n __He'll respond when he/she comes back, if he/she wants to.There's already a lot of pending messages😶__\n **Please do not spam unless you wish to be blocked and reported.**"
-FOUR = "`Okay. please have the basic manners as to not bother my master too much. If he/she wishes to help you, he/she will respond to you soon.`\n**Do not ask repeatdly else you will be blocked and reported.**"
+FOUR = "__Okay. please have the basic manners as to not bother my master too much. If he/she wishes to help you, he/she will respond to you soon.__\n**Do not ask repeatdly else you will be blocked and reported.**"
 LWARN = "**This is your last warning. DO NOT send another message else you will be blocked and reported. Keep patience. My master will respond you ASAP.**\n"
 
 
@@ -137,7 +137,7 @@ async def _(event):
                         return
                     test12 = await event.client.send_message(
                         chat,
-                        "You have entered an invalid command. Please send `/start` again or do not send another message if you do not wish to be blocked and reported.",
+                        "You have entered an invalid command. Please send __/start__ again or do not send another message if you do not wish to be blocked and reported.",
                     )
                     set_key(PMMESSAGE_CACHE, event.chat_id, test12.id)
                     response = await conv.get_response(chat)

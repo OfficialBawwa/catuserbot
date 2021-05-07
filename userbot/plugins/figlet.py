@@ -33,7 +33,7 @@ async def figlet(event):
         cmd = None
         text = input_str
     else:
-        await edit_or_reply(event, "`Give some text to change it`")
+        await edit_or_reply(event, "__Give some text to change it__")
         return
     style = cmd
     text = text.strip()
@@ -42,7 +42,7 @@ async def figlet(event):
             font = CMD_FIG[style.strip()]
         except KeyError:
             return await edit_delete(
-                event, "**Invalid style selected**, __Check__ `.info figlet`."
+                event, "**Invalid style selected**, __Check__ __.info figlet__."
             )
         result = pyfiglet.figlet_format(deEmojify(text), font=font)
     else:
@@ -52,9 +52,9 @@ async def figlet(event):
 
 CMD_HELP.update(
     {
-        "figlet": "**Plugin :**`figlet`\
-        \n\n• **Syntax : **`.figlet type ; text`\
-    \n• **Usage : **the types are `slant`, `3D`, `5line`, `alpha`, `banner`, `doh`, `iso`, `letter`, `allig`, `dotm`, `bubble`, `bulb`, `digi`, `binary`, `basic`\
-    \n• **Example : **`.figlet digi ; hello`"
+        "figlet": "**Plugin :**__figlet__\
+        \n\n• **Syntax : **__.figlet type ; text__\
+    \n• **Usage : **the types are __slant__, __3D__, __5line__, __alpha__, __banner__, __doh__, __iso__, __letter__, __allig__, __dotm__, __bubble__, __bulb__, __digi__, __binary__, __basic__\
+    \n• **Example : **__.figlet digi ; hello__"
     }
 )

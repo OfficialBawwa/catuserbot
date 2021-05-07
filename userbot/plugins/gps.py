@@ -78,7 +78,7 @@ async def gps(event):
 
 CMD_HELP.update(
     {
-        "gps": "`.gps` <location name> :\
+        "gps": "__.gps__ <location name> :\
       \nUSAGE: sends you a map with the given location as pin \
       "
     }

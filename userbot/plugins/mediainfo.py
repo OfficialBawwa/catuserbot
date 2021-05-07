@@ -70,7 +70,7 @@ async def mediainfo(event):
     if not reply.media:
         await edit_or_reply(event, "reply to media to get info")
         return
-    catevent = await edit_or_reply(event, "`Gathering ...`")
+    catevent = await edit_or_reply(event, "__Gathering ...__")
     X_MEDIA = reply.file.mime_type
     if (not X_MEDIA) or (X_MEDIA.startswith(("text"))):
         return await catevent.edit("Reply To a supported Media Format")
@@ -81,13 +81,13 @@ async def mediainfo(event):
         out = "Not Supported"
     body_text = f"""
 <h2>JSON</h2>
-<code>
+__
 {hmm}
-</code>
+__
 <h2>DETAILS</h2>
-<code>
+__
 {out} 
-</code>"""
+__"""
     link = await post_to_telegraph(f"{X_MEDIA}", body_text)
     await catevent.edit(
         f"ℹ️  <b>MEDIA INFO:  <a href ='{link}' > {X_MEDIA}</a></b>",
@@ -99,8 +99,8 @@ async def mediainfo(event):
 
 CMD_HELP.update(
     {
-        "mediainfo": "**Plugin :** `mediainfo`\
-      \n\n**Syntax : **`.minfo` reply to media \
+        "mediainfo": "**Plugin :** __mediainfo__\
+      \n\n**Syntax : **__.minfo__ reply to media \
       \n**Usage : ** shows you the media information."
     }
 )

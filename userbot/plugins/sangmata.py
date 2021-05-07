@@ -15,7 +15,7 @@ async def _(event):
     if not input_str and not reply_message:
         await edit_delete(
             event,
-            "`reply to  user's text message to get name/username history or give userid/username`",
+            "__reply to  user's text message to get name/username history or give userid/username__",
         )
     if input_str:
         try:
@@ -25,18 +25,18 @@ async def _(event):
                 u = await event.client.get_entity(input_str)
             except ValueError:
                 await edit_delete(
-                    event, "`Give userid or username to find name history`"
+                    event, "__Give userid or username to find name history__"
                 )
             uid = u.id
     else:
         uid = reply_message.sender_id
     chat = "@SangMataInfo_bot"
-    catevent = await edit_or_reply(event, "`Processing...`")
+    catevent = await edit_or_reply(event, "__Processing...__")
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message(f"/search_id {uid}")
         except YouBlockedUserError:
-            await edit_delete(catevent, "`unblock @Sangmatainfo_bot and then try`")
+            await edit_delete(catevent, "__unblock @Sangmatainfo_bot and then try__")
         responses = []
         while True:
             try:
@@ -46,9 +46,9 @@ async def _(event):
             responses.append(response.text)
         await event.client.send_read_acknowledge(conv.chat_id)
     if not responses:
-        await edit_delete(catevent, "`bot can't fetch results`")
+        await edit_delete(catevent, "__bot can't fetch results__")
     if "No records found" in responses:
-        await edit_delete(catevent, "`The user doesn't have any record`")
+        await edit_delete(catevent, "__The user doesn't have any record__")
     names, usernames = await sanga_seperator(responses)
     cmd = event.pattern_match.group(1)
     if cmd == "sg":
@@ -71,10 +71,10 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "sangmata": "**Plugin : **`sangmata`\
-    \n\n**Syntax : **`.sg <username/userid/reply>`\
+        "sangmata": "**Plugin : **__sangmata__\
+    \n\n**Syntax : **__.sg <username/userid/reply>__\
     \n**Function : **__Shows you the previous name history of user.__\
-    \n\n**Syntax : **`.sgu <username/userid/reply>`\
+    \n\n**Syntax : **__.sgu <username/userid/reply>__\
     \n**Function : **__Shows you the previous username history of user.__\
     "
     }

@@ -53,7 +53,7 @@ async def add_snip(fltr):
             await bot.send_message(
                 BOTLOG_CHATID,
                 f"#NOTE\
-                  \nKEYWORD: `#{keyword}`\
+                  \nKEYWORD: __#{keyword}__\
                   \n\nThe following message is saved as the snip in your bot , do NOT delete it !!",
             )
             msg_o = await bot.forward_messages(
@@ -63,13 +63,13 @@ async def add_snip(fltr):
         else:
             await edit_or_reply(
                 fltr,
-                "Saving media as data for the note requires the `PRIVATE_GROUP_BOT_API_ID` to be set.",
+                "Saving media as data for the note requires the __PRIVATE_GROUP_BOT_API_ID__ to be set.",
             )
             return
     elif fltr.reply_to_msg_id and not string:
         rep_msg = await fltr.get_reply_message()
         string = rep_msg.text
-    success = "Note {} is successfully {}. Use` #{} `to get it"
+    success = "Note {} is successfully {}. Use__ #{} __to get it"
     if add_note(keyword, string, msg_id) is False:
         rm_note(keyword)
         if add_note(keyword, string, msg_id) is False:
@@ -88,7 +88,7 @@ async def on_snip_list(event):
     for note in notes:
         if message == "There are no saved notes in this chat":
             message = "Notes saved in this chat:\n"
-        message += "👉 `#{}`\n".format(note.keyword)
+        message += "👉 __#{}__\n".format(note.keyword)
     await edit_or_reply(event, message)
 
 
@@ -109,14 +109,14 @@ async def on_snip_delete(event):
 
 CMD_HELP.update(
     {
-        "snip": "**Plugin :** `snip`\
+        "snip": "**Plugin :** __snip__\
 \n\n•  **Syntax :** #<snipname>\
 \n•  **Function :*** Gets the specified note.\
-\n\n•  **Syntax :** `reply to a message with .snips <notename>`\
+\n\n•  **Syntax :** __reply to a message with .snips <notename>__\
 \n•  **Function :*** Saves the replied message as a note with the notename. (Works with pics, docs, and stickers too!)\
-\n\n•  **Syntax :** `.snipl`\
+\n\n•  **Syntax :** __.snipl__\
 \n•  **Function :*** Gets all saved notes in a chat.\
-\n\n•  **Syntax :** `.snipd <notename>`\
+\n\n•  **Syntax :** __.snipd <notename>__\
 \n•  **Function :*** Deletes the specified note.\
 "
     }

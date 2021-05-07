@@ -28,7 +28,7 @@ async def waifu(animu):
             text = (await animu.get_reply_message()).message
         else:
             await edit_or_reply(
-                animu, "`You haven't written any article, Waifu is going away.`"
+                animu, "__You haven't written any article, Waifu is going away.__"
             )
             return
     text = deEmojify(text)
@@ -118,10 +118,10 @@ async def get_font_file(client, channel_id, search_kw=""):
 
 CMD_HELP.update(
     {
-        "stickerfun": "**Plugin : **`stickerfun`\
-        \n\n**Syntax : **`.sttxt` <your txt>\
+        "stickerfun": "**Plugin : **__stickerfun__\
+        \n\n**Syntax : **__.sttxt__ <your txt>\
         \n**Usage : **Anime that makes your writing fun.\
-        \n\n**Syntax : **`.stcr` <your txt>\
+        \n\n**Syntax : **__.stcr__ <your txt>\
         \n**Usage : **your text as sticker\
     "
     }

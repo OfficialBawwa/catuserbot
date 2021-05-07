@@ -21,11 +21,11 @@ async def amireallyalive(alive):
     _, check_sgnirts = check_data_base_heal_th()
     if CAT_IMG:
         cat_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-        cat_caption += f"**{EMOJI} Database :** `{check_sgnirts}`\n"
-        cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-        cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
-        cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-        cat_caption += f"**{EMOJI} Uptime :** `{uptime}\n`"
+        cat_caption += f"**{EMOJI} Database :** __{check_sgnirts}__\n"
+        cat_caption += f"**{EMOJI} Telethon version :** __{version.__version__}\n__"
+        cat_caption += f"**{EMOJI} Catuserbot Version :** __{catversion}__\n"
+        cat_caption += f"**{EMOJI} Python Version :** __{python_version()}\n__"
+        cat_caption += f"**{EMOJI} Uptime :** __{uptime}\n__"
         cat_caption += f"**{EMOJI} Master:** {mention}\n"
         await alive.client.send_file(
             alive.chat_id, CAT_IMG, caption=cat_caption, reply_to=reply_to_id
@@ -35,11 +35,11 @@ async def amireallyalive(alive):
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-            f"**{EMOJI} Database :** `{check_sgnirts}`\n"
-            f"**{EMOJI} Telethon Version :** `{version.__version__}\n`"
-            f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
-            f"**{EMOJI} Python Version :** `{python_version()}\n`"
-            f"**{EMOJI} Uptime :** `{uptime}\n`"
+            f"**{EMOJI} Database :** __{check_sgnirts}__\n"
+            f"**{EMOJI} Telethon Version :** __{version.__version__}\n__"
+            f"**{EMOJI} Catuserbot Version :** __{catversion}__\n"
+            f"**{EMOJI} Python Version :** __{python_version()}\n__"
+            f"**{EMOJI} Uptime :** __{uptime}\n__"
             f"**{EMOJI} Master:** {mention}\n",
         )
 
@@ -52,9 +52,9 @@ async def amireallyalive(alive):
     tgbotusername = Config.TG_BOT_USERNAME
     reply_to_id = await reply_id(alive)
     cat_caption = f"**Catuserbot is Up and Running**\n"
-    cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**  -Catuserbot Version :** `{catversion}`\n"
-    cat_caption += f"**  -Python Version :** `{python_version()}\n`"
+    cat_caption += f"**  -Telethon version :** __{version.__version__}\n__"
+    cat_caption += f"**  -Catuserbot Version :** __{catversion}__\n"
+    cat_caption += f"**  -Python Version :** __{python_version()}\n__"
     cat_caption += f"**  -Master:** {mention}\n"
     results = await bot.inline_query(tgbotusername, cat_caption)  # pylint:disable=E0602
     await results[0].click(alive.chat_id, reply_to=reply_to_id, hide_via=True)
@@ -94,11 +94,11 @@ def check_data_base_heal_th():
 
 CMD_HELP.update(
     {
-        "alive": "**Plugin :** `alive`\
-      \n\n  •  **Syntax : **`.alive` \
+        "alive": "**Plugin :** __alive__\
+      \n\n  •  **Syntax : **__.alive__ \
       \n  •  **Function : **__status of bot will be showed__\
-      \n\n  •  **Syntax : **`.ialive` \
+      \n\n  •  **Syntax : **__.ialive__ \
       \n  •  **Function : **__inline status of bot will be shown.__\
-      \nSet `ALIVE_PIC` var for media in alive message"
+      \nSet __ALIVE_PIC__ var for media in alive message"
     }
 )

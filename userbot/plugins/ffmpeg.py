@@ -21,8 +21,8 @@ async def ff_mpeg_trim_cmd(event):
             start = datetime.now()
             media = media_type(reply_message)
             if media not in ["Video", "Audio", "Voice", "Round Video", "Gif"]:
-                return await edit_delete(event, "`Only media files are supported`", 5)
-            catevent = await edit_or_reply(event, "`Saving the file...`")
+                return await edit_delete(event, "__Only media files are supported__", 5)
+            catevent = await edit_or_reply(event, "__Saving the file...__")
             try:
                 c_time = time.time()
                 downloaded_file_name = await event.client.download_media(
@@ -38,14 +38,14 @@ async def ff_mpeg_trim_cmd(event):
                 end = datetime.now()
                 ms = (end - start).seconds
                 await catevent.edit(
-                    f"Saved file to `{downloaded_file_name}` in `{ms}` seconds."
+                    f"Saved file to __{downloaded_file_name}__ in __{ms}__ seconds."
                 )
         else:
-            await edit_delete(event, "`Reply to a any media file`")
+            await edit_delete(event, "__Reply to a any media file__")
     else:
         await edit_delete(
             event,
-            f"A media file already exists in path. Please remove the media and try again!\n`.ffmpegclear`",
+            f"A media file already exists in path. Please remove the media and try again!\n__.ffmpegclear__",
         )
 
 
@@ -57,11 +57,11 @@ async def ff_mpeg_trim_cmd(event):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         await edit_delete(
             event,
-            f"a media file needs to be download, and save to the following path: `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
+            f"a media file needs to be download, and save to the following path: __{FF_MPEG_DOWN_LOAD_MEDIA_PATH}__",
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event, "`Triming the media......`")
+    catevent = await edit_or_reply(event, "__Triming the media......__")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
@@ -76,7 +76,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         if o is None:
             return await edit_delete(
-                catevent, f"**Error : **`Can't complete the process`"
+                catevent, f"**Error : **__Can't complete the process__"
             )
         try:
             c_time = time.time()
@@ -94,14 +94,14 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **__{e}__")
     elif len(cmt) == 2:
         # output should be image
         cmd, start_time = cmt
         o = await _cattools.take_screen_shot(FF_MPEG_DOWN_LOAD_MEDIA_PATH, start_time)
         if o is None:
             return await edit_delete(
-                catevent, f"**Error : **`Can't complete the process`"
+                catevent, f"**Error : **__Can't complete the process__"
             )
         try:
             c_time = time.time()
@@ -119,13 +119,13 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **__{e}__")
     else:
         await edit_delete(catevent, "RTFM")
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_delete(catevent, f"`Completed Process in {ms} seconds`", 3)
+    await edit_delete(catevent, f"__Completed Process in {ms} seconds__", 3)
 
 
 @bot.on(admin_cmd(pattern="atrim"))
@@ -136,11 +136,11 @@ async def ff_mpeg_trim_cmd(event):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         await edit_delete(
             event,
-            f"a media file needs to be download, and save to the following path: `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
+            f"a media file needs to be download, and save to the following path: __{FF_MPEG_DOWN_LOAD_MEDIA_PATH}__",
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event, "`Triming the media...........`")
+    catevent = await edit_or_reply(event, "__Triming the media...........__")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
@@ -159,7 +159,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         if o is None:
             return await edit_delete(
-                catevent, f"**Error : **`Can't complete the process`"
+                catevent, f"**Error : **__Can't complete the process__"
             )
         try:
             c_time = time.time()
@@ -177,13 +177,13 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **__{e}__")
     else:
         await edit_delete(catevent, "RTFM")
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_delete(catevent, f"`Completed Process in {ms} seconds`", 3)
+    await edit_delete(catevent, f"__Completed Process in {ms} seconds__", 3)
 
 
 @bot.on(admin_cmd(pattern="ffmpegclear$"))
@@ -192,12 +192,12 @@ async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
-        await edit_delete(event, "`There is no media saved in bot for triming`")
+        await edit_delete(event, "__There is no media saved in bot for triming__")
     else:
         os.remove(FF_MPEG_DOWN_LOAD_MEDIA_PATH)
         await edit_delete(
             event,
-            "`The media saved in bot for triming is deleted now . you can save now new one `",
+            "__The media saved in bot for triming is deleted now . you can save now new one __",
         )
 
 
@@ -240,16 +240,16 @@ async def cult_small_video(
 
 CMD_HELP.update(
     {
-        "ffmpeg": "**Plugin : **`ffmpeg`\
-    \n\n  •  **Syntax : **`.ffmpegsave`\
+        "ffmpeg": "**Plugin : **__ffmpeg__\
+    \n\n  •  **Syntax : **__.ffmpegsave__\
     \n  •  **Function : **__Saves the media file in bot to trim mutliple times__\
-    \n\n  •  **Syntax : **`.vtrim time`\
+    \n\n  •  **Syntax : **__.vtrim time__\
     \n  •  **Function : **__Sends you the screenshot of the video at the given specific time__\
-    \n\n  •  **Syntax : **`.vtrim starttime endtime`\
+    \n\n  •  **Syntax : **__.vtrim starttime endtime__\
     \n  •  **Function : **__Trims the saved media with specific given time internval and outputs as video__\
-    \n\n  •  **Syntax : **`.atrim starttime endtime`\
+    \n\n  •  **Syntax : **__.atrim starttime endtime__\
     \n  •  **Function : **__Trims the saved media with specific given time internval and outputs as audio__\
-    \n\n  •  **Syntax : **`.ffmpegclear`\
+    \n\n  •  **Syntax : **__.ffmpegclear__\
     \n  •  **Function : **__Deletes the saved media so you can save new one__\
     "
     }

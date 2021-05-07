@@ -42,14 +42,14 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_group:
-        await edit_or_reply(event, "`I don't think this is a group.`")
+        await edit_or_reply(event, "__I don't think this is a group.__")
         return
     chat = await event.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
         await edit_or_reply(
-            event, "`You are not admin of this chat to perform this action`"
+            event, "__You are not admin of this chat to perform this action__"
         )
         return
     result = await event.client(
@@ -59,9 +59,9 @@ async def _(event):
     )
     if not result.participant.admin_rights.ban_users:
         return await edit_or_reply(
-            event, "`It seems like you dont have ban users permission in this group.`"
+            event, "__It seems like you dont have ban users permission in this group.__"
         )
-    catevent = await edit_or_reply(event, "`Kicking...`")
+    catevent = await edit_or_reply(event, "__Kicking...__")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -79,7 +79,7 @@ async def _(event):
             LOGS.info(str(e))
             await sleep(0.5)
     await catevent.edit(
-        f"`Sucessfully i have completed kickall process with {success} members kicked out of {total} members`"
+        f"__Sucessfully i have completed kickall process with {success} members kicked out of {total} members__"
     )
 
 
@@ -89,14 +89,14 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_group:
-        await edit_or_reply(event, "`I don't think this is a group.`")
+        await edit_or_reply(event, "__I don't think this is a group.__")
         return
     chat = await event.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
         await edit_or_reply(
-            event, "`You are not admin of this chat to perform this action`"
+            event, "__You are not admin of this chat to perform this action__"
         )
         return
     result = await event.client(
@@ -106,9 +106,9 @@ async def _(event):
     )
     if not result:
         return await edit_or_reply(
-            event, "`It seems like you dont have ban users permission in this group.`"
+            event, "__It seems like you dont have ban users permission in this group.__"
         )
-    catevent = await edit_or_reply(event, "`banning...`")
+    catevent = await edit_or_reply(event, "__banning...__")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -128,7 +128,7 @@ async def _(event):
             LOGS.info(str(e))
             await sleep(0.5)
     await catevent.edit(
-        f"`Sucessfully i have completed banall process with {success} members banned out of {total} members`"
+        f"__Sucessfully i have completed banall process with {success} members banned out of {total} members__"
     )
 
 
@@ -171,7 +171,7 @@ async def _(event):
     if input_str:
         chat = await event.get_chat()
         if not chat.admin_rights and not chat.creator:
-            await edit_or_reply(event, "`You aren't an admin here!`")
+            await edit_or_reply(event, "__You aren't an admin here!__")
             return False
     p = 0
     b = 0
@@ -189,8 +189,8 @@ async def _(event):
     async for i in event.client.iter_participants(event.chat_id):
         p += 1
         #
-        # Note that it's "reversed". You must set to ``True`` the permissions
-        # you want to REMOVE, and leave as ``None`` those you want to KEEP.
+        # Note that it's "reversed". You must set to ____True____ the permissions
+        # you want to REMOVE, and leave as ____None____ those you want to KEEP.
         rights = ChatBannedRights(until_date=None, view_messages=True)
         if isinstance(i.status, UserStatusEmpty):
             y += 1
@@ -308,10 +308,10 @@ None: {}""".format(
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "`No zombies or deleted accounts found in this group, Group is clean`"
+    del_status = "__No zombies or deleted accounts found in this group, Group is clean__"
     if con != "clean":
         event = await edit_or_reply(
-            show, "`Searching for ghost/deleted/zombie accounts...`"
+            show, "__Searching for ghost/deleted/zombie accounts...__"
         )
         async for user in show.client.iter_participants(show.chat_id):
             if user.deleted:
@@ -319,17 +319,17 @@ async def rm_deletedacc(show):
                 await sleep(0.5)
         if del_u > 0:
             del_status = f"__Found__ **{del_u}** __ghost/deleted/zombie account(s) in this group,\
-                           \nclean them by using__ `.zombies clean`"
+                           \nclean them by using__ __.zombies clean__"
         await event.edit(del_status)
         return
     chat = await show.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
-        await edit_delete(show, "`I am not an admin here!`", 5)
+        await edit_delete(show, "__I am not an admin here!__", 5)
         return
     event = await edit_or_reply(
-        show, "`Deleting deleted accounts...\nOh I can do that?!?!`"
+        show, "__Deleting deleted accounts...\nOh I can do that?!?!__"
     )
     del_u = 0
     del_a = 0
@@ -340,7 +340,7 @@ async def rm_deletedacc(show):
                 await sleep(0.5)
                 del_u += 1
             except ChatAdminRequiredError:
-                await edit_delete(event, "`I don't have ban rights in this group`", 5)
+                await edit_delete(event, "__I don't have ban rights in this group__", 5)
                 return
             except UserAdminInvalidError:
                 del_a += 1
@@ -355,7 +355,7 @@ async def rm_deletedacc(show):
             BOTLOG_CHATID,
             f"#CLEANUP\
             \n{del_status}\
-            \nCHAT: {show.chat.title}(`{show.chat_id}`)",
+            \nCHAT: {show.chat.title}(__{show.chat_id}__)",
         )
 
 
@@ -369,18 +369,18 @@ async def ban_user(chat_id, i, rights):
 
 CMD_HELP.update(
     {
-        "groupactions": "**Plugin : **`groupactions`\
-    \n\n•  **Syntax : **`.kickme`\
+        "groupactions": "**Plugin : **__groupactions__\
+    \n\n•  **Syntax : **__.kickme__\
     \n•  **Function : **__Throws you away from that chat_\
-    \n\n•  **Syntax : **`.kickall`\
+    \n\n•  **Syntax : **__.kickall__\
     \n•  **Function : **__To kick all users except admins from the chat__\
-    \n\n•  **Syntax : **`.banall`\
+    \n\n•  **Syntax : **__.banall__\
     \n•  **Function : **__To ban all users except admins from the chat__\
-    \n\n•  **Syntax : **`.unbanall`\
+    \n\n•  **Syntax : **__.unbanall__\
     \n•  **Function : **__Unbans everyone who are blocked in that group __\
-    \n\n•  **Syntax : **`.ikuck`\
+    \n\n•  **Syntax : **__.ikuck__\
     \n•  **Function : **__stats of the group like no of users no of deleted users.__\
-    \n\n•  **Syntax : **`.zombies`\
-    \n•  **Function : **__Searches for deleted accounts in a group. Use `.zombies clean` to remove deleted accounts from the group.__"
+    \n\n•  **Syntax : **__.zombies__\
+    \n•  **Function : **__Searches for deleted accounts in a group. Use __.zombies clean__ to remove deleted accounts from the group.__"
     }
 )

@@ -73,9 +73,9 @@ async def main(event):
         return
     if gvarstatus("autopfp_strings") is not None:
         pfp_string = gvarstatus("autopfp_strings")[:-8]
-        return await edit_delete(event, f"`{pfp_string} is already running.`")
+        return await edit_delete(event, f"__{pfp_string} is already running.__")
     addgvar("autopfp_strings", "batmanpfp_strings")
-    await event.edit("`Starting batman Profile Pic.`")
+    await event.edit("__Starting batman Profile Pic.__")
     await autopfp_start()
 
 
@@ -85,9 +85,9 @@ async def main(event):
         return
     if gvarstatus("autopfp_strings") is not None:
         pfp_string = gvarstatus("autopfp_strings")[:-8]
-        return await edit_delete(event, f"`{pfp_string} is already running.`")
+        return await edit_delete(event, f"__{pfp_string} is already running.__")
     addgvar("autopfp_strings", "thorpfp_strings")
-    await event.edit("`Starting thor Profile Pic.`")
+    await event.edit("__Starting thor Profile Pic.__")
     await autopfp_start()
 
 
@@ -99,25 +99,25 @@ async def _(event):
     if input_str == "thorpfp" and gvarstatus("autopfp_strings") is not None:
         pfp_string = gvarstatus("autopfp_strings")[:-8]
         if pfp_string != "thorpfp":
-            return await edit_delete(event, f"`thorpfp is not started`")
+            return await edit_delete(event, f"__thorpfp is not started__")
         await event.client(
             functions.photos.DeletePhotosRequest(
                 await bot.get_profile_photos("me", limit=1)
             )
         )
         delgvar("autopfp_strings")
-        return await edit_delete(event, "`thorpfp has been stopped now`")
+        return await edit_delete(event, "__thorpfp has been stopped now__")
     if input_str == "batmanpfp" and gvarstatus("autopfp_strings") is not None:
         pfp_string = gvarstatus("autopfp_strings")[:-8]
         if pfp_string != "batmanpfp":
-            return await edit_delete(event, f"`batmanpfp is not started`")
+            return await edit_delete(event, f"__batmanpfp is not started__")
         await event.client(
             functions.photos.DeletePhotosRequest(
                 await bot.get_profile_photos("me", limit=1)
             )
         )
         delgvar("autopfp_strings")
-        return await edit_delete(event, "`batmanpfp has been stopped now`")
+        return await edit_delete(event, "__batmanpfp has been stopped now__")
     END_CMDS = [
         "autopic",
         "digitalpfp",
@@ -139,11 +139,11 @@ bot.loop.create_task(autopfp_start())
 
 CMD_HELP.update(
     {
-        "autopfp": """**Plugin : **`autopfp`
+        "autopfp": """**Plugin : **__autopfp__
     
 **Commands found in autopfp are **
-  •  `.batmanpfp`
-  •  `.thorpfp`
+  •  __.batmanpfp__
+  •  __.thorpfp__
 
 
 **Function : **__Changes your profile pic every 1 minute with the command you used (mean the batman or thor pics ).\

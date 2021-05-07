@@ -20,7 +20,7 @@ auth_url = r["auth_url"]
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`processing........`")
+    catevent = await edit_or_reply(event, "__processing........__")
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     if BOTLOG:
@@ -42,7 +42,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await catevent.edit(
-                f"`Downloaded to {downloaded_file_name} in {ms} seconds.`"
+                f"__Downloaded to {downloaded_file_name} in {ms} seconds.__"
             )
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
@@ -58,7 +58,7 @@ async def _(event):
                 os.remove(downloaded_file_name)
                 await catevent.edit(
                     "**link : **[telegraph](https://telegra.ph{})\
-                    \n**Time Taken : **`{} seconds.`".format(
+                    \n**Time Taken : **__{} seconds.__".format(
                         media_urls[0], (ms + ms_two)
                     ),
                     link_preview=True,
@@ -89,12 +89,12 @@ async def _(event):
             cat = f"https://telegra.ph/{response['path']}"
             await catevent.edit(
                 f"**link : ** [telegraph]({cat})\
-                 \n**Time Taken : **`{ms} seconds.`",
+                 \n**Time Taken : **__{ms} seconds.__",
                 link_preview=True,
             )
     else:
         await catevent.edit(
-            "`Reply to a message to get a permanent telegra.ph link. (Inspired by @ControllerBot)`",
+            "__Reply to a message to get a permanent telegra.ph link. (Inspired by @ControllerBot)__",
         )
 
 
@@ -105,10 +105,10 @@ def resize_image(image):
 
 CMD_HELP.update(
     {
-        "telegraph": "**Plugin :**`telegraph`\
-     \n\n  •  **Syntax :** `.telegraph media` `or` `tgm`\
+        "telegraph": "**Plugin :**__telegraph__\
+     \n\n  •  **Syntax :** __.telegraph media__ __or__ __tgm__\
      \n  •  **Function :**__Reply to any image or video to upload it to telegraph (video must be less than 5mb)__\
-     \n\n  •  **Syntax :** `.telegraph text` `or` `.tgt`\
+     \n\n  •  **Syntax :** __.telegraph text__ __or__ __.tgt__\
      \n  •  **Function :** __reply to any text file or any message to paste it to telegraph__\
     "
     }

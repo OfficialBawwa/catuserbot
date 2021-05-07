@@ -21,17 +21,17 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if not event.reply_to_msg_id:
-        await edit_or_reply(event, "```Reply to any user message.```")
+        await edit_or_reply(event, "______Reply to any user message.______")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await edit_or_reply(event, "```reply to a media message```")
+        await edit_or_reply(event, "______reply to a media message______")
         return
     chat = "@VS_Robot"
     if reply_message.sender.bot:
-        await edit_or_reply(event, "```Reply to actual users message.```")
+        await edit_or_reply(event, "______Reply to actual users message.______")
         return
-    catevent = await edit_or_reply(event, " `Sliding my tip, of fingers over it`")
+    catevent = await edit_or_reply(event, " __Sliding my tip, of fingers over it__")
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message("/start")
@@ -48,7 +48,7 @@ async def _(event):
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             return await catevent.edit(
-                "`You blocked `@VS_Robot` Unblock it and give a try`"
+                "__You blocked __@VS_Robot__ Unblock it and give a try__"
             )
         if input_str == "scan":
             await edit_or_reply(catevent, response4.text)
@@ -88,7 +88,7 @@ async def parseqr(qr_e):
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
     if not t_response:
-        return await edit_or_reply(qr_e, f"Failed to decode.\n`{e_response}`")
+        return await edit_or_reply(qr_e, f"Failed to decode.\n__{e_response}__")
     soup = BeautifulSoup(t_response, "html.parser")
     qr_contents = soup.find_all("pre")[0].text
     await edit_or_reply(qr_e, qr_contents)
@@ -104,7 +104,7 @@ async def _(event):
     catevent = await edit_or_reply(event, "...")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
-    message = "SYNTAX: `.barcode <long text to include>`"
+    message = "SYNTAX: __.barcode <long text to include>__"
     reply_msg_id = event.message.id
     if input_str:
         message = input_str
@@ -124,7 +124,7 @@ async def _(event):
         else:
             message = previous_message.message
     else:
-        message = "SYNTAX: `.barcode <long text to include>`"
+        message = "SYNTAX: __.barcode <long text to include>__"
     bar_code_type = "code128"
     try:
         bar_code_mode_f = barcode.get(bar_code_type, message, writer=ImageWriter())
@@ -151,7 +151,7 @@ async def _(event):
 async def make_qr(makeqr):
     #  .makeqr command, make a QR Code containing the given content.
     input_str = makeqr.pattern_match.group(1)
-    message = "SYNTAX: `.makeqr <long text to include>`"
+    message = "SYNTAX: __.makeqr <long text to include>__"
     reply_msg_id = None
     if input_str:
         message = input_str
@@ -196,11 +196,11 @@ async def _(event):
         mm = input_sgra[1]
         try:
             output_result = calendar.month(int(yyyy.strip()), int(mm.strip()))
-            await edit_or_reply(event, f"```{output_result}```")
+            await edit_or_reply(event, f"______{output_result}______")
         except Exception as e:
-            await edit_delete(event, f"`{e}`", 5)
+            await edit_delete(event, f"__{e}__", 5)
     else:
-        await edit_delete(event, "**Syntax : **`.cal year ; month `", 5)
+        await edit_delete(event, "**Syntax : **__.cal year ; month __", 5)
 
 
 @bot.on(admin_cmd(pattern="currency (.*)"))
@@ -229,14 +229,14 @@ async def _(event):
             else:
                 await edit_or_reply(
                     event,
-                    "Welp, Hate to tell yout this but this Currency isn't supported **yet**.\n__Try__ `.currencies` __for a list of supported currencies.__",
+                    "Welp, Hate to tell yout this but this Currency isn't supported **yet**.\n__Try__ __.currencies__ __for a list of supported currencies.__",
                 )
         except Exception as e:
             await edit_or_reply(event, str(e))
     else:
         await edit_or_reply(
             event,
-            "**Syntax:**\n.currency amount from to\n•  **Example:**\n`.currency 10 usd inr`",
+            "**Syntax:**\n.currency amount from to\n•  **Example:**\n__.currency 10 usd inr__",
         )
 
 
@@ -249,7 +249,7 @@ async def currencylist(ups):
     current_response = requests.get(request_url).json()
     dil_wale_puch_de_na_chaaa = current_response["rates"]
     hmm = "".join(
-        f"`{key}`" + "\t\t\t" for key, value in dil_wale_puch_de_na_chaaa.items()
+        f"__{key}__" + "\t\t\t" for key, value in dil_wale_puch_de_na_chaaa.items()
     )
 
     await edit_or_reply(ups, f"**List of some currencies:**\n{hmm}\n")
@@ -269,7 +269,7 @@ async def _(event):
         # https://stackoverflow.com/a/9105132/4723940
         await edit_or_reply(event, str(a))
     else:
-        await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
+        await edit_or_reply(event, "__{}__: {}".format(input_str, r.text))
 
 
 @bot.on(admin_cmd(pattern="color (.*)"))
@@ -304,7 +304,7 @@ async def _(event):
             await event.delete()
     else:
         await edit_or_reply(
-            event, "**Syntax : **`.color <color_code>` example : `.color #ff0000`"
+            event, "**Syntax : **__.color <color_code>__ example : __.color #ff0000__"
         )
 
 
@@ -313,7 +313,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`processiong...........`")
+    catevent = await edit_or_reply(event, "__processiong...........__")
     input_str = event.pattern_match.group(1)
     xkcd_id = None
     if input_str:
@@ -357,28 +357,28 @@ Year: {}""".format(
 
 CMD_HELP.update(
     {
-        "tools": "**Plugin : **`tools`\
-        \n\n•  **Syntax : **`.scan` reply to media or file\
+        "tools": "**Plugin : **__tools__\
+        \n\n•  **Syntax : **__.scan__ reply to media or file\
         \n•  **Function : **__it scans the media or file and checks either any virus is in the file or media__\
-        \n\n•  **Syntax : **`.makeqr` <content>\
+        \n\n•  **Syntax : **__.makeqr__ <content>\
         \n•  **Function : **__Make a QR Code from the given content.__\
         \nExample: .makeqr www.google.com\
-        \n\n•  **Syntax : **`.barcode `<content>\
+        \n\n•  **Syntax : **__.barcode __<content>\
         \n•  **Function : **__Make a BarCode from the given content.__\
-        \nExample: `.barcode` www.google.com\
-        \n\n•  **Syntax : **`.decode` <reply to barcode/qrcode> \
+        \nExample: __.barcode__ www.google.com\
+        \n\n•  **Syntax : **__.decode__ <reply to barcode/qrcode> \
         \n•  **Function : **__to get decoded content of those codes.__\
-        \n\n•  **Syntax : **`cal year ; month`\
+        \n\n•  **Syntax : **__cal year ; month__\
         \n•  **Function : **__Shows you the calendar of given month and year__\
-        \n\n•  **Syntax : **`.currency` amount (from currency) (to currency)\
-        \n•  **Function : **__Currency converter for userbot __**Example :** `.currency 10 usd inr`\
-        \n\n•  **Syntax : **`.currencies`\
+        \n\n•  **Syntax : **__.currency__ amount (from currency) (to currency)\
+        \n•  **Function : **__Currency converter for userbot __**Example :** __.currency 10 usd inr__\
+        \n\n•  **Syntax : **__.currencies__\
         \n•  **Function : **__Shows you the some list of currencies__\
-        \n\n•  **Syntax : **`.ifsc` <IFSC code>\
-        \n•  **Function : **__to get details of the relevant bank or branch__**Example :** `.ifsc SBIN0016086`\
-        \n\n•  **Syntax : **`.color` <color_code> \
-        \n•  **Function : **__sends you a plain image of the color example :__`.color #ff0000`\
-        \n\n•  **Syntax : **`.xkcd` <query>\
+        \n\n•  **Syntax : **__.ifsc__ <IFSC code>\
+        \n•  **Function : **__to get details of the relevant bank or branch__**Example :** __.ifsc SBIN0016086__\
+        \n\n•  **Syntax : **__.color__ <color_code> \
+        \n•  **Function : **__sends you a plain image of the color example :____.color #ff0000__\
+        \n\n•  **Syntax : **__.xkcd__ <query>\
         \n•  **Function : **__Searches for the query for the relevant XKCD comic __"
     }
 )

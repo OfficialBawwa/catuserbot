@@ -100,13 +100,13 @@ async def save_welcome(event):
         else:
             await edit_or_reply(
                 event,
-                "`Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.`",
+                "__Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.__",
             )
             return
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "`Welcome note {} for this chat.`"
+    success = "__Welcome note {} for this chat.__"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("saved"))
     rm_welcome_setting(event.chat_id)
@@ -121,9 +121,9 @@ async def del_welcome(event):
     if event.fwd_from:
         return
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "`Welcome note deleted for this chat.`")
+        await edit_or_reply(event, "__Welcome note deleted for this chat.__")
     else:
-        await edit_or_reply(event, "`Do I have a welcome note here ?`")
+        await edit_or_reply(event, "__Do I have a welcome note here ?__")
 
 
 @bot.on(admin_cmd(pattern="listwelcome$"))
@@ -133,31 +133,31 @@ async def show_welcome(event):
         return
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        await edit_or_reply(event, "`No welcome message saved here.`")
+        await edit_or_reply(event, "__No welcome message saved here.__")
         return
     if cws.f_mesg_id:
         msg_o = await bot.get_messages(entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id))
         await edit_or_reply(
-            event, "`I am currently welcoming new users with this welcome note.`"
+            event, "__I am currently welcoming new users with this welcome note.__"
         )
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws.reply:
         await edit_or_reply(
-            event, "`I am currently welcoming new users with this welcome note.`"
+            event, "__I am currently welcoming new users with this welcome note.__"
         )
         await event.reply(cws.reply)
 
 
 CMD_HELP.update(
     {
-        "welcome": "**Plugin :** `welcome`\
-\n\n  •  **Syntax :** `.savewelcome` <welcome message> or reply to a message with .savewelcome\
+        "welcome": "**Plugin :** __welcome__\
+\n\n  •  **Syntax :** __.savewelcome__ <welcome message> or reply to a message with .savewelcome\
 \n  •  **Function :** Saves the message as a welcome note in the chat.\
 \n\n  •  Available variables for formatting welcome messages :\
-\n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n  •  **Syntax :** `.listwelcome`\
+\n__{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}__\
+\n\n  •  **Syntax :** __.listwelcome__\
 \n  •  **Function :** Check whether you have a welcome note in the chat.\
-\n\n  •  **Syntax :** `.clearwelcome`\
+\n\n  •  **Syntax :** __.clearwelcome__\
 \n  •  **Function :** Deletes the welcome note for the current chat.\
 "
     }

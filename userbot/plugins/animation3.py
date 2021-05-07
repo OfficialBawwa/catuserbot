@@ -9,7 +9,7 @@ from . import mention
 async def _(event):
     if event.fwd_from:
         return
-    event = await edit_or_reply(event, "`stars.....`")
+    event = await edit_or_reply(event, "__stars.....__")
     deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
     for _ in range(48):
         await asyncio.sleep(0.3)
@@ -22,7 +22,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    event = await edit_or_reply(event, "`boxs...`")
+    event = await edit_or_reply(event, "__boxs...__")
     deq = deque(list("🟥🟧🟨🟩🟦🟪🟫⬛⬜"))
     for _ in range(999):
         await asyncio.sleep(0.3)
@@ -35,7 +35,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    event = await edit_or_reply(event, "`Raining.......`")
+    event = await edit_or_reply(event, "__Raining.......__")
     deq = deque(list("🌬☁️🌩🌨🌧🌦🌥⛅🌤"))
     for _ in range(48):
         await asyncio.sleep(0.3)
@@ -50,16 +50,16 @@ async def _(event):
         return
     animation_interval = 3
     animation_ttl = range(12)
-    event = await edit_or_reply(event, "`Deploying...`")
+    event = await edit_or_reply(event, "__Deploying...__")
     animation_chars = [
         "**Heroku Connecting To Latest Github Build **",
         f"**Build started by user** {mention}",
-        f"**Deploy** `535a74f0` **by user** {mention}",
+        f"**Deploy** __535a74f0__ **by user** {mention}",
         "**Restarting Heroku Server...**",
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
-        "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m userbot`",
+        "**Process exited with** __status 143__",
+        "**Starting process with command** __python3 -m userbot__",
         "**State changed from starting to up**",
         "__INFO:Userbot:Logged in as 557667062__",
         "__INFO:Userbot:Successfully loaded all plugins__",
@@ -82,7 +82,7 @@ async def _(message):
         inp = " ".join(obj)
     except IndexError:
         inp = "🥞 🎂 🍫"
-    event = await edit_or_reply(message, "`droping....`")
+    event = await edit_or_reply(message, "__droping....__")
     u, t, g, o, s, n = inp.split(), "🗑", "<(^_^ <)", "(> ^_^)>", "⠀ ", "\n"
     h = [(u[0], u[1], u[2]), (u[0], u[1], ""), (u[0], "", "")]
     for something in reversed(
@@ -248,24 +248,24 @@ async def _(event):
     animation_ttl = range(19)
     event = await edit_or_reply(event, "jio network boosting...")
     animation_chars = [
-        "`Connecting To JIO NETWORK ....`",
-        "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
-        "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
-        "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
-        "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",
-        "`▒ ▒ ▒ ▒ ▄ ▂ ▁`",
-        "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
-        "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
-        "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
+        "__Connecting To JIO NETWORK ....__",
+        "__█ ▇ ▆ ▅ ▄ ▂ ▁__",
+        "__▒ ▇ ▆ ▅ ▄ ▂ ▁__",
+        "__▒ ▒ ▆ ▅ ▄ ▂ ▁__",
+        "__▒ ▒ ▒ ▅ ▄ ▂ ▁__",
+        "__▒ ▒ ▒ ▒ ▄ ▂ ▁__",
+        "__▒ ▒ ▒ ▒ ▒ ▂ ▁__",
+        "__▒ ▒ ▒ ▒ ▒ ▒ ▁__",
+        "__▒ ▒ ▒ ▒ ▒ ▒ ▒__",
         "*Optimising JIO NETWORK...*",
-        "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-        "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
-        "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
-        "`▁ ▂ ▄ ▒ ▒ ▒ ▒`",
-        "`▁ ▂ ▄ ▅ ▒ ▒ ▒`",
-        "`▁ ▂ ▄ ▅ ▆ ▒ ▒`",
-        "`▁ ▂ ▄ ▅ ▆ ▇ ▒`",
-        "`▁ ▂ ▄ ▅ ▆ ▇ █`",
+        "__▒ ▒ ▒ ▒ ▒ ▒ ▒__",
+        "__▁ ▒ ▒ ▒ ▒ ▒ ▒__",
+        "__▁ ▂ ▒ ▒ ▒ ▒ ▒__",
+        "__▁ ▂ ▄ ▒ ▒ ▒ ▒__",
+        "__▁ ▂ ▄ ▅ ▒ ▒ ▒__",
+        "__▁ ▂ ▄ ▅ ▆ ▒ ▒__",
+        "__▁ ▂ ▄ ▅ ▆ ▇ ▒__",
+        "__▁ ▂ ▄ ▅ ▆ ▇ █__",
         "**JIO NETWORK Boosted....**",
     ]
     for i in animation_ttl:
@@ -282,14 +282,14 @@ async def _(event):
     animation_ttl = range(80)
     event = await edit_or_reply(event, "solarsystem")
     animation_chars = [
-        "`◼️◼️◼️◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️🌎◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️◼️◼️◼️`",
-        "`◼️◼️◼️◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️◼️◼️◼️`",
-        "`◼️🌕◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️☀◼️`",
-        "`◼️◼️◼️🌕◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️☀◼️◼️◼️`",
-        "`◼️◼️◼️◼️◼️\n◼️◼️◼️◼️🌕\n◼️◼️🌎◼️◼️\n☀◼️◼️◼️◼️\n◼️◼️◼️◼️◼️`",
-        "`◼️◼️◼️◼️◼️\n☀◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️🌕\n◼️◼️◼️◼️◼️`",
-        "`◼️☀◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️🌕◼️`",
-        "`◼️◼️◼️☀◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️🌕◼️◼️◼️`",
+        "__◼️◼️◼️◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️🌎◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️◼️◼️◼️__",
+        "__◼️◼️◼️◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️◼️◼️◼️__",
+        "__◼️🌕◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️☀◼️__",
+        "__◼️◼️◼️🌕◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️☀◼️◼️◼️__",
+        "__◼️◼️◼️◼️◼️\n◼️◼️◼️◼️🌕\n◼️◼️🌎◼️◼️\n☀◼️◼️◼️◼️\n◼️◼️◼️◼️◼️__",
+        "__◼️◼️◼️◼️◼️\n☀◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️🌕\n◼️◼️◼️◼️◼️__",
+        "__◼️☀◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️🌕◼️__",
+        "__◼️◼️◼️☀◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️🌕◼️◼️◼️__",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -298,20 +298,20 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "animation3": """**Plugin : **`animation3`
+        "animation3": """**Plugin : **__animation3__
         
 **Commands in animation3 are **
-  •  `.star`
-  •  `.boxs`
-  •  `.rain`
-  •  `.deploy`
-  •  `.dump`
-  •  `.fleaveme`
-  •  `.loveu`
-  •  `.plane`
-  •  `.police`
-  •  `.jio`
-  •  `.solarsystem`
+  •  __.star__
+  •  __.boxs__
+  •  __.rain__
+  •  __.deploy__
+  •  __.dump__
+  •  __.fleaveme__
+  •  __.loveu__
+  •  __.plane__
+  •  __.police__
+  •  __.jio__
+  •  __.solarsystem__
   
 **Function : **__Different kinds of animation commands check yourself for their animation .__"""
     }

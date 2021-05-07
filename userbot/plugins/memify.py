@@ -33,7 +33,7 @@ def random_color():
     ]
 
 
-FONTS = "1. `ProductSans-BoldItalic.ttf`\n2. `ProductSans-Light.ttf`\n3. `RoadRage-Regular.ttf`\n4. `digital.ttf`\n5. `impact.ttf`"
+FONTS = "1. __ProductSans-BoldItalic.ttf__\n2. __ProductSans-Light.ttf__\n3. __RoadRage-Regular.ttf__\n4. __digital.ttf__\n5. __impact.ttf__"
 font_list = [
     "ProductSans-BoldItalic.ttf",
     "ProductSans-Light.ttf",
@@ -52,7 +52,7 @@ async def memes(cat):
     catinput = cat.pattern_match.group(2)
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     catid = await reply_id(cat)
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if catinput:
@@ -63,7 +63,7 @@ async def memes(cat):
             bottom = ""
     else:
         return await edit_delete(
-            cat, "`what should i write on that u idiot give text to memify`"
+            cat, "__what should i write on that u idiot give text to memify__"
         )
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -102,13 +102,13 @@ async def lang(event):
         await event.edit(f"**Available Fonts names are here:-**\n\n{FONTS}")
         return
     if input_str not in font_list:
-        catevent = await edit_or_reply(event, "`Give me a correct font name...`")
+        catevent = await edit_or_reply(event, "__Give me a correct font name...__")
         await asyncio.sleep(1)
         await catevent.edit(f"**Available Fonts names are here:-**\n\n{FONTS}")
     else:
         arg = f"userbot/helpers/styles/{input_str}"
         addgvar("CNG_FONTS", arg)
-        await edit_or_reply(event, f"**Fonts for Memify changed to :-** `{input_str}`")
+        await edit_or_reply(event, f"**Fonts for Memify changed to :-** __{input_str}__")
 
 
 @bot.on(admin_cmd(pattern="ascii ?(.*)"))
@@ -119,7 +119,7 @@ async def memes(cat):
     catinput = cat.pattern_match.group(1)
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -160,7 +160,7 @@ async def memes(cat):
         return
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(cat, "`Reply to supported Media...`")
+        await edit_or_reply(cat, "__Reply to supported Media...__")
         return
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
@@ -198,7 +198,7 @@ async def memes(cat):
         return
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -235,7 +235,7 @@ async def memes(cat):
         return
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -272,7 +272,7 @@ async def memes(cat):
         return
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -309,7 +309,7 @@ async def memes(cat):
         return
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -348,7 +348,7 @@ async def memes(cat):
     catinput = 50 if not catinput else int(catinput)
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -371,13 +371,13 @@ async def memes(cat):
     try:
         await crop(meme_file, outputfile, catinput)
     except Exception as e:
-        return await output[0].edit(f"`{e}`")
+        return await output[0].edit(f"__{e}__")
     try:
         await cat.client.send_file(
             cat.chat_id, outputfile, force_document=False, reply_to=catid
         )
     except Exception as e:
-        return await output[0].edit(f"`{e}`")
+        return await output[0].edit(f"__{e}__")
     await output[0].delete()
     for files in (outputfile, meme_file):
         if files and os.path.exists(files):
@@ -400,7 +400,7 @@ async def memes(cat):
     colr = int(colr)
     reply = await cat.get_reply_message()
     if not reply:
-        return await edit_delete(cat, "`Reply to supported Media...`")
+        return await edit_delete(cat, "__Reply to supported Media...__")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     catid = await reply_id(cat)
     if not os.path.isdir("./temp"):
@@ -423,13 +423,13 @@ async def memes(cat):
     try:
         await add_frame(meme_file, outputfile, catinput, colr)
     except Exception as e:
-        return await output[0].edit(f"`{e}`")
+        return await output[0].edit(f"__{e}__")
     try:
         await cat.client.send_file(
             cat.chat_id, outputfile, force_document=False, reply_to=catid
         )
     except Exception as e:
-        return await output[0].edit(f"`{e}`")
+        return await output[0].edit(f"__{e}__")
     await cat.delete()
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -439,28 +439,28 @@ async def memes(cat):
 
 CMD_HELP.update(
     {
-        "memify": "**Plugin : **`memify`\
-    \n\n• **Syntax : **`.mmf toptext ; bottomtext`\
+        "memify": "**Plugin : **__memify__\
+    \n\n• **Syntax : **__.mmf toptext ; bottomtext__\
     \n• **Function : **__Creates a image meme with give text at specific locations and sends__\
-    \n\n• **Syntax : **`.mms toptext ; bottomtext`\
+    \n\n• **Syntax : **__.mms toptext ; bottomtext__\
     \n• **Function : **__Creates a sticker meme with give text at specific locations and sends__\
-    \n\n• **Syntax : **`.cfont` <Font Name>\
-    \n• **Function : **__Change the font style use for memify,\nTo get fonts name use this cmd__ (`.ls userbot/helpers/styles`)\
-    \n\n• **Syntax : **`.ascii`\
+    \n\n• **Syntax : **__.cfont__ <Font Name>\
+    \n• **Function : **__Change the font style use for memify,\nTo get fonts name use this cmd__ (__.ls userbot/helpers/styles__)\
+    \n\n• **Syntax : **__.ascii__\
     \n• **Function : **__reply to media file to get ascii image of that media__\
-    \n\n• **Syntax : **`.invert`\
+    \n\n• **Syntax : **__.invert__\
     \n• **Function : **__Inverts the colors in media file__\
-    \n\n• **Syntax : **`.solarize`\
+    \n\n• **Syntax : **__.solarize__\
     \n• **Function : **__Watch sun buring ur media file__\
-    \n\n• **Syntax : **`.mirror`\
+    \n\n• **Syntax : **__.mirror__\
     \n• **Function : **__shows you the reflection of the media file__\
-    \n\n• **Syntax : **`.flip`\
+    \n\n• **Syntax : **__.flip__\
     \n• **Function : **__shows you the upside down image of the given media file__\
-    \n\n• **Syntax : **`.gray`\
+    \n\n• **Syntax : **__.gray__\
     \n• **Function : **__makes your media file to black and white__\
-    \n\n• **Syntax : **`.zoom` or `.zoom range`\
+    \n\n• **Syntax : **__.zoom__ or __.zoom range__\
     \n• **Function : **__zooms your media file__\
-    \n\n• **Syntax : **`.frame` or `.frame range` or `.frame range ; fill`\
+    \n\n• **Syntax : **__.frame__ or __.frame range__ or __.frame range ; fill__\
     \n• **Function : **__make a frame for your media file__\
     \n• **fill:** __This defines the pixel fill value or color value to be applied. The default value is 0 which means the color is black.__\
     "

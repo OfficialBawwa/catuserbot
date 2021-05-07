@@ -28,7 +28,7 @@ async def install(event):
                 load_module(shortname.replace(".py", ""))
                 await edit_or_reply(
                     event,
-                    f"Installed Plugin `{os.path.basename(downloaded_file_name)}`",
+                    f"Installed Plugin __{os.path.basename(downloaded_file_name)}__",
                 )
             else:
                 os.remove(downloaded_file_name)
@@ -133,23 +133,23 @@ async def unload(event):
 
 CMD_HELP.update(
     {
-        "corecmds": """**Plugin : **`corecmds`
+        "corecmds": """**Plugin : **__corecmds__
 
-  •  **Syntax : **`.install`
+  •  **Syntax : **__.install__
   •  **Function : **__Reply to any external plugin to install in bot__ 
   
-  •  **Syntax : **`.load <plugin name>`
+  •  **Syntax : **__.load <plugin name>__
   •  **Function : **__To load that plugin again__
   
-  •  **Syntax : **`.send <plugin name>`  
+  •  **Syntax : **__.send <plugin name>__  
   •  **Function : **__to send any plugin__
   
-  •  **Syntax : **`.unload <plugin name>`
+  •  **Syntax : **__.unload <plugin name>__
   •  **Function : **__To stop functioning of that plugin__ 
   
-  •  **Syntax : **`.uninstall <plugin name>`
+  •  **Syntax : **__.uninstall <plugin name>__
   •  **Function : **__To stop functioning of that plugin and remove that plugin from bot__ 
   
-**Note : **__To unload a plugin permenantly from bot set __`NO_LOAD`__ var in heroku with that plugin name with space between plugin names__"""
+**Note : **__To unload a plugin permenantly from bot set ____NO_LOAD____ var in heroku with that plugin name with space between plugin names__"""
     }
 )

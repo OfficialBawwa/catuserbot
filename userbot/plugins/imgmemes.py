@@ -31,16 +31,16 @@ async def nekobot(cat):
         if cat.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
-            await edit_delete(cat, "`What should i search in google.`", 5)
+            await edit_delete(cat, "__What should i search in google.__", 5)
             return
-    cate = await edit_or_reply(cat, "`Connecting to https://www.google.com/ ...`")
+    cate = await edit_or_reply(cat, "__Connecting to https://www.google.com/ ...__")
     text = deEmojify(text)
     if ";" in text:
         search, result = text.split(";")
     else:
         await edit_delete(
             cat,
-            "__How should i create meme follow the syntax as show__ `.fakegs top text ; bottom text`",
+            "__How should i create meme follow the syntax as show__ __.fakegs top text ; bottom text__",
             5,
         )
         return
@@ -66,9 +66,9 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            await edit_delete(cat, "**Trump : **`What should I tweet`", 5)
+            await edit_delete(cat, "**Trump : **__What should I tweet__", 5)
             return
-    cate = await edit_or_reply(cat, "`Requesting trump to tweet...`")
+    cate = await edit_or_reply(cat, "__Requesting trump to tweet...__")
     try:
         hmm = Get(hmm)
         await cat.client(hmm)
@@ -97,7 +97,7 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            await edit_delete(cat, "**Modi : **`What should I tweet`", 5)
+            await edit_delete(cat, "**Modi : **__What should I tweet__", 5)
             return
     cate = await edit_or_reply(cat, "Requesting modi to tweet...")
     try:
@@ -128,9 +128,9 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            await edit_delete(cat, "`Give text to write on banner, man`", 5)
+            await edit_delete(cat, "__Give text to write on banner, man__", 5)
             return
-    cate = await edit_or_reply(cat, "`Your banner is under creation wait a sec...`")
+    cate = await edit_or_reply(cat, "__Your banner is under creation wait a sec...__")
     try:
         hmm = Get(hmm)
         await cat.client(hmm)
@@ -159,9 +159,9 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            await edit_delete(cat, "**Kanna : **`What should i show you`", 5)
+            await edit_delete(cat, "**Kanna : **__What should i show you__", 5)
             return
-    cate = await edit_or_reply(cat, "`Kanna is writing your text...`")
+    cate = await edit_or_reply(cat, "__Kanna is writing your text...__")
     try:
         hmm = Get(hmm)
         await e.client(hmm)
@@ -192,7 +192,7 @@ async def nekobot(cat):
         else:
             await edit_delete(
                 cat,
-                "what should I tweet? Give some text and format must be like `.tweet username ; your text` ",
+                "what should I tweet? Give some text and format must be like __.tweet username ; your text__ ",
                 5,
             )
             return
@@ -206,11 +206,11 @@ async def nekobot(cat):
     else:
         await edit_delete(
             cat,
-            "__what should I tweet? Give some text and format must be like__ `.tweet username ; your text`",
+            "__what should I tweet? Give some text and format must be like__ __.tweet username ; your text__",
             5,
         )
         return
-    cate = await edit_or_reply(cat, f"`Requesting {username} to tweet...`")
+    cate = await edit_or_reply(cat, f"__Requesting {username} to tweet...__")
     text = deEmojify(text)
     await asyncio.sleep(2)
     catfile = await tweets(text, username)
@@ -222,24 +222,24 @@ async def nekobot(cat):
 
 CMD_HELP.update(
     {
-        "imgmemes": """**Plugin : **`imgmemes`
+        "imgmemes": """**Plugin : **__imgmemes__
 
-  •  **Syntax : **`.fakegs search query ; what you mean text`
+  •  **Syntax : **__.fakegs search query ; what you mean text__
   •  **Function : **__Shows you image meme for your google search query__  
 
-  •  **Syntax : **`.trump reply/text`
+  •  **Syntax : **__.trump reply/text__
   •  **Function : **__sends you the trump tweet sticker with given custom text__
 
-  •  **Syntax : **`.modi reply/text`
+  •  **Syntax : **__.modi reply/text__
   •  **Function : **__sends you the modi tweet sticker with given custom text__ 
 
-  •  **Syntax : **`.cmm reply/text`
+  •  **Syntax : **__.cmm reply/text__
   •  **Function : **__sends you the  Change my mind banner with given custom text__ 
 
-  •  **Syntax : **`.kanna reply/text`
+  •  **Syntax : **__.kanna reply/text__
   •  **Function : **__sends you the kanna chan sticker with given custom text__  
 
-  •  **Syntax : **`.tweet reply/<username> ; <text>`
+  •  **Syntax : **__.tweet reply/<username> ; <text>__
   •  **Function : **__sends you the desired person tweet sticker with given custom text__ 
   """
     }

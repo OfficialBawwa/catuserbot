@@ -30,15 +30,15 @@ async def gethash(hash_q):
     runapp(["rm", "hashdis.txt"], stdout=PIPE)
     sha512 = sha512.stdout.decode()
     ans = f"**Text : **\
-            \n`{hashtxt_}`\
-            \n**MD5 : **`\
-            \n`{md5}`\
-            \n**SHA1 : **`\
-            \n`{sha1}`\
-            \n**SHA256 : **`\
-            \n`{sha256}`\
-            \n**SHA512 : **`\
-            \n`{sha512[:-1]}`\
+            \n__{hashtxt_}__\
+            \n**MD5 : **__\
+            \n__{md5}__\
+            \n**SHA1 : **__\
+            \n__{sha1}__\
+            \n**SHA256 : **__\
+            \n__{sha256}__\
+            \n**SHA512 : **__\
+            \n__{sha512[:-1]}__\
          "
     await edit_or_reply(hash_q, ans)
 
@@ -54,17 +54,17 @@ async def endecrypt(event):
     if event.pattern_match.group(1) == "en":
         if string:
             result = base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
-            result = f"**Shhh! It's Encoded : **\n`{result}`"
+            result = f"**Shhh! It's Encoded : **\n__{result}__"
         else:
             reply = await event.get_reply_message()
             if not reply:
-                return await edit_delete(event, "`What should i encode`")
+                return await edit_delete(event, "__What should i encode__")
             mediatype = media_type(reply)
             if mediatype is None:
                 result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
-                result = f"**Shhh! It's Encoded : **\n`{result}`"
+                result = f"**Shhh! It's Encoded : **\n__{result}__"
             else:
-                catevent = await edit_or_reply(event, "`Encoding ...`")
+                catevent = await edit_or_reply(event, "__Encoding ...__")
                 c_time = time.time()
                 downloaded_file_name = await event.client.download_media(
                     reply,
@@ -73,7 +73,7 @@ async def endecrypt(event):
                         progress(d, t, catevent, c_time, "trying to download")
                     ),
                 )
-                catevent = await edit_or_reply(event, "`Encoding ...`")
+                catevent = await edit_or_reply(event, "__Encoding ...__")
                 with open(downloaded_file_name, "rb") as image_file:
                     result = base64.b64encode(image_file.read()).decode("utf-8")
         await edit_or_reply(
@@ -86,15 +86,15 @@ async def endecrypt(event):
                 bytes(event.pattern_match.group(2), "utf-8"), validate=True
             )
         )[2:]
-        await edit_or_reply(event, "Decoded: `" + lething[:-1] + "`")
+        await edit_or_reply(event, "Decoded: __" + lething[:-1] + "__")
 
 
 CMD_HELP.update(
     {
-        "hash": "**Plugin : **`hash`\
-        \n\n**Syntax : **`.hbase en toencode-text or .hbase de encoded-text`\
+        "hash": "**Plugin : **__hash__\
+        \n\n**Syntax : **__.hbase en toencode-text or .hbase de encoded-text__\
         \n**Function : **__Find the base64 encoding of the given string or decoding of string__\
-        \n\n**Syntax : **`.hash text`\
+        \n\n**Syntax : **__.hash text__\
         \n**Function : **__Find the md5, sha1, sha256, sha512 of the string when written into a txt file.__"
     }
 )

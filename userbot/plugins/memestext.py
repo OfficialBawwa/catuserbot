@@ -117,30 +117,30 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "memestext": "**Plugin : **`memestext`\
-        \n\n  •  **Syntax :** `.congo`\
+        "memestext": "**Plugin : **__memestext__\
+        \n\n  •  **Syntax :** __.congo__\
         \n  •  **Function : **Congratulate the people.\
-        \n\n  •  **Syntax :** `.shg`\
+        \n\n  •  **Syntax :** __.shg__\
         \n  •  **Function : **Shrug at it !!\
-        \n\n  •  **Syntax :** `.runs`\
+        \n\n  •  **Syntax :** __.runs__\
         \n  •  **Function : **Run, run, RUNNN!\
-        \n\n  •  **Syntax :** `.noob`\
+        \n\n  •  **Syntax :** __.noob__\
         \n  •  **Function : **Whadya want to know? Are you a NOOB?\
-        \n\n  •  **Syntax :** `.insult`\
+        \n\n  •  **Syntax :** __.insult__\
         \n  •  **Function : **insult someone\
-        \n\n  •  **Syntax :** `.hey`\
+        \n\n  •  **Syntax :** __.hey__\
         \n  •  **Function : **start a conversation with people\
-        \n\n  •  **Syntax :** `.pro`\
+        \n\n  •  **Syntax :** __.pro__\
         \n  •  **Function : **If you think you're pro, try this.\
-        \n\n  •  **Syntax :** `.react` <type>\
+        \n\n  •  **Syntax :** __.react__ <type>\
         \n  •  **Function : **Make your userbot react. types are <happy ,think ,wave ,wtf ,love ,confused,dead, sad,dog>\
-        \n\n  •  **Syntax :** `.10iq`\
+        \n\n  •  **Syntax :** __.10iq__\
         \n  •  **Function : **You retard !!\
-        \n\n  •  **Syntax :** `.fp`\
+        \n\n  •  **Syntax :** __.fp__\
         \n  •  **Function : **send you face pam emoji!\
-        \n\n  •  **Syntax :** `.bt`\
+        \n\n  •  **Syntax :** __.bt__\
         \n  •  **Function : **Believe me, you will find this useful.\
-        \n\n  •  **Syntax :** `.session`\
+        \n\n  •  **Syntax :** __.session__\
         \n  •  **Function : **telethon session error code(fun)\
         "
     }

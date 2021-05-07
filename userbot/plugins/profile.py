@@ -14,14 +14,14 @@ from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosReque
 from telethon.tl.types import Channel, Chat, InputPhoto, User
 
 # ====================== CONSTANT ===============================
-INVALID_MEDIA = "```The extension of the media entity is invalid.```"
-PP_CHANGED = "```Profile picture changed successfully.```"
-PP_TOO_SMOL = "```This image is too small, use a bigger image.```"
-PP_ERROR = "```Failure occured while processing image.```"
-BIO_SUCCESS = "```Successfully edited Bio.```"
-NAME_OK = "```Your name was succesfully changed.```"
-USERNAME_SUCCESS = "```Your username was succesfully changed.```"
-USERNAME_TAKEN = "```This username is already taken.```"
+INVALID_MEDIA = "______The extension of the media entity is invalid.______"
+PP_CHANGED = "______Profile picture changed successfully.______"
+PP_TOO_SMOL = "______This image is too small, use a bigger image.______"
+PP_ERROR = "______Failure occured while processing image.______"
+BIO_SUCCESS = "______Successfully edited Bio.______"
+NAME_OK = "______Your name was succesfully changed.______"
+USERNAME_SUCCESS = "______Your username was succesfully changed.______"
+USERNAME_TAKEN = "______This username is already taken.______"
 # ===============================================================
 
 
@@ -123,7 +123,7 @@ async def count(event):
     bc = 0
     b = 0
     result = ""
-    await event.edit("`Processing..`")
+    await event.edit("__Processing..__")
     dialogs = await event.client.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
@@ -142,11 +142,11 @@ async def count(event):
         else:
             print(d)
 
-    result += f"`Users:`\t**{u}**\n"
-    result += f"`Groups:`\t**{g}**\n"
-    result += f"`Super Groups:`\t**{c}**\n"
-    result += f"`Channels:`\t**{bc}**\n"
-    result += f"`Bots:`\t**{b}**"
+    result += f"__Users:__\t**{u}**\n"
+    result += f"__Groups:__\t**{g}**\n"
+    result += f"__Super Groups:__\t**{c}**\n"
+    result += f"__Channels:__\t**{bc}**\n"
+    result += f"__Bots:__\t**{b}**"
 
     await event.edit(result)
 
@@ -173,7 +173,7 @@ async def remove_profilepic(delpfp):
         for sep in pfplist.photos
     ]
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await delpfp.edit(f"`Successfully deleted {len(input_photos)} profile picture(s).`")
+    await delpfp.edit(f"__Successfully deleted {len(input_photos)} profile picture(s).__")
 
 
 @bot.on(admin_cmd(pattern="myusernames$"))
@@ -191,20 +191,20 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "profile": "**Plugin : **`profile`\
-        \n\n•  **Syntax : **`.username <new_username>`\
+        "profile": "**Plugin : **__profile__\
+        \n\n•  **Syntax : **__.username <new_username>__\
         \n•  **Function : **__ Changes your Telegram username.__\
-        \n\n•  **Syntax : **`.pname <name>`\
+        \n\n•  **Syntax : **__.pname <name>__\
         \n•  **Function : **__ Changes your Telegram name.(First and last name will get split by the first space)__\
-        \n\n•  **Syntax : **`.ppic`\
+        \n\n•  **Syntax : **__.ppic__\
         \n•  **Function : **__ Reply with .setpfp or .ppic to an image to change your Telegram profie picture.__\
-        \n\n•  **Syntax : **`.pbio <new_bio>`\
+        \n\n•  **Syntax : **__.pbio <new_bio>__\
         \n•  **Function : **__ Changes your Telegram bio.__\
-        \n\n•  **Syntax : **`.delpfp or .delpfp <number>/<all>`\
+        \n\n•  **Syntax : **__.delpfp or .delpfp <number>/<all>__\
         \n•  **Function : **__ Deletes your Telegram profile picture(s).__\
-        \n\n•  **Syntax : **`.myusernames`\
+        \n\n•  **Syntax : **__.myusernames__\
         \n•  **Function : **__ Shows usernames of your created channels and groups __\
-        \n\n•  **Syntax : **`.count`\
+        \n\n•  **Syntax : **__.count__\
         \n•  **Function : **__ Counts your groups, chats, bots etc...__"
     }
 )

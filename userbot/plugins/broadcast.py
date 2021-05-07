@@ -52,7 +52,7 @@ async def catbroadcast_send(event):
         except Exception as e:
             LOGS.info(str(e))
         await sleep(0.5)
-    resultext = f"`The message was sent to {i} chats out of {no_of_chats} chats in category {keyword}.`"
+    resultext = f"__The message was sent to {i} chats out of {no_of_chats} chats in category {keyword}.__"
     await catevent.edit(resultext)
     if BOTLOG:
         await event.client.send_message(
@@ -107,7 +107,7 @@ async def catbroadcast_send(event):
         except Exception as e:
             LOGS.info(str(e))
         await sleep(0.5)
-    resultext = f"`The message was sent to {i} chats out of {no_of_chats} chats in category {keyword}.`"
+    resultext = f"__The message was sent to {i} chats out of {no_of_chats} chats in category {keyword}.__"
     await catevent.edit(resultext)
     if BOTLOG:
         await event.client.send_message(
@@ -224,14 +224,14 @@ async def catbroadcast_list(event):
             chatinfo = await event.client.get_entity(int(chat))
             try:
                 if chatinfo.broadcast:
-                    resultlist += f" 👉 📢 **Channel** \n  •  **Name : **{chatinfo.title} \n  •  **id : **`{int(chat)}`\n\n"
+                    resultlist += f" 👉 📢 **Channel** \n  •  **Name : **{chatinfo.title} \n  •  **id : **__{int(chat)}__\n\n"
                 else:
-                    resultlist += f" 👉 👥 **Group** \n  •  **Name : **{chatinfo.title} \n  •  **id : **`{int(chat)}`\n\n"
+                    resultlist += f" 👉 👥 **Group** \n  •  **Name : **{chatinfo.title} \n  •  **id : **__{int(chat)}__\n\n"
             except AttributeError:
-                resultlist += f" 👉 👤 **User** \n  •  **Name : **{chatinfo.first_name} \n  •  **id : **`{int(chat)}`\n\n"
+                resultlist += f" 👉 👤 **User** \n  •  **Name : **{chatinfo.first_name} \n  •  **id : **__{int(chat)}__\n\n"
         except Exception:
             errorlist += f" 👉 __This id {int(chat)} in database probably you may left the chat/channel or may be invalid id.\
-                            \nRemove this id from the database by using this command__ `.frmfrom {keyword} {int(chat)}` \n\n"
+                            \nRemove this id from the database by using this command__ __.frmfrom {keyword} {int(chat)}__ \n\n"
     finaloutput = resultlist + errorlist
     await edit_or_reply(catevent, finaloutput)
 
@@ -250,7 +250,7 @@ async def catbroadcast_list(event):
     chats = sql.get_broadcastlist_chats()
     resultext = "**Here are the list of your category's :**\n\n"
     for i in chats:
-        resultext += f" 👉 `{i}` __contains {sql.num_broadcastlist_chat(i)} chats__\n"
+        resultext += f" 👉 __{i}__ __contains {sql.num_broadcastlist_chat(i)} chats__\n"
     await edit_or_reply(event, resultext)
 
 
@@ -344,30 +344,30 @@ async def catbroadcast_delete(event):
 
 CMD_HELP.update(
     {
-        "broadcast": """**Plugin : ** `broadcast`
+        "broadcast": """**Plugin : ** __broadcast__
 
-  •  **Syntax : **`.sendto category_name`
+  •  **Syntax : **__.sendto category_name__
   •  **Function : **__will send the replied message to all the chats in give category__
 
-  •  **Syntax : **`.fwdto category_name`
+  •  **Syntax : **__.fwdto category_name__
   •  **Function : **__will forward the replied message to all the chats in give category__
 
-  •  **Syntax : **`.addto category_name`
+  •  **Syntax : **__.addto category_name__
   •  **Function : **__It will add this chat/user/channel to the category of the given name__
 
-  •  **Syntax : **`.rmfrom category_name`
+  •  **Syntax : **__.rmfrom category_name__
   •  **Function : **__To remove the Chat/user/channel from the given category name__
 
-  •  **Syntax : **`.list category_name`
+  •  **Syntax : **__.list category_name__
   •  **Function : **__Will show the list of all chats in the given category__
 
-  •  **Syntax : **`.listall`
+  •  **Syntax : **__.listall__
   •  **Function : **__Will show the list of all category names__
 
-  •  **Syntax : **`.frmfrom category_name chat_id`
+  •  **Syntax : **__.frmfrom category_name chat_id__
   •  **Function : **__To force remove the given chat_id from the given category name usefull when you left that chat or banned you there__
 
-  •  **Syntax : **`delc category_name`
+  •  **Syntax : **__delc category_name__
   •  **Function : **__Deletes the category completely in database__
 """
     }

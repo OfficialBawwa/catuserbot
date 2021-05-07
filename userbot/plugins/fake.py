@@ -42,7 +42,7 @@ async def _(event):
         scam_action = str(args[0]).lower()
         scam_time = int(args[1])
     else:
-        await edit_delete(event, "`Invalid Syntax !!`")
+        await edit_delete(event, "__Invalid Syntax !!__")
         return
     try:
         if scam_time > 0:
@@ -114,11 +114,11 @@ async def _(event):
 CMD_HELP.update(
     {
         "fake": "**fake**\
-    \n\n**Syntax :** `.scam <action> <time>` \
+    \n\n**Syntax :** __.scam <action> <time>__ \
     \n**Usage : **Type .scam (action name) This shows the fake action in the group, The actions are typing ,contact ,game, location, voice, round, video,photo,document, cancel.\
-    \n\n**Syntax :** `.prankpromote` reply to user to whom you want to prank promote\
+    \n\n**Syntax :** __.prankpromote__ reply to user to whom you want to prank promote\
     \n**Usage : **it promotes him to admin but he will not have any permission to take action that is he can see rection actions but cant take any admin action\
-    \n\n**Syntax :** `.padmin`\
+    \n\n**Syntax :** __.padmin__\
     \n**Usage : ** An animation that shows enabling all permissions to him that he is admin(fake promotion)\
     "
     }

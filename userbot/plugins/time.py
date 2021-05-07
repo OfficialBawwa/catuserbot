@@ -71,11 +71,11 @@ async def time_func(tdata):
     else:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dt.now().strftime(t_form)}**` on `**{dt.now().strftime(d_form)}** `here.`",
+            f"__It's__  **{dt.now().strftime(t_form)}**__ on __**{dt.now().strftime(d_form)}** __here.__",
         )
         return
     if not timezones:
-        await edit_or_reply(tdata, "`Invaild country.`")
+        await edit_or_reply(tdata, "__Invaild country.__")
         return
     if len(timezones) == 1:
         time_zone = timezones[0]
@@ -84,14 +84,14 @@ async def time_func(tdata):
             tz_num = int(tz_num)
             time_zone = timezones[tz_num - 1]
         else:
-            return_str = f"`{c_name} has multiple timezones:`\n\n"
+            return_str = f"__{c_name} has multiple timezones:__\n\n"
 
             for i, item in enumerate(timezones):
-                return_str += f"`{i+1}. {item}`\n"
+                return_str += f"__{i+1}. {item}__\n"
 
-            return_str += "\n`Choose one by typing the number "
-            return_str += "in the command.`\n"
-            return_str += f"`Example: .ctime {c_name} 2`"
+            return_str += "\n__Choose one by typing the number "
+            return_str += "in the command.__\n"
+            return_str += f"__Example: .ctime {c_name} 2__"
 
             await edit_or_reply(tdata, return_str)
             return
@@ -101,14 +101,14 @@ async def time_func(tdata):
     if c_name != COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `in {c_name} ({time_zone} timezone).`",
+            f"__It's__  **{dtnow1}**__ on __**{dtnow2}**  __in {c_name} ({time_zone} timezone).__",
         )
         return
     if COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `here, in {COUNTRY}"
-            f"({time_zone} timezone).`",
+            f"__It's__  **{dtnow1}**__ on __**{dtnow2}**  __here, in {COUNTRY}"
+            f"({time_zone} timezone).__",
         )
         return
 
@@ -150,10 +150,10 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "time": "**Plugin : **`time`\
-        \n\n**Syntax : **`.ctime <country name/code> <timezone number>` \
+        "time": "**Plugin : **__time__\
+        \n\n**Syntax : **__.ctime <country name/code> <timezone number>__ \
     \n**Function : **__Get the time of a country. If a country has multiple timezones, it will list all of them and let you select one. here are [country names](https://telegra.ph/country-names-10-24)__\
-    \n\n**Syntax : **`.time` \
+    \n\n**Syntax : **__.time__ \
     \n**Function : **__shows current default time you can change by changing TZ in heroku vars__"
     }
 )

@@ -24,9 +24,9 @@ async def lydia_disable_enable(event):
     if event.fwd_from:
         return
     if Config.LYDIA_API_KEY is None:
-        await edit_delete(event, "`Please add required LYDIA_API_KEY env var`", 10)
+        await edit_delete(event, "__Please add required LYDIA_API_KEY env var__", 10)
         return
-    catevent = await edit_or_reply(event, "`.....`")
+    catevent = await edit_or_reply(event, "__.....__")
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id is not None:
         reply_msg = await event.get_reply_message()
@@ -38,10 +38,10 @@ async def lydia_disable_enable(event):
             if BOTLOG:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"**Session ID: **`{session.id}`\
-                                   \n**Session Available: **`{str(session.available)}`\
-                                   \n**Session Language: **`{str(session.language)}`\
-                                   \n**Session Expires : **`{datetime.fromtimestamp(session.expires).strftime('%Y-%m-%d %H:%M:%S')}`\
+                    f"**Session ID: **__{session.id}__\
+                                   \n**Session Available: **__{str(session.available)}__\
+                                   \n**Session Language: **__{str(session.language)}__\
+                                   \n**Session Expires : **__{datetime.fromtimestamp(session.expires).strftime('%Y-%m-%d %H:%M:%S')}__\
                     ",
                 )
             add_s(user_id, chat_id, session.id, session.expires)
@@ -54,9 +54,9 @@ async def lydia_disable_enable(event):
             if len(lsts) > 0:
                 output_str = "AI enabled users:\n\n"
                 for lydia_ai in lsts:
-                    output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat `{lydia_ai.chat_id}`\n"
+                    output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat __{lydia_ai.chat_id}__\n"
             else:
-                output_str = "No Lydia AI enabled users / chats. Start by replying `.enai` to any user in any chat!"
+                output_str = "No Lydia AI enabled users / chats. Start by replying __.enai__ to any user in any chat!"
             if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
                 with io.BytesIO(str.encode(output_str)) as out_file:
                     out_file.name = "lydia_ai.text"
@@ -76,9 +76,9 @@ async def lydia_disable_enable(event):
             if len(lsts) > 0:
                 output_str = "AI enabled users:\n\n"
                 for lydia_ai in lsts:
-                    output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat `{lydia_ai.chat_id}`\n"
+                    output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat __{lydia_ai.chat_id}__\n"
             else:
-                output_str = "No Lydia AI enabled users / chats. Start by replying `.enai` to any user in any chat!"
+                output_str = "No Lydia AI enabled users / chats. Start by replying __.enai__ to any user in any chat!"
             if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
                 with io.BytesIO(str.encode(output_str)) as out_file:
                     out_file.name = "lydia_ai.text"
@@ -95,7 +95,7 @@ async def lydia_disable_enable(event):
         else:
             await edit_delete(
                 catevent,
-                "`Reply To A User's Message to Add / Remove them from Lydia Auto-Chat.`",
+                "__Reply To A User's Message to Add / Remove them from Lydia Auto-Chat.__",
                 5,
             )
 
@@ -139,15 +139,15 @@ async def on_new_message(event):
 
 CMD_HELP.update(
     {
-        "lydia": "**Plugin : **`lydia`\
-    \n\n  •  **Syntax : **`.enai reply`\
-    \n  •  **Function : **your bot will auto reply to the tagged user until you stop it by `.remcf`\
-    \n\n  •  **Syntax : **`.reai reply`\
+        "lydia": "**Plugin : **__lydia__\
+    \n\n  •  **Syntax : **__.enai reply__\
+    \n  •  **Function : **your bot will auto reply to the tagged user until you stop it by __.remcf__\
+    \n\n  •  **Syntax : **__.reai reply__\
     \n  •  **Function : **disables the lydia( auto reply )\
-    \n\n  •  **Syntax : **`.liai`\
+    \n\n  •  **Syntax : **__.liai__\
     \n  •  **Function : **to list the users to whom you enabled ai( lydia )\
     \n\n  •  **NOTE : **for functioning this plugin you need to set the heroku var\
-    \n the key is `LYDIA_API_KEY` and get var from `https://coffeehouse.intellivoid.net/`\
+    \n the key is __LYDIA_API_KEY__ and get var from __https://coffeehouse.intellivoid.net/__\
 "
     }
 )

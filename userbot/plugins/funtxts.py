@@ -30,15 +30,15 @@ async def hmm(cat):
 
 CMD_HELP.update(
     {
-        "funtxts": """**Plugin : **`funtxts`
+        "funtxts": """**Plugin : **__funtxts__
 
-  •  **Syntax : **`.tcat`
+  •  **Syntax : **__.tcat__
   •  **Function : **__Sens you some random cat facial text art__
 
-  •  **Syntax : **`.why`
+  •  **Syntax : **__.why__
   •  **Function : **__Asks some random Funny questions__
 
-  •  **Syntax : **`.fact`
+  •  **Syntax : **__.fact__
   •  **Function : **__Sends you some random facts__"""
     }
 )

@@ -27,9 +27,9 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "chain": """**Plugin :**`chain`
+        "chain": """**Plugin :**__chain__
         
-  • **Syntax : **`.chain reply to message`
+  • **Syntax : **__.chain reply to message__
   • **Function : **__Reply this command to any converstion(or message) so that it finds chain length of that message__"""
     }
 )

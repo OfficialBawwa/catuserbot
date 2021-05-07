@@ -91,7 +91,7 @@ async def progress(
             status = "Downloading"
         else:
             status = "Unknown"
-        progress_str = "`{0}` | `[{1}{2}] {3}%`".format(
+        progress_str = "__{0}__ | __[{1}{2}] {3}%__".format(
             status,
             "".join(["▰" for i in range(math.floor(percentage / 10))]),
             "".join(["▱" for i in range(10 - math.floor(percentage / 10))]),
@@ -99,15 +99,15 @@ async def progress(
         )
         tmp = (
             f"{progress_str}\n"
-            f"`{humanbytes(current)} of {humanbytes(total)}"
-            f" @ {humanbytes(speed)}`\n"
-            f"**ETA :**` {time_formatter(eta)}`\n"
-            f"**Duration :** `{time_formatter(elapsed_time)}`"
+            f"__{humanbytes(current)} of {humanbytes(total)}"
+            f" @ {humanbytes(speed)}__\n"
+            f"**ETA :**__ {time_formatter(eta)}__\n"
+            f"**Duration :** __{time_formatter(elapsed_time)}__"
         )
         if file_name:
             await gdrive.edit(
                 f"**{prog_type}**\n\n"
-                f"**File Name : **`{file_name}`**\nStatus**\n{tmp}"
+                f"**File Name : **__{file_name}__**\nStatus**\n{tmp}"
             )
         else:
             await gdrive.edit(f"**{prog_type}**\n\n" f"**Status**\n{tmp}")

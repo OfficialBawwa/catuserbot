@@ -116,9 +116,9 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**Description : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"**Description : **__{v['descriptionSnippet'][-1]['text']}__\n"
         except Exception:
-            textresult += "**Description : **`None`\n"
+            textresult += "**Description : **__None__\n"
         textresult += f"**Duration : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
         result += f"☞ {textresult}\n"
     return result

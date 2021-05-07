@@ -78,7 +78,7 @@ async def upload(path, event, udir_event, catflag=None):
     if os.path.isdir(path):
         await event.client.send_message(
             event.chat_id,
-            f"**Folder : **`{str(path)}`",
+            f"**Folder : **__{str(path)}__",
         )
         Files = os.listdir(path)
         Files = sortthings(Files, path)
@@ -95,7 +95,7 @@ async def upload(path, event, udir_event, catflag=None):
             await event.client.send_file(
                 event.chat_id,
                 path,
-                caption=f"**File Name : **`{caption_rts}`",
+                caption=f"**File Name : **__{caption_rts}__",
                 force_document=catflag,
                 thumb=thumb,
                 reply_to=reply_to_id,
@@ -117,7 +117,7 @@ async def upload(path, event, udir_event, catflag=None):
             await event.client.send_file(
                 event.chat_id,
                 path,
-                caption=f"**File Name : **`{caption_rts}`",
+                caption=f"**File Name : **__{caption_rts}__",
                 thumb=thumb,
                 force_document=catflag,
                 reply_to=reply_to_id,
@@ -147,27 +147,27 @@ async def uploadir(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"`there is no such directory/file with the name {path} to upload`",
+            f"__there is no such directory/file with the name {path} to upload__",
         )
         return
     udir_event = await edit_or_reply(event, "Uploading....")
     if os.path.isdir(path):
-        await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
+        await edit_or_reply(udir_event, f"__Gathering file details in directory {path}__")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `"
+            f"__Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. __"
         )
     else:
-        await edit_or_reply(udir_event, f"`Uploading.....`")
+        await edit_or_reply(udir_event, f"__Uploading.....__")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded file {str(path)} successfully in {ms} seconds. `"
+            f"__Uploaded file {str(path)} successfully in {ms} seconds. __"
         )
     await asyncio.sleep(5)
     await udir_event.delete()
@@ -182,27 +182,27 @@ async def uploadir(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"`there is no such directory/file with the name {path} to upload`",
+            f"__there is no such directory/file with the name {path} to upload__",
         )
         return
     udir_event = await edit_or_reply(event, "Uploading....")
     if os.path.isdir(path):
-        await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
+        await edit_or_reply(udir_event, f"__Gathering file details in directory {path}__")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event, catflag=True)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `"
+            f"__Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. __"
         )
     else:
-        await edit_or_reply(udir_event, f"`Uploading.....`")
+        await edit_or_reply(udir_event, f"__Uploading.....__")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event, catflag=True)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded file {str(path)} successfully in {ms} seconds. `"
+            f"__Uploaded file {str(path)} successfully in {ms} seconds. __"
         )
     await asyncio.sleep(5)
     await udir_event.delete()
@@ -218,25 +218,25 @@ async def video_catfile(event):
         if not os.path.exists(path):
             await edit_or_reply(
                 event,
-                f"`there is no such directory/file with the name {path} to upload`",
+                f"__there is no such directory/file with the name {path} to upload__",
             )
             return
-        catevent = await edit_or_reply(event, "`Converting to video note..........`")
+        catevent = await edit_or_reply(event, "__Converting to video note..........__")
         filename = os.path.basename(path)
         catfile = os.path.join("./temp", filename)
         copyfile(path, catfile)
     else:
         if not reply:
-            await edit_delete(event, "`Reply to supported media`", 5)
+            await edit_delete(event, "__Reply to supported media__", 5)
             return
         if not (reply and (reply.media)):
-            await edit_delete(event, "`Reply to supported Media...`", 5)
+            await edit_delete(event, "__Reply to supported Media...__", 5)
             return
-        catevent = await edit_or_reply(event, "`Converting to video note..........`")
+        catevent = await edit_or_reply(event, "__Converting to video note..........__")
         catfile = await reply.download_media(file="./temp/")
     if not catfile.endswith((".mp4", ".tgs", ".mp3", ".mov", ".gif", ".opus")):
         os.remove(catfile)
-        await edit_delete(catevent, "```Supported Media not found...```", 5)
+        await edit_delete(catevent, "______Supported Media not found...______", 5)
         return
     if catfile.endswith((".mp4", ".tgs", ".mov", ".gif")):
         if catfile.endswith((".tgs")):
@@ -288,7 +288,7 @@ async def video_catfile(event):
         else:
             os.remove(catfile)
             return await edit_delete(
-                catevent, "`No thumb found to make it video note`", 5
+                catevent, "__No thumb found to make it video note__", 5
             )
     if os.path.exists(PATH):
         catid = event.reply_to_msg_id
@@ -318,12 +318,12 @@ async def video_catfile(event):
 
 CMD_HELP.update(
     {
-        "upload": "**Plugin :** `upload`\
-    \n\n  •  **Syntax :** `.upload path of file/folder`\
+        "upload": "**Plugin :** __upload__\
+    \n\n  •  **Syntax :** __.upload path of file/folder__\
     \n  •  **Function : **__Uploads the file from the server or list of files from that folder as steamable__\
-    \n\n  •  **Syntax :** `.uploadf path of file/folder`\
+    \n\n  •  **Syntax :** __.uploadf path of file/folder__\
     \n  •  **Function : **__Uploads the file from the server or list of files from that folder as a file__\
-    \n\n  •  **Syntax : **`.circle reply to media or path of media`\
+    \n\n  •  **Syntax : **__.circle reply to media or path of media__\
     \n  •  **Function : **__Uploads video/audio as streamable from the server__"
     }
 )

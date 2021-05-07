@@ -13,16 +13,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **Google** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **Google** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="lmy (.*)"))
@@ -37,16 +37,16 @@ async def _(event):
         )
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **youtube** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **youtube** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="ddg (.*)"))
@@ -61,16 +61,16 @@ async def _(event):
         )
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **duckduckgo** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **duckduckgo** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="lmalt (.*)"))
@@ -83,16 +83,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **altnews** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **altnews** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="lmvar (.*)"))
@@ -107,16 +107,16 @@ async def _(event):
         )
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **var** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **var** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="lmlog (.*)"))
@@ -129,16 +129,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **log** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **log** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="dyno (.*)"))
@@ -151,16 +151,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **dyno** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **dyno** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="lmkp (.*)"))
@@ -173,16 +173,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **Indiankanoon.com : Place** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **Indiankanoon.com : Place** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="gem (.*)"))
@@ -195,16 +195,16 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me **gem.gov.in** that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me **gem.gov.in** that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 @bot.on(admin_cmd(pattern="archive (.*)"))
@@ -217,33 +217,33 @@ async def _(event):
         input_str.replace(" ", "+")
     )
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "__Searching.....__")
     await sleep(2)
     if response_api:
         await event.edit(
-            "Let me run your link on wayback machine that for you:\n👉 [{}]({})\n`Thank me later 😉` ".format(
+            "Let me run your link on wayback machine that for you:\n👉 [{}]({})\n__Thank me later 😉__ ".format(
                 input_str, response_api.rstrip()
             )
         )
     else:
-        await edit_delete(event, "`Something went wrong. Please try again later.`", 5)
+        await edit_delete(event, "__Something went wrong. Please try again later.__", 5)
 
 
 CMD_HELP.update(
     {
-        "letmesearch": """**Plugin : **`letmesearch`
+        "letmesearch": """**Plugin : **__letmesearch__
 
 **Syntax : **
-  •  `.lmg query`
-  •  `.lmy query`
-  •  `.ddg query`
-  •  `.lmalt query`
-  •  `.lmvar heroku app name`
-  •  `.lmlog heroku app name`
-  •  `.dyno heroku app name`
-  •  `.lmkp query`
-  •  `.gem query`
-  •  `.archive query`
+  •  __.lmg query__
+  •  __.lmy query__
+  •  __.ddg query__
+  •  __.lmalt query__
+  •  __.lmvar heroku app name__
+  •  __.lmlog heroku app name__
+  •  __.dyno heroku app name__
+  •  __.lmkp query__
+  •  __.gem query__
+  •  __.archive query__
 
 **Functions : **__searches the given query and shows you the link of that query . here are there sites \
 let me google(lmg),let me youtube(lmy),Duck buck go (ddg) , let me altnews(lmalt), \

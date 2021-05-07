@@ -90,8 +90,8 @@ MATCHERS = [
     (DEFAULT_URL_RE, parse_url_match),
     (get_tag_parser("**", MessageEntityBold)),
     (get_tag_parser("__", MessageEntityItalic)),
-    (get_tag_parser("```", partial(MessageEntityPre, language=""))),
-    (get_tag_parser("`", MessageEntityCode)),
+    (get_tag_parser("______", partial(MessageEntityPre, language=""))),
+    (get_tag_parser("__", MessageEntityCode)),
     (get_tag_parser("--", MessageEntityUnderline)),
     (re.compile(r"\+\+(.+?)\+\+"), parse_aesthetics),
     (re.compile(r"([^/\w]|^)(/?(r/\w+))"), parse_subreddit),
@@ -191,7 +191,7 @@ async def mention(event):
                     elif isinstance(e, types.MessageEntityItalic):
                         tag = "<i>{}</i>"
                     elif isinstance(e, types.MessageEntityCode):
-                        tag = "<code>{}</code>"
+                        tag = "__{}__"
                     elif isinstance(e, types.MessageEntityStrike):
                         tag = "<s>{}</s>"
                     elif isinstance(e, types.MessageEntityPre):

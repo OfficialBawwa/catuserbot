@@ -96,28 +96,28 @@ async def sprinkle(event):
         return
     await edit_or_reply(
         event,
-        "✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨`*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀",
+        "✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨__*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀",
     )
 
 
 CMD_HELP.update(
     {
-        "greetings": """**Plugin : **`greetings`
+        "greetings": """**Plugin : **__greetings__
 
 **Syntax : **
-  •  `.gm`
-  •  `.gnoon`
-  •  `.gn`  
+  •  __.gm__
+  •  __.gnoon__
+  •  __.gn__  
 **Function : **__sends you random good morning , afternoon and night quotes respectively.__
 
 **Syntax : **
-  •  `.gnt`
-  •  `.gmg`
-  •  `.hi/.hi emoji`
-  •  `.cheer`
-  •  `.getwell`
-  •  `.luck`
-  •  `.sprinkle`
+  •  __.gnt__
+  •  __.gmg__
+  •  __.hi/.hi emoji__
+  •  __.cheer__
+  •  __.getwell__
+  •  __.luck__
+  •  __.sprinkle__
 **Function : **__shows you some text arts for these greeting commands.__"""
     }
 )

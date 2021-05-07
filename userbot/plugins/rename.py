@@ -15,7 +15,7 @@ async def _(event):
         return
     catevent = await edit_or_reply(
         event,
-        "`Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
+        "__Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big__",
     )
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -38,13 +38,13 @@ async def _(event):
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
             await catevent.edit(
-                f"**File Downloaded in {ms} seconds.**\n**File location : **`{downloaded_file_name}`"
+                f"**File Downloaded in {ms} seconds.**\n**File location : **__{downloaded_file_name}__"
             )
         else:
             await catevent.edit("Error Occurred\n {}".format(input_str))
     else:
         await catevent.edit(
-            "**Syntax : ** `.rename file.name` as reply to a Telegram media"
+            "**Syntax : ** __.rename file.name__ as reply to a Telegram media"
         )
 
 
@@ -58,7 +58,7 @@ async def _(event):
         thumb = thumb_image_path
     catevent = await edit_or_reply(
         event,
-        "`Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
+        "__Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big__",
     )
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
@@ -104,7 +104,7 @@ async def _(event):
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
             await catevent.edit(
-                f"`Downloaded file in {ms_one} seconds.`\n`Uploaded in {ms_two} seconds.`"
+                f"__Downloaded file in {ms_one} seconds.__\n__Uploaded in {ms_two} seconds.__"
             )
             await asyncio.sleep(3)
             await catevent.delete()
@@ -112,7 +112,7 @@ async def _(event):
             await catevent.edit("File Not Found {}".format(input_str))
     else:
         await catevent.edit(
-            "**Syntax : **`.rnupload file.name` as reply to a Telegram media"
+            "**Syntax : **__.rnupload file.name__ as reply to a Telegram media"
         )
 
 
@@ -126,7 +126,7 @@ async def _(event):
         thumb = thumb_image_path
     catevent = await edit_or_reply(
         event,
-        "`Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
+        "__Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big__",
     )
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
@@ -172,7 +172,7 @@ async def _(event):
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
             await catevent.edit(
-                f"`Downloaded file in {ms_one} seconds.`\n`Uploaded in {ms_two} seconds.`"
+                f"__Downloaded file in {ms_one} seconds.__\n__Uploaded in {ms_two} seconds.__"
             )
             await asyncio.sleep(3)
             await catevent.delete()
@@ -180,18 +180,18 @@ async def _(event):
             await catevent.edit("File Not Found {}".format(input_str))
     else:
         await catevent.edit(
-            "**Syntax : **`.rnupload file.name` as reply to a Telegram media"
+            "**Syntax : **__.rnupload file.name__ as reply to a Telegram media"
         )
 
 
 CMD_HELP.update(
     {
-        "rename": "**Plugin : **`rename`\
-        \n\n  •  **Syntax : **`.rename filename`\
+        "rename": "**Plugin : **__rename__\
+        \n\n  •  **Syntax : **__.rename filename__\
         \n  •  **Function : **__Reply to media with above command to save in your server with that given filename__\
-        \n\n  •  **Syntax : **`.rnup filename`\
+        \n\n  •  **Syntax : **__.rnup filename__\
         \n  •  **Function : **__Reply to media with above command to rename and upload the file with given name as steam__\
-        \n\n  •  **Syntax : **`.rnupf filename`\
+        \n\n  •  **Syntax : **__.rnupf filename__\
         \n  •  **Function : **__Reply to media with above command to rename and upload the file with given name as file__\
         "
     }

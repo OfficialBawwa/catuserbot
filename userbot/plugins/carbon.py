@@ -22,7 +22,7 @@ LANG = "en"
 @bot.on(sudo_cmd(pattern="carbon(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """A Wrapper for carbon.now.sh"""
-    await e.edit("`Processing..`")
+    await e.edit("__Processing..__")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     textx = await e.get_reply_message()
     pcode = e.text
@@ -32,7 +32,7 @@ async def carbon_api(e):
         pcode = str(textx.message)  # Importing message to module
     pcode = deEmojify(pcode)
     code = quote_plus(pcode)  # Converting to urlencoded
-    cat = await edit_or_reply(e, "`Carbonizing...\n25%`")
+    cat = await edit_or_reply(e, "__Carbonizing...\n25%__")
     url = CARBON.format(code=code, lang=CARBONLANG)
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -47,7 +47,7 @@ async def carbon_api(e):
         executable_path=Config.CHROME_DRIVER, options=chrome_options
     )
     driver.get(url)
-    await cat.edit("`Be Patient...\n50%`")
+    await cat.edit("__Be Patient...\n50%__")
     download_path = "./"
     driver.command_executor._commands["send_command"] = (
         "POST",
@@ -61,12 +61,12 @@ async def carbon_api(e):
     driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
     # driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
     # driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
-    await cat.edit("`Processing..\n75%`")
+    await cat.edit("__Processing..\n75%__")
     # Waiting for downloading
     await asyncio.sleep(2)
-    await cat.edit("`Done Dana Done...\n100%`")
+    await cat.edit("__Done Dana Done...\n100%__")
     file = "./carbon.png"
-    await cat.edit("`Uploading..`")
+    await cat.edit("__Uploading..__")
     await e.client.send_file(
         e.chat_id,
         file,
@@ -83,7 +83,7 @@ async def carbon_api(e):
 @bot.on(admin_cmd(outgoing=True, pattern="krb"))
 @bot.on(sudo_cmd(pattern="krb", allow_sudo=True))
 async def carbon_api(e):
-    cat = await edit_or_reply(e, "`Processing....`")
+    cat = await edit_or_reply(e, "__Processing....__")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     textx = await e.get_reply_message()
     pcode = e.text
@@ -99,7 +99,7 @@ async def carbon_api(e):
         skeme = None  # Importing message to module
     pcode = deEmojify(pcode)
     code = quote_plus(pcode)  # Converting to urlencoded
-    await cat.edit("`Meking Carbon...`\n`25%`")
+    await cat.edit("__Meking Carbon...__\n__25%__")
     url = CARBON.format(code=code, lang=CARBONLANG)
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -114,7 +114,7 @@ async def carbon_api(e):
         executable_path=Config.CHROME_DRIVER, options=chrome_options
     )
     driver.get(url)
-    await cat.edit("`Be Patient...\n50%`")
+    await cat.edit("__Be Patient...\n50%__")
     download_path = "./"
     driver.command_executor._commands["send_command"] = (
         "POST",
@@ -141,19 +141,19 @@ async def carbon_api(e):
     driver.find_element_by_id("export-menu").click()
     driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
     driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
-    await cat.edit("`Processing..\n75%`")
+    await cat.edit("__Processing..\n75%__")
     # Waiting for downloading
     await asyncio.sleep(2.5)
     color_name = driver.find_element_by_xpath(
         "/html/body/div[1]/main/div[3]/div[2]/div[1]/div[1]/div/span[2]/input"
     ).get_attribute("value")
-    await cat.edit("`Done Dana Done...\n100%`")
+    await cat.edit("__Done Dana Done...\n100%__")
     file = "./carbon.png"
-    await cat.edit("`Uploading..`")
+    await cat.edit("__Uploading..__")
     await e.client.send_file(
         e.chat_id,
         file,
-        caption="`Here's your carbon!` \n**Colour Scheme: **`{}`".format(color_name),
+        caption="__Here's your carbon!__ \n**Colour Scheme: **__{}__".format(color_name),
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
@@ -571,16 +571,16 @@ async def carbon_api(e):
 
 CMD_HELP.update(
     {
-        "carbon": "**Plugin : **`carbon`\
+        "carbon": "**Plugin : **__carbon__\
     \n\n**Commands are :** \
-    \n  •  `.carbon <reply to code>`\
-    \n  •  `.krb <reply to code>`\
-    \n  •  `.kar1 <reply to code>`\
-    \n  •  `.kar2 <reply to code>`\
-    \n  •  `.kar3 <reply to code>`\
-    \n  •  `.kar4 <reply to code>`\
-    \n  •  `.rgbk2 <reply to code>`\
-    \n  •  `.kargb <reply to code>`\
+    \n  •  __.carbon <reply to code>__\
+    \n  •  __.krb <reply to code>__\
+    \n  •  __.kar1 <reply to code>__\
+    \n  •  __.kar2 <reply to code>__\
+    \n  •  __.kar3 <reply to code>__\
+    \n  •  __.kar4 <reply to code>__\
+    \n  •  __.rgbk2 <reply to code>__\
+    \n  •  __.kargb <reply to code>__\
     \n\n**Function : **\
     \n__Carbon generators, each command has one style of carbon (krb ,kargb shows random carbons, remaining all are fixed)__\
     "

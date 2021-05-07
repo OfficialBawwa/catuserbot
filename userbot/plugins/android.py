@@ -59,7 +59,7 @@ async def device_info(request):
     elif textx:
         codename = textx.text
     else:
-        await edit_or_reply(request, "`Usage: .device <codename> / <model>`")
+        await edit_or_reply(request, "__Usage: .device <codename> / <model>__")
         return
     data = json.loads(
         get(
@@ -77,7 +77,7 @@ async def device_info(request):
                 f"**Model**: {item['model']}\n\n"
             )
     else:
-        reply = f"`Couldn't find info about {codename}!`\n"
+        reply = f"__Couldn't find info about {codename}!__\n"
     await edit_or_reply(request, reply)
 
 
@@ -97,7 +97,7 @@ async def codename_info(request):
         brand = textx.text.split(" ")[0]
         device = " ".join(textx.text.split(" ")[1:])
     else:
-        await edit_or_reply(request, "`Usage: .codename <brand> <device>`")
+        await edit_or_reply(request, "__Usage: .codename <brand> <device>__")
         return
 
     data = json.loads(
@@ -124,7 +124,7 @@ async def codename_info(request):
                 f"**Model**: {item['model']}\n\n"
             )
     else:
-        reply = f"`Couldn't find {device} codename!`\n"
+        reply = f"__Couldn't find {device} codename!__\n"
     await edit_or_reply(request, reply)
 
 
@@ -143,7 +143,7 @@ async def devices_specifications(request):
         brand = textx.text.split(" ")[0]
         device = " ".join(textx.text.split(" ")[1:])
     else:
-        await edit_or_reply(request, "`Usage: .specs <brand> <device>`")
+        await edit_or_reply(request, "__Usage: .specs <brand> <device>__")
         return
     all_brands = (
         BeautifulSoup(
@@ -158,7 +158,7 @@ async def devices_specifications(request):
             i["href"] for i in all_brands if brand == i.text.strip().lower()
         ][0]
     except IndexError:
-        await edit_or_reply(request, f"`{brand} is unknown brand!`")
+        await edit_or_reply(request, f"__{brand} is unknown brand!__")
         return
     devices = BeautifulSoup(get(brand_page_url).content, "lxml").findAll(
         "div", {"class": "model-listing-container-80"}
@@ -171,7 +171,7 @@ async def devices_specifications(request):
             if device in i.text.strip().lower()
         ]
     except IndexError:
-        await edit_or_reply(request, f"`can't find {device}!`")
+        await edit_or_reply(request, f"__can't find {device}!__")
         return
     if len(device_page_url) > 2:
         device_page_url = device_page_url[:2]
@@ -206,11 +206,11 @@ async def twrp(request):
     elif textx:
         device = textx.text.split(" ")[0]
     else:
-        await edit_or_reply(request, "`Usage: .twrp <codename>`")
+        await edit_or_reply(request, "__Usage: .twrp <codename>__")
         return
     url = get(f"https://dl.twrp.me/{device}/")
     if url.status_code == 404:
-        reply = f"`Couldn't find twrp downloads for {device}!`\n"
+        reply = f"__Couldn't find twrp downloads for {device}!__\n"
         await edit_or_reply(request, reply)
         return
     page = BeautifulSoup(url.content, "lxml")
@@ -229,16 +229,16 @@ async def twrp(request):
 
 CMD_HELP.update(
     {
-        "android": "**Plugin : **`android`\
-\n\n  •  **Syntax : **`.magisk`\
+        "android": "**Plugin : **__android__\
+\n\n  •  **Syntax : **__.magisk__\
 \n  •  **Function :** __Get latest Magisk releases__\
-\n\n  •  **Syntax : **`.device <codename>`\
+\n\n  •  **Syntax : **__.device <codename>__\
 \n  •  **Function :** __Get info about android device codename or model.__\
-\n\n  •  **Syntax : **`.codename <brand> <device>`\
+\n\n  •  **Syntax : **__.codename <brand> <device>__\
 \n  •  **Function :** __Search for android device codename.__\
-\n\n  •  **Syntax : **`.specs <brand> <device>`\
+\n\n  •  **Syntax : **__.specs <brand> <device>__\
 \n  •  **Function :** __Get device specifications info.__\
-\n\n  •  **Syntax : **`.twrp <codename>`\
+\n\n  •  **Syntax : **__.twrp <codename>__\
 \n  •  **Function : **__Get latest twrp download for android device.__"
     }
 )

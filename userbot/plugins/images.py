@@ -20,7 +20,7 @@ async def img_sampler(event):
         return await edit_or_reply(
             event, "Reply to a message or pass a query to search!"
         )
-    cat = await edit_or_reply(event, "`Processing...`")
+    cat = await edit_or_reply(event, "__Processing...__")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim > 10:
@@ -41,7 +41,7 @@ async def img_sampler(event):
     try:
         paths = response.download(arguments)
     except Exception as e:
-        return await cat.edit(f"Error: \n`{e}`")
+        return await cat.edit(f"Error: \n__{e}__")
     lst = paths[0][query]
     await event.client.send_file(event.chat_id, lst, reply_to=reply_to_id)
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
@@ -50,8 +50,8 @@ async def img_sampler(event):
 
 CMD_HELP.update(
     {
-        "images": "**Plugin :**`images`\
-    \n\n**  •  Syntax :** `.img <limit> <Name>` or `.img <limit> (replied message)`\
+        "images": "**Plugin :**__images__\
+    \n\n**  •  Syntax :** __.img <limit> <Name>__ or __.img <limit> (replied message)__\
     \n**  •  Function : **do google image search and sends 3 images. default if you havent mentioned limit"
     }
 )

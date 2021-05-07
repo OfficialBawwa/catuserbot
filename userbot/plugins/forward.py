@@ -20,7 +20,7 @@ async def _(event):
     if Config.PRIVATE_CHANNEL_BOT_API_ID is None:
         await edit_or_reply(
             event,
-            "Please set the required environment variable `PRIVATE_CHANNEL_BOT_API_ID` for this plugin to work",
+            "Please set the required environment variable __PRIVATE_CHANNEL_BOT_API_ID__ for this plugin to work",
         )
         return
     try:
@@ -94,12 +94,12 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "forward": "**Plugin : **`forward`\
-    \n\n  •  **Synatax : **`frwd reply to any message`\
+        "forward": "**Plugin : **__forward__\
+    \n\n  •  **Synatax : **__frwd reply to any message__\
     \n  •  **Function :  **__Enable Seen Counter in any message, to know how many users have seen your message__\
-    \n\n  •  **Syntax : **`.resend reply to message`\
+    \n\n  •  **Syntax : **__.resend reply to message__\
     \n  •  **Function : **__Just resend the replied message again in that chat__\
-    \n\n  •  **Syntax : **`.fpost text`\
+    \n\n  •  **Syntax : **__.fpost text__\
     \n  •  **Function : **__Split the word and forwards each letter from the messages cache if exists__"
     }
 )

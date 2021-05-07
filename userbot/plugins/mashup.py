@@ -21,7 +21,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@vixtbot"
-    catevent = await edit_or_reply(event, "```Checking...```")
+    catevent = await edit_or_reply(event, "______Checking...______")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -43,7 +43,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "mashup": "`.mash` <text> :\
+        "mashup": "__.mash__ <text> :\
       \n**USAGE:** Sends you the related video message of given text. "
     }
 )

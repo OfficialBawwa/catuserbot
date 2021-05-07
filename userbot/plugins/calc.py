@@ -32,7 +32,7 @@ async def _(car):
         evaluation = stdout
     else:
         evaluation = "Sorry I can't find result for the given equation"
-    final_output = "**EQUATION**: `{}` \n\n **SOLUTION**: \n`{}` \n".format(
+    final_output = "**EQUATION**: __{}__ \n\n **SOLUTION**: \n__{}__ \n".format(
         cmd, evaluation
     )
     await event.edit(final_output)
@@ -45,8 +45,8 @@ async def aexec(code, event):
 
 CMD_HELP.update(
     {
-        "calc": "**Plugin : **`calc`\
-        \n\n**Syntax : **`.calc expression` \
+        "calc": "**Plugin : **__calc__\
+        \n\n**Syntax : **__.calc expression__ \
         \n**Function : **solves the given maths equation by BODMAS rule. "
     }
 )

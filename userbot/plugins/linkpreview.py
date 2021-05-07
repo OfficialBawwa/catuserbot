@@ -9,13 +9,13 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     if not reply_message:
-        await edit_or_reply(event, "```Reply to a Link.```")
+        await edit_or_reply(event, "______Reply to a Link.______")
         return
     if not reply_message.text:
-        await edit_or_reply(event, "```Reply to a Link```")
+        await edit_or_reply(event, "______Reply to a Link______")
         return
     chat = "@chotamreaderbot"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -26,7 +26,7 @@ async def _(event):
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await catevent.edit(
-                "`RIP Check Your Blacklist Boss and unblock @chotamreaderbot`"
+                "__RIP Check Your Blacklist Boss and unblock @chotamreaderbot__"
             )
             return
         if response.text.startswith(""):
@@ -38,8 +38,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "linkpreview": "**Plugin : **`linkpreview`\
-    \n\n**Syntax : **`.ctg` reply to link\
+        "linkpreview": "**Plugin : **__linkpreview__\
+    \n\n**Syntax : **__.ctg__ reply to link\
     \n**Function : **Converts the given link to link preview"
     }
 )

@@ -51,7 +51,7 @@ async def thanos(thanos):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`kiss`")
+    catevent = await edit_or_reply(event, "__kiss__")
     animation_interval = 0.2
     animation_ttl = range(100)
     animation_chars = ["🤵       👰", "🤵     👰", "🤵  👰", "🤵💋👰"]
@@ -65,7 +65,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`fuking....`")
+    catevent = await edit_or_reply(event, "__fuking....__")
     animation_interval = 0.2
     animation_ttl = range(100)
     animation_chars = ["👉       ✊️", "👉     ✊️", "👉  ✊️", "👉✊️💦"]
@@ -79,7 +79,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`sex`")
+    catevent = await edit_or_reply(event, "__sex__")
     animation_interval = 0.2
     animation_ttl = range(100)
     animation_chars = ["🤵       👰", "🤵     👰", "🤵  👰", "🤵👼👰"]
@@ -90,17 +90,17 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "gali": "**plugin : **`gali`\
+        "gali": "**plugin : **__gali__\
         \n\n**Commands :**\
-        \n  •  `.abuse`\
-        \n  •  `.abusehard`\
-        \n  •  `.rendi`\
-        \n  •  `.rape`\
-        \n  •  `.fuck`\
-        \n  •  `.thanos`\
-        \n  •  `.kiss`\
-        \n  •  `.fuk`\
-        \n  •  `.sex`\
+        \n  •  __.abuse__\
+        \n  •  __.abusehard__\
+        \n  •  __.rendi__\
+        \n  •  __.rape__\
+        \n  •  __.fuck__\
+        \n  •  __.thanos__\
+        \n  •  __.kiss__\
+        \n  •  __.fuk__\
+        \n  •  __.sex__\
         \n\n**Function :**\
         \n__First 5 are random gali string generaters__\
         \n__Last 3 are animations__\

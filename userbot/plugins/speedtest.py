@@ -23,7 +23,7 @@ async def _(event):
     elif input_str == "text":
         as_text = True
     catevent = await edit_or_reply(
-        event, "`Calculating my internet speed. Please wait!`"
+        event, "__Calculating my internet speed. Please wait!__"
     )
     start = datetime.now()
     s = speedtest.Speedtest()
@@ -45,13 +45,13 @@ async def _(event):
         speedtest_image = response
         if as_text:
             await catevent.edit(
-                """`SpeedTest completed in {} seconds`
+                """__SpeedTest completed in {} seconds__
 
-`Download: {}`
-`Upload: {}`
-`Ping: {}`
-`Internet Service Provider: {}`
-`ISP Rating: {}`""".format(
+__Download: {}__
+__Upload: {}__
+__Ping: {}__
+__Internet Service Provider: {}__
+__ISP Rating: {}__""".format(
                     ms,
                     convert_from_bytes(download_speed),
                     convert_from_bytes(upload_speed),
@@ -100,9 +100,9 @@ def convert_from_bytes(size):
 
 CMD_HELP.update(
     {
-        "speedtest": """**Plugin : **`speedtest`
+        "speedtest": """**Plugin : **__speedtest__
 
-  •  **Syntax : **`.speedtest text/image/file`
+  •  **Syntax : **__.speedtest text/image/file__
   •  **function : **__Shows your server speed in the given format if nothing is given then shows as image__"""
     }
 )

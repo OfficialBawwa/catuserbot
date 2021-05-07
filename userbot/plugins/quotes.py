@@ -9,7 +9,7 @@ import requests
 async def quote_search(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`Processing...`")
+    catevent = await edit_or_reply(event, "__Processing...__")
     input_str = event.pattern_match.group(1)
     if not input_str:
         api_url = "https://quotes.cwprojects.live/random"
@@ -24,16 +24,16 @@ async def quote_search(event):
         except Exception:
             response = None
     if response is not None:
-        await catevent.edit(f"`{response['text']}`")
+        await catevent.edit(f"__{response['text']}__")
     else:
-        await edit_delete(catevent, "`Sorry Zero results found`", 5)
+        await edit_delete(catevent, "__Sorry Zero results found__", 5)
 
 
 CMD_HELP.update(
     {
-        "quotes": "**Plugin : **`quotes`\
-    \n\n**Syntax : **`.quote <category>`\
-    \n**Function : **__An api that Fetchs random Quote from `goodreads.com`__\
+        "quotes": "**Plugin : **__quotes__\
+    \n\n**Syntax : **__.quote <category>__\
+    \n**Function : **__An api that Fetchs random Quote from __goodreads.com____\
     "
     }
 )

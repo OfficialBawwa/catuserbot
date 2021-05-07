@@ -24,7 +24,7 @@ def progress(current, total):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    catevent = await edit_or_reply(event, "__pasting to del dog.....__")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -69,7 +69,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`pasting to neko bin.....`")
+    catevent = await edit_or_reply(event, "__pasting to neko bin.....__")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -90,7 +90,7 @@ async def _(event):
                     message += m.decode("UTF-8")
             except Exception:
                 message = (
-                    "**Usage : **`.neko <long text to include/reply to text file>`"
+                    "**Usage : **__.neko <long text to include/reply to text file>__"
                 )
             os.remove(downloaded_file_name)
         else:
@@ -98,7 +98,7 @@ async def _(event):
             message = previous_message.message
     else:
         downloaded_file_name = None
-        message = "**Usage : **`.neko <long text to include/reply to text file>`"
+        message = "**Usage : **__.neko <long text to include/reply to text file>__"
     if downloaded_file_name and downloaded_file_name.endswith(".py"):
         py_file = ".py"
         data = message
@@ -127,7 +127,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    catevent = await edit_or_reply(event, "__pasting to del dog.....__")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -169,7 +169,7 @@ async def _(event):
 async def get_dogbin_content(dog_url):
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
-    catevent = await edit_or_reply(dog_url, "`Getting dogbin content...`")
+    catevent = await edit_or_reply(dog_url, "__Getting dogbin content...__")
     if not message and textx:
         message = str(textx.message)
     format_normal = "https://del.dog/"
@@ -182,7 +182,7 @@ async def get_dogbin_content(dog_url):
     elif message.startswith("del.dog/"):
         message = message[len("del.dog/") :]
     else:
-        await catevent.edit("`Is that even a dogbin url?`")
+        await catevent.edit("__Is that even a dogbin url?__")
         return
     resp = get(f"https://del.dog/raw/{message}")
     try:
@@ -202,7 +202,7 @@ async def get_dogbin_content(dog_url):
         )
         return
     reply_text = (
-        "`Fetched dogbin URL content successfully!`\n\n`Content:` \n" + resp.text
+        "__Fetched dogbin URL content successfully!__\n\n__Content:__ \n" + resp.text
     )
     await edit_or_reply(catevent, reply_text)
 
@@ -213,7 +213,7 @@ async def code_print(event):
     if event.fwd_from:
         return
     reply_to = await reply_id(event)
-    catevent = await edit_or_reply(event, "`printing the text on blank page`")
+    catevent = await edit_or_reply(event, "__printing the text on blank page__")
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     text_to_print = ""
@@ -231,7 +231,7 @@ async def code_print(event):
         else:
             await edit_delete(
                 catevent,
-                "`Either reply to document or reply to text message or give text along with command`",
+                "__Either reply to document or reply to text message or give text along with command__",
             )
     pygments.highlight(
         text_to_print,
@@ -255,7 +255,7 @@ async def code_print(event):
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    catevent = await edit_or_reply(event, "__pasting to del dog.....__")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     previous_message = None
     if input_str:
@@ -295,7 +295,7 @@ async def _(event):
             await event.client.send_message(chat, url)
             response = await response
         except YouBlockedUserError:
-            await catevent.edit("```Please unblock me (@chotamreaderbot) u Nigga```")
+            await catevent.edit("______Please unblock me (@chotamreaderbot) u Nigga______")
             return
         await catevent.delete()
         await event.client.send_message(
@@ -305,18 +305,18 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "pastebin": "**Plugin : **`pastebin`\
-        \n\n•  **Syntax : **`.paste <text/reply>`\
-        \n•  **Function : **__Create a paste or a shortened url using dogbin__`https://del.dog/`\
-        \n\n•  **Syntax : **`.neko <text/reply>`\
-        \n•  **Function : **__Create a paste or a shortened url using nekobin __`https://nekobin.com`\
-        \n\n•  **Syntax : **`.iffuci <text/reply>`\
-        \n•  **Function : **__Create a paste or a shortened url using iffuci __`https://www.iffuci.tk`\
-        \n\n•  **Syntax : **`.getpaste`\
-        \n•  **Function : **__Gets the content of a paste or shortened url from dogbin__ `https://del.dog/`\
-        \n\n•  **Syntax : **`.pcode reply/input`\
+        "pastebin": "**Plugin : **__pastebin__\
+        \n\n•  **Syntax : **__.paste <text/reply>__\
+        \n•  **Function : **__Create a paste or a shortened url using dogbin____https://del.dog/__\
+        \n\n•  **Syntax : **__.neko <text/reply>__\
+        \n•  **Function : **__Create a paste or a shortened url using nekobin ____https://nekobin.com__\
+        \n\n•  **Syntax : **__.iffuci <text/reply>__\
+        \n•  **Function : **__Create a paste or a shortened url using iffuci ____https://www.iffuci.tk__\
+        \n\n•  **Syntax : **__.getpaste__\
+        \n•  **Function : **__Gets the content of a paste or shortened url from dogbin__ __https://del.dog/__\
+        \n\n•  **Syntax : **__.pcode reply/input__\
         \n•  **Function : **__Will paste the entire text on the blank page and will send as image__\
-        \n\n•  **Syntax : **`.paster <text/reply>`\
+        \n\n•  **Syntax : **__.paster <text/reply>__\
         \n•  **Function : **__Create a instant view or a paste it in telegraph file__\
   "
     }

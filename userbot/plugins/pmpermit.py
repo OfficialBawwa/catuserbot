@@ -60,7 +60,7 @@ if Config.PRIVATE_GROUP_ID != 0:
             pmpermit_sql.approve(user.id, reason)
             await edit_delete(
                 event,
-                f"`Approved to pm `[{user.first_name}](tg://user?id={user.id})",
+                f"__Approved to pm __[{user.first_name}](tg://user?id={user.id})",
                 5,
             )
             if user.id in PMMESSAGE_CACHE:
@@ -73,7 +73,7 @@ if Config.PRIVATE_GROUP_ID != 0:
         else:
             await edit_delete(
                 event,
-                f"[{user.first_name}](tg://user?id={user.id}) `is already in approved list`",
+                f"[{user.first_name}](tg://user?id={user.id}) __is already in approved list__",
                 5,
             )
 
@@ -96,12 +96,12 @@ if Config.PRIVATE_GROUP_ID != 0:
             pmpermit_sql.disapprove(user.id)
             await edit_or_reply(
                 event,
-                f"`disapproved to pm` [{user.first_name}](tg://user?id={user.id})",
+                f"__disapproved to pm__ [{user.first_name}](tg://user?id={user.id})",
             )
         else:
             await edit_or_reply(
                 event,
-                f"[{user.first_name}](tg://user?id={user.id}) `is not yet approved`",
+                f"[{user.first_name}](tg://user?id={user.id}) __is not yet approved__",
                 5,
             )
 
@@ -116,7 +116,7 @@ if Config.PRIVATE_GROUP_ID != 0:
         if user.id in PM_START:
             PM_START.remove(user.id)
         await event.edit(
-            f"`You are blocked Now .You Can't Message Me from now..`[{user.first_name}](tg://user?id={user.id})"
+            f"__You are blocked Now .You Can't Message Me from now..__[{user.first_name}](tg://user?id={user.id})"
         )
         await event.client(functions.contacts.BlockRequest(user.id))
 
@@ -130,7 +130,7 @@ if Config.PRIVATE_GROUP_ID != 0:
                 return
         await event.client(functions.contacts.UnblockRequest(user.id))
         await event.edit(
-            f"`You are Unblocked Now .You Can Message Me From now..`[{user.first_name}](tg://user?id={user.id})"
+            f"__You are Unblocked Now .You Can Message Me From now..__[{user.first_name}](tg://user?id={user.id})"
         )
 
     @bot.on(admin_cmd(pattern="listapproved$"))
@@ -146,19 +146,19 @@ if Config.PRIVATE_GROUP_ID != 0:
                         f"👉 [{sender.chat_id}](tg://user?id={sender.chat_id})\n"
                     )
         else:
-            APPROVED_PMs = "`You havent approved anyone yet`"
+            APPROVED_PMs = "__You havent approved anyone yet__"
         await edit_or_reply(
             event,
             APPROVED_PMs,
             file_name="approvedpms.txt",
-            caption="`Current Approved PMs`",
+            caption="__Current Approved PMs__",
         )
 
     @bot.on(admin_cmd(pattern="(disapprove all|da all)$"))
     async def disapprove_p_m(event):
         if event.fwd_from:
             return
-        result = "`ok , everyone is disapproved now`"
+        result = "__ok , everyone is disapproved now__"
         pmpermit_sql.disapprove_all()
         await edit_delete(event, result, parse_mode=parse_pre, time=10)
 
@@ -248,15 +248,15 @@ if Config.PRIVATE_GROUP_ID != 0:
                         warns=warns,
                     )
                     + "\n\n"
-                    + "**Send** `/start` ** so that my master can decide why you're here.**"
+                    + "**Send** __/start__ ** so that my master can decide why you're here.**"
                 )
             else:
 
                 USER_BOT_NO_WARN = (
-                    f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
+                    f"__Hi __{mention}__, I haven't approved you yet to personal message me, Don't spam my inbox."
                     f"Just say the reason and wait until you get approved.\
-                                    \n\nyou have {warns}/{totalwarns} warns`\
-                                    \n\n**Send** `/start` **so that my master can decide why you're here.**"
+                                    \n\nyou have {warns}/{totalwarns} warns__\
+                                    \n\n**Send** __/start__ **so that my master can decide why you're here.**"
                 )
         else:
             if Config.CUSTOM_PMPERMIT_TEXT:
@@ -277,9 +277,9 @@ if Config.PRIVATE_GROUP_ID != 0:
                 )
             else:
                 USER_BOT_NO_WARN = (
-                    f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
+                    f"__Hi __{mention}__, I haven't approved you yet to personal message me, Don't spam my inbox."
                     f"Just say the reason and wait until you get approved.\
-                                    \n\nyou have {warns}/{totalwarns} warns`"
+                                    \n\nyou have {warns}/{totalwarns} warns__"
                 )
         if PMPERMIT_PIC:
             r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
@@ -294,21 +294,21 @@ if Config.PRIVATE_GROUP_ID != 0:
 
 CMD_HELP.update(
     {
-        "pmpermit": "**Plugin : **`pmpermit`\
-        \n\n  •  **Syntax : **`.approve or .a`\
+        "pmpermit": "**Plugin : **__pmpermit__\
+        \n\n  •  **Syntax : **__.approve or .a__\
         \n  •  **Function : **__Approves the mentioned/replied person to PM.__\
-        \n\n  •  **Syntax : **`.disapprove or .da`\
+        \n\n  •  **Syntax : **__.disapprove or .da__\
         \n  •  **Function : **__dispproves the mentioned/replied person to PM.__\
-        \n\n  •  **Syntax : **`.block`\
+        \n\n  •  **Syntax : **__.block__\
         \n  •  **Function : **__Blocks the person.__\
-        \n\n  •  **Syntax : **`.unblock`\
+        \n\n  •  **Syntax : **__.unblock__\
         \n  •  **Function : **__Unblocks the person.__\
-        \n\n  •  **Syntax : **`.listapproved`\
+        \n\n  •  **Syntax : **__.listapproved__\
         \n  •  **Function : **__To list the all approved users.__\
-        \n\n  •  **Syntax : **`.disapprove all or da all`\
+        \n\n  •  **Syntax : **__.disapprove all or da all__\
         \n  •  **Function : **__To disapprove all the approved users.__\
-        \n\n  •  Available variables for formatting `CUSTOM_PMPERMIT_TEXT` :\
-        \n`{mention}`, `{first}`, `{last} `, `{fullname}`, `{userid}`, `{username}`, `{my_first}`, `{my_fullname}`, `{my_last}`, `{my_mention}`, `{my_username}`,`{warns}` , `{totalwarns}`.\
+        \n\n  •  Available variables for formatting __CUSTOM_PMPERMIT_TEXT__ :\
+        \n__{mention}__, __{first}__, __{last} __, __{fullname}__, __{userid}__, __{username}__, __{my_first}__, __{my_fullname}__, __{my_last}__, __{my_mention}__, __{my_username}__,__{warns}__ , __{totalwarns}__.\
 "
     }
 )

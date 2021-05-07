@@ -219,24 +219,24 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "meme": "**Plugin : **`meme`\
+        "meme": "**Plugin : **__meme__\
         \n\n**Commands :**\
-        \n  •  `:/`\
-        \n  •  `-_-`\
-        \n  •  `;_;`\
-        \n  •  `.oof`\
+        \n  •  __:/__\
+        \n  •  __-_-__\
+        \n  •  __;_;__\
+        \n  •  __.oof__\
         \n\n**Functions :**\
         \n__The above four commands are animation commands__\
         \n\n**Commands :**\
-        \n  •  `.meme`\
-        \n  •  `.give`\
+        \n  •  __.meme__\
+        \n  •  __.give__\
         \n\n**Functions :**\
         \n__The above two commands are animation memes meme by default takes ✈️ and give by default takes 🍭__\
-        \n\n**Syntax : **`.repeat count message`\
-        \n**Function : **try out and check Yourself `.repeat 5 hello`\
-        \n\n**Syntax :** `.type`\
+        \n\n**Syntax : **__.repeat count message__\
+        \n**Function : **try out and check Yourself __.repeat 5 hello__\
+        \n\n**Syntax :** __.type__\
         \n**Function : **Just a small command to make your keyboard become a typewriter!\
-        \n\n**Syntax :** `.sadmin`\
+        \n\n**Syntax :** __.sadmin__\
         \n**Function : **Fun animation of @admin!\
         "
     }

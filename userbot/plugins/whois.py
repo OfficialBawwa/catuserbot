@@ -21,7 +21,7 @@ async def _(event):
         return
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
-        return await edit_or_reply(event, f"`{str(error_i_a)}`")
+        return await edit_or_reply(event, f"__{str(error_i_a)}__")
     user_id = replied_user.user.id
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.user.first_name)
@@ -40,11 +40,11 @@ async def _(event):
     if spamwatch:
         ban = spamwatch.get_ban(user_id)
         if ban:
-            sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Reason : **`{ban.reason}`"
+            sw = f"**Spamwatch Banned :** __True__ \n       **-**🤷‍♂️**Reason : **__{ban.reason}__"
         else:
-            sw = f"**Spamwatch Banned :** `False`"
+            sw = f"**Spamwatch Banned :** __False__"
     else:
-        sw = "**Spamwatch Banned :**`Not Connected`"
+        sw = "**Spamwatch Banned :**__Not Connected__"
     try:
         casurl = "https://api.cas.chat/check?user_id={}".format(user_id)
         data = get(casurl).json()
@@ -53,16 +53,16 @@ async def _(event):
         data = None
     if data:
         if data["ok"]:
-            cas = "**Antispam(CAS) Banned :** `True`"
+            cas = "**Antispam(CAS) Banned :** __True__"
         else:
-            cas = "**Antispam(CAS) Banned :** `False`"
+            cas = "**Antispam(CAS) Banned :** __False__"
     else:
-        cas = "**Antispam(CAS) Banned :** `Couldn't Fetch`"
+        cas = "**Antispam(CAS) Banned :** __Couldn't Fetch__"
     caption = """**Info of [{}](tg://user?id={}):
-   -🔖ID : **`{}`
-   **-**👥**Groups in Common : **`{}`
-   **-**🌏**Data Centre Number : **`{}`
-   **-**🔏**Restricted by telegram : **`{}`
+   -🔖ID : **__{}__
+   **-**👥**Groups in Common : **__{}__
+   **-**🌏**Data Centre Number : **__{}__
+   **-**🔏**Restricted by telegram : **__{}__
    **-**🦅{}
    **-**👮‍♂️{}
 """.format(
@@ -121,18 +121,18 @@ async def get_full_user(event):
 @bot.on(admin_cmd(pattern="whois(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="whois(?: |$)(.*)", allow_sudo=True))
 async def who(event):
-    cat = await edit_or_reply(event, "`Fetching userinfo wait....`")
+    cat = await edit_or_reply(event, "__Fetching userinfo wait....__")
     if not os.path.isdir(TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
     replied_user = await get_user(event)
     if replied_user is None:
         return await edit_or_reply(
-            cat, "`Well that's an anonymous admin. I can't fetch details!`"
+            cat, "__Well that's an anonymous admin. I can't fetch details!__"
         )
     try:
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
-        await edit_or_reply(cat, "`Could not fetch info of that user.`")
+        await edit_or_reply(cat, "__Could not fetch info of that user.__")
         return
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
@@ -224,13 +224,13 @@ async def fetch_info(replied_user, event):
     caption = "<b><i>USER INFO from Durov's Database :</i></b>\n\n"
     caption += f"<b>👤 First Name:</b> {first_name} {last_name}\n"
     caption += f"<b>🤵 Username:</b> {username}\n"
-    caption += f"<b>🔖 ID:</b> <code>{user_id}</code>\n"
+    caption += f"<b>🔖 ID:</b> __{user_id}__\n"
     caption += f"<b>🌏 Data Centre ID:</b> {dc_id}\n"
     caption += f"<b>🖼 Number of Profile Pics:</b> {replied_user_profile_photos_count}\n"
     caption += f"<b>🤖 Is Bot:</b> {is_bot}\n"
     caption += f"<b>🔏 Is Restricted:</b> {restricted}\n"
     caption += f"<b>🌐 Is Verified by Telegram:</b> {verified}\n\n"
-    caption += f"<b>✍️ Bio:</b> \n<code>{user_bio}</code>\n\n"
+    caption += f"<b>✍️ Bio:</b> \n__{user_bio}__\n\n"
     caption += f"<b>👥 Common Chats with this user:</b> {common_chat}\n"
     caption += f"<b>🔗 Permanent Link To Profile:</b> "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
@@ -266,12 +266,12 @@ async def ge(user, event):
 
 CMD_HELP.update(
     {
-        "whois": "**Plugin : **`whois`\
-    \n\n  •  **Syntax : **`.whois <username> or reply to someones text with .whois`\
+        "whois": "**Plugin : **__whois__\
+    \n\n  •  **Syntax : **__.whois <username> or reply to someones text with .whois__\
     \n  •  **Function : **__Gets info of an user.__\
-    \n\n  •  **Syntax : **`.userinfo <username> or reply to someones text with .userinfo`\
+    \n\n  •  **Syntax : **__.userinfo <username> or reply to someones text with .userinfo__\
     \n  •  **Function : **__Gets information of an user such as restrictions ban by spamwatch or cas__\
-    \n\n  •  **Syntax : **`.link id/username/reply`\
+    \n\n  •  **Syntax : **__.link id/username/reply__\
     \n  •  **Function : **__Generates a link to the user's PM .__"
     }
 )

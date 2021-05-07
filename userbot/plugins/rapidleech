@@ -44,7 +44,7 @@ async def _(event):
                 converted_links += f"[{a_url}]({converted_link}) \n\n"
             elif "err" in converted_link_infos:
                 err = converted_link_infos["err"]
-                converted_links += f"`{a_url}` returned `{err}`\n\n"
+                converted_links += f"__{a_url}__ returned __{err}__\n\n"
     await event.reply(converted_links)
 
 

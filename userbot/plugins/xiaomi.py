@@ -13,7 +13,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     firmware = f"firmware"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -23,7 +23,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -37,7 +37,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     vendor = f"vendor"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -47,7 +47,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -61,7 +61,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     specs = f"specs"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -71,7 +71,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -85,7 +85,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     fboot = f"fastboot"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -95,7 +95,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -109,7 +109,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     recovery = f"recovery"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -119,7 +119,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -133,7 +133,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     pitch = f"pb"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -143,7 +143,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -157,7 +157,7 @@ async def _(event):
         return
     link = event.pattern_match.group(1)
     ofox = f"of"
-    catevent = await edit_or_reply(event, "```Processing```")
+    catevent = await edit_or_reply(event, "______Processing______")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
@@ -167,7 +167,7 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("```Unblock @XiaomiGeeksBot plox```")
+            await catevent.edit("______Unblock @XiaomiGeeksBot plox______")
             return
         else:
             await catevent.delete()
@@ -176,21 +176,21 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "xiaomi": "**Plugin :** `Xiaomi`\
+        "xiaomi": "**Plugin :** __Xiaomi__\
         \n\n__**For Xiaomeme devices only!**__\
-        \n\n**Syntax :** `.firmware` (codename)\
+        \n\n**Syntax :** __.firmware__ (codename)\
         \n**Function : **Get lastest Firmware\
-        \n\n**Syntax :** `.vendor` (codename)\
+        \n\n**Syntax :** __.vendor__ (codename)\
         \n**Function : **Get lastest Vendor\
-        \n\n**Syntax :** `.pb` (codename)\
+        \n\n**Syntax :** __.pb__ (codename)\
         \n**Function : **Get latest PBRP\
-        \n\n**Syntax :** `.specs` (codename)\
+        \n\n**Syntax :** __.specs__ (codename)\
         \n**Function : **Get quick spec information about device\
-        \n\n**Syntax :** `.fastboot` (codename)\
+        \n\n**Syntax :** __.fastboot__ (codename)\
         \n**Function : **Get latest fastboot MIUI\
-        \n\n**Syntax :** `.recovery` (codename)\
+        \n\n**Syntax :** __.recovery__ (codename)\
         \n**Function : **Get latest recovery MIUI\
-        \n\n**Syntax :** `.of` (codename)\
+        \n\n**Syntax :** __.of__ (codename)\
         \n**Function : **Get latest ORangeFox Recovery"
     }
 )

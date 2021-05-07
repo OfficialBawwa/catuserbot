@@ -35,25 +35,25 @@ async def wiki(wiki_q):
             wiki_q.chat_id,
             "output.txt",
             reply_to=wiki_q.id,
-            caption="`Output too large, sending as file`",
+            caption="__Output too large, sending as file__",
         )
         await wiki_q.delete()
         if os.path.exists("output.txt"):
             os.remove("output.txt")
         return
     await edit_or_reply(
-        wiki_q, "**Search:**\n`" + match + "`\n\n**Result:**\n" + result
+        wiki_q, "**Search:**\n__" + match + "__\n\n**Result:**\n" + result
     )
     if BOTLOG:
         await wiki_q.client.send_message(
-            BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully"
+            BOTLOG_CHATID, f"Wiki query __{match}__ was executed successfully"
         )
 
 
 @bot.on(admin_cmd(pattern="imdb (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="imdb (.*)", allow_sudo=True))
 async def imdb(e):
-    catevent = await edit_or_reply(e, "`searching........")
+    catevent = await edit_or_reply(e, "__searching........")
     try:
         movie_name = e.pattern_match.group(1)
         remove_space = movie_name.split(" ")
@@ -116,23 +116,23 @@ async def imdb(e):
             mov_rating = "Not available"
         await catevent.edit(
             "<a href=" + poster + ">&#8203;</a>"
-            "<b>Title : </b><code>"
+            "<b>Title : </b>__"
             + mov_title
-            + "</code>\n<code>"
+            + "__\n__"
             + mov_details
-            + "</code>\n<b>Rating : </b><code>"
+            + "__\n<b>Rating : </b>__"
             + mov_rating
-            + "</code>\n<b>Country : </b><code>"
+            + "__\n<b>Country : </b>__"
             + mov_country[0]
-            + "</code>\n<b>Language : </b><code>"
+            + "__\n<b>Language : </b>__"
             + mov_language[0]
-            + "</code>\n<b>Director : </b><code>"
+            + "__\n<b>Director : </b>__"
             + director
-            + "</code>\n<b>Writer : </b><code>"
+            + "__\n<b>Writer : </b>__"
             + writer
-            + "</code>\n<b>Stars : </b><code>"
+            + "__\n<b>Stars : </b>__"
             + stars
-            + "</code>\n<b>IMDB Url : </b>"
+            + "__\n<b>IMDB Url : </b>"
             + mov_link
             + "\n<b>Story Line : </b>"
             + story_line,
@@ -145,12 +145,12 @@ async def imdb(e):
 
 CMD_HELP.update(
     {
-        "scrapers": """**Plugin : **`scrapers`
+        "scrapers": """**Plugin : **__scrapers__
 
-  •  **Syntax : ** `.wiki query`
+  •  **Syntax : ** __.wiki query__
   •  **Function : **__Fetches given query in wikipedia and shows you__
 
-  •  **Syntax : ** `.imdb query`
+  •  **Syntax : ** __.imdb query__
   •  **Function : **__Fetches Given movie details from imdb__
 """
     }

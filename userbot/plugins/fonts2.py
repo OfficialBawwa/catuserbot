@@ -94,7 +94,7 @@ async def spongemocktext(mock):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(mock, "`gIvE sOMEtHInG tO MoCk!`")
+        await edit_or_reply(mock, "__gIvE sOMEtHInG tO MoCk!__")
         return
 
     for charac in message:
@@ -147,16 +147,16 @@ async def stylish_generator(event):
 
 CMD_HELP.update(
     {
-        "fonts2": """**Plugin : **`fonts2`
+        "fonts2": """**Plugin : **__fonts2__
         
 **Commands found in fonts2 are**
-  •  `.egyptf`
-  •  `.maref`
-  •  `.handcf`
-  •  `.doublef`
-  •  `.mock`
-  •  `.ghostf`
-  •  `.handsf`
+  •  __.egyptf__
+  •  __.maref__
+  •  __.handcf__
+  •  __.doublef__
+  •  __.mock__
+  •  __.ghostf__
+  •  __.handsf__
   
 **Function : **__Reply the command to the text message or give input along with command to convert that text to given font style__"""
     }

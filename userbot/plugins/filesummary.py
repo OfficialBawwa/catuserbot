@@ -44,7 +44,7 @@ async def _(event):
         chatdata = await event.client.get_entity(entity)
     except Exception as e:
         return await edit_delete(
-            event, f"<b>Error : </b><code>{str(e)}</code>", time=5, parse_mode="HTML"
+            event, f"<b>Error : </b>__{str(e)}__", time=5, parse_mode="HTML"
         )
     if type(chatdata).__name__ == "Channel":
         if chatdata.username:
@@ -55,7 +55,7 @@ async def _(event):
         link = f"<a href='tg://user?id={chatdata.id}'>{chatdata.first_name}</a>"
     catevent = await edit_or_reply(
         event,
-        f"<code>Counting files and file size of </code><b>{link}</b>\n<code>This may take some time also depends on number of group messages</code>",
+        f"__Counting files and file size of __<b>{link}</b>\n__This may take some time also depends on number of group messages__",
         parse_mode="HTML",
     )
     media_dict = {
@@ -89,7 +89,7 @@ async def _(event):
             ]
         )
         if media_dict[mediax]["count"] != 0:
-            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
+            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b>__{humanbytes(media_dict[mediax]['max_size'])}__\n"
     endtime = int(time.monotonic())
     if endtime - starttime >= 120:
         runtime = str(round(((endtime - starttime) / 60), 2)) + " minutes"
@@ -100,18 +100,18 @@ async def _(event):
         str(round((weird_division((endtime - starttime), totalcount)) * 1000, 2))
         + " ms"
     )
-    totalstring = f"<code><b>Total files : </b>       | {str(totalcount)}\
+    totalstring = f"__<b>Total files : </b>       | {str(totalcount)}\
                   \nTotal file size :    | {humanbytes(totalsize)}\
                   \nAvg. file size :     | {avghubytes}\
-                  \n</code>"
-    runtimestring = f"<code>Runtime :            | {runtime}\
+                  \n__"
+    runtimestring = f"__Runtime :            | {runtime}\
                     \nRuntime per file :   | {avgruntime}\
-                    \n</code>"
-    line = "<code>+--------------------+-----------+</code>\n"
+                    \n__"
+    line = "__+--------------------+-----------+__\n"
     result = f"<b>Group : {link}</b>\n\n"
-    result += f"<code>Total Messages: {msg_count}</code>\n"
+    result += f"__Total Messages: {msg_count}__\n"
     result += "<b>File Summary : </b>\n"
-    result += f"<code>{str(x)}</code>\n"
+    result += f"__{str(x)}__\n"
     result += f"{largest}"
     result += line + totalstring + line + runtimestring + line
     await catevent.edit(result, parse_mode="HTML", link_preview=False)
@@ -152,13 +152,13 @@ async def _(event):
         chatdata = await event.client.get_entity(entity)
     except Exception as e:
         return await edit_delete(
-            event, f"<b>Error : </b><code>{str(e)}</code>", 5, parse_mode="HTML"
+            event, f"<b>Error : </b>__{str(e)}__", 5, parse_mode="HTML"
         )
     try:
         userdata = await event.client.get_entity(userentity)
     except Exception as e:
         return await edit_delete(
-            event, f"<b>Error : </b><code>{str(e)}</code>", time=5, parse_mode="HTML"
+            event, f"<b>Error : </b>__{str(e)}__", time=5, parse_mode="HTML"
         )
     if type(chatdata).__name__ == "Channel":
         if chatdata.username:
@@ -169,7 +169,7 @@ async def _(event):
         link = f"<a href='tg://user?id={chatdata.id}'>{chatdata.first_name}</a>"
     catevent = await edit_or_reply(
         event,
-        f"<code>Counting files and file size by </code>{_format.htmlmentionuser(userdata.first_name,userdata.id)}<code> in Group </code><b>{link}</b>\n<code>This may take some time also depends on number of user messages</code>",
+        f"__Counting files and file size by __{_format.htmlmentionuser(userdata.first_name,userdata.id)}__ in Group __<b>{link}</b>\n__This may take some time also depends on number of user messages__",
         parse_mode="HTML",
     )
 
@@ -206,7 +206,7 @@ async def _(event):
             ]
         )
         if media_dict[mediax]["count"] != 0:
-            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
+            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b>__{humanbytes(media_dict[mediax]['max_size'])}__\n"
     endtime = int(time.monotonic())
     if endtime - starttime >= 120:
         runtime = str(round(((endtime - starttime) / 60), 2)) + " minutes"
@@ -217,18 +217,18 @@ async def _(event):
         str(round((weird_division((endtime - starttime), totalcount)) * 1000, 2))
         + " ms"
     )
-    totalstring = f"<code><b>Total files : </b>       | {str(totalcount)}\
+    totalstring = f"__<b>Total files : </b>       | {str(totalcount)}\
                   \nTotal file size :    | {humanbytes(totalsize)}\
                   \nAvg. file size :     | {avghubytes}\
-                  \n</code>"
-    runtimestring = f"<code>Runtime :            | {runtime}\
+                  \n__"
+    runtimestring = f"__Runtime :            | {runtime}\
                     \nRuntime per file :   | {avgruntime}\
-                    \n</code>"
-    line = "<code>+--------------------+-----------+</code>\n"
+                    \n__"
+    line = "__+--------------------+-----------+__\n"
     result = f"<b>Group : {link}\nUser : {_format.htmlmentionuser(userdata.first_name,userdata.id)}\n\n"
-    result += f"<code>Total Messages: {msg_count}</code>\n"
+    result += f"__Total Messages: {msg_count}__\n"
     result += "<b>File Summary : </b>\n"
-    result += f"<code>{str(x)}</code>\n"
+    result += f"__{str(x)}__\n"
     result += f"{largest}"
     result += line + totalstring + line + runtimestring + line
     await catevent.edit(result, parse_mode="HTML", link_preview=False)
@@ -236,18 +236,18 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "filesummary": """**Plugin : **`filesummary`
+        "filesummary": """**Plugin : **__filesummary__
 
 **Syntax : **
-  •  `.chatfs`
-  •  `.chatfs username/id`
+  •  __.chatfs__
+  •  __.chatfs username/id__
 **Function : **
   •  __Shows you the complete media/file summary of the that group__
 
 **Syntax : **
-  •  `.userfs reply`
-  •  `.userfs chat username/id`
-  •  `.userfs user username/id`
+  •  __.userfs reply__
+  •  __.userfs chat username/id__
+  •  __.userfs user username/id__
 **Function : **
   •  __Shows you the complete media/file summary of the that User in the group where you want__
 """

@@ -38,7 +38,7 @@ async def _(event):
                 )
             )
             await event.edit(
-                "Group `{}` created successfully. Join {}".format(
+                "Group __{}__ created successfully. Join {}".format(
                     group_name, result.link
                 )
             )
@@ -61,23 +61,23 @@ async def _(event):
                 )
             )
             await event.edit(
-                "Channel `{}` created successfully. Join {}".format(
+                "Channel __{}__ created successfully. Join {}".format(
                     group_name, result.link
                 )
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await event.edit(str(e))
     else:
-        await event.edit("Read `.info create` to know how to use me")
+        await event.edit("Read __.info create__ to know how to use me")
 
 
 CMD_HELP.update(
     {
-        "create": "**SYNTAX :** `.create b`\
+        "create": "**SYNTAX :** __.create b__\
     \n**USAGE : **Creates a super group and send you link\
-    \n\n**SYNTAX : **`.create g`\
+    \n\n**SYNTAX : **__.create g__\
     \n**USAGE : **Creates a private group and sends you link\
-    \n\n**SYNTAX : **`.create c`\
+    \n\n**SYNTAX : **__.create c__\
     \n**USAGE : **Creates a Channel and sends you link\
     \n\nhere the bot accout is owner\
     "

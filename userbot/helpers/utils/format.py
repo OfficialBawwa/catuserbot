@@ -10,7 +10,7 @@ from ..functions import utc_to_local
 
 
 def paste_text(text):
-    asciich = ["**", "`", "__"]
+    asciich = ["**", "__", "__"]
     for i in asciich:
         text = re.sub(rf"\{i}", "", text)
     try:
@@ -43,7 +43,7 @@ def htmlmentionuser(name, userid):
 
 
 def reformattext(text):
-    return text.replace("~", "").replace("_", "").replace("*", "").replace("`", "")
+    return text.replace("~", "").replace("_", "").replace("*", "").replace("__", "")
 
 
 def replacetext(text):

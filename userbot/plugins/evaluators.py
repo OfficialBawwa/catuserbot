@@ -16,8 +16,8 @@ async def _(event):
         return
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
-        return await edit_delete(event, "`What should i execute?..`")
-    catevent = await edit_or_reply(event, "`Executing.....`")
+        return await edit_delete(event, "__What should i execute?..__")
+    catevent = await edit_or_reply(event, "__Executing.....__")
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -27,14 +27,14 @@ async def _(event):
     curruser = catuser.username or "catuserbot"
     uid = os.geteuid()
     if uid == 0:
-        cresult = f"`{curruser}:~#` `{cmd}`\n`{result}`"
+        cresult = f"__{curruser}:~#__ __{cmd}__\n__{result}__"
     else:
-        cresult = f"`{curruser}:~$` `{cmd}`\n`{result}`"
+        cresult = f"__{curruser}:~$__ __{cmd}__\n__{result}__"
     await edit_or_reply(
         catevent,
         text=cresult,
         aslink=True,
-        linktext=f"**•  Exec : **\n`{cmd}` \n\n**•  Result : **\n",
+        linktext=f"**•  Exec : **\n__{cmd}__ \n\n**•  Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -50,8 +50,8 @@ async def _(event):
         return
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
-        return await edit_delete(event, "`What should i run ?..`")
-    catevent = await edit_or_reply(event, "`Running ...`")
+        return await edit_delete(event, "__What should i run ?..__")
+    catevent = await edit_or_reply(event, "__Running ...__")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -74,12 +74,12 @@ async def _(event):
         evaluation = stdout
     else:
         evaluation = "Success"
-    final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
+    final_output = f"**•  Eval : **\n__{cmd}__ \n\n**•  Result : **\n__{evaluation}__ \n"
     await edit_or_reply(
         catevent,
         text=final_output,
         aslink=True,
-        linktext=f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n",
+        linktext=f"**•  Eval : **\n__{cmd}__ \n\n**•  Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -103,10 +103,10 @@ async def aexec(code, smessatatus):
 
 CMD_HELP.update(
     {
-        "evaluators": "**Plugin : **`evaluators`\
-        \n\n  •  **Synatax : **`.eval <expr>`:\
+        "evaluators": "**Plugin : **__evaluators__\
+        \n\n  •  **Synatax : **__.eval <expr>__:\
         \n  •  **Function : **__Execute Python script.__\
-        \n\n  •  **Synatax : **`.exec <command>`:\
+        \n\n  •  **Synatax : **__.exec <command>__:\
         \n  •  **Function : **__Execute a Terminal command on catuserbot server and shows details.__\
      "
     }

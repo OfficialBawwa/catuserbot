@@ -21,7 +21,7 @@ async def pipcheck(pip):
     if pip.reply_to_msg_id:
         reply_to_id = pip.reply_to_msg_id
     if pipmodule:
-        pip = await edit_or_reply(pip, "`Searching . . .`")
+        pip = await edit_or_reply(pip, "__Searching . . .__")
         pipc = await asyncrunapp(
             "pip3",
             "search",
@@ -33,7 +33,7 @@ async def pipcheck(pip):
         pipout = str(stdout.decode().strip()) + str(stderr.decode().strip())
         if pipout:
             if len(pipout) > 4096:
-                await pip.edit("`Output too large, sending as file`")
+                await pip.edit("__Output too large, sending as file__")
                 with open("pips.txt", "w+") as file:
                     file.write(pipout)
                 await pip.client.send_file(
@@ -45,17 +45,17 @@ async def pipcheck(pip):
                 os.remove("output.txt")
                 return
             await pip.edit(
-                "**Query: **\n`"
+                "**Query: **\n__"
                 f"pip3 search {pipmodule}"
-                "`\n**Result: **\n`"
+                "__\n**Result: **\n__"
                 f"{pipout}"
-                "`"
+                "__"
             )
         else:
             await pip.edit(
-                "**Query: **\n`"
+                "**Query: **\n__"
                 f"pip3 search {pipmodule}"
-                "`\n**Result: **\n`No Result Returned/False`"
+                "__\n**Result: **\n__No Result Returned/False__"
             )
 
 
@@ -366,28 +366,28 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "execmod": "**Plugin : **`execmod`\
-    \n\n**Syntax :** `.pips query`\
+        "execmod": "**Plugin : **__execmod__\
+    \n\n**Syntax :** __.pips query__\
     \n**Usage : **Searches your pip modules\
-    \n\n**Syntax : **`.sucide`\
+    \n\n**Syntax : **__.sucide__\
     \n**Usage : **Deletes all your folders and files in the bot\
-    \n\n**Syntax : **`.plugins`\
+    \n\n**Syntax : **__.plugins__\
     \n**Usage : **Shows you the list of modules that are in bot\
-    \n\n**Syntax : **`.date`\
+    \n\n**Syntax : **__.date__\
     \n**Usage : **Shows you the date of today\
-    \n\n**Syntax : **`.env`\
+    \n\n**Syntax : **__.env__\
     \n**Usage : **Shows you the list of all your heroku vars\
-    \n\n**Syntax : **`.fast`\
+    \n\n**Syntax : **__.fast__\
     \n**Usage : **speed calculator\
-    \n\n**Syntax : **`.fortune`\
+    \n\n**Syntax : **__.fortune__\
     \n**Usage : **Fortune teller\
-    \n\n**Syntax : **`.qquote`\
+    \n\n**Syntax : **__.qquote__\
     \n**Usage : **Random quote generator\
-    \n\n**Syntax : **`.fakeid`\
+    \n\n**Syntax : **__.fakeid__\
     \n**Usage : **Random fakeid generator\
-    \n\n**Syntax : **`.kwot`\
+    \n\n**Syntax : **__.kwot__\
     \n**Usage : **An awesome random quote generator.\
-    \n\n**Syntax : **`.qpro`\
+    \n\n**Syntax : **__.qpro__\
     \n**Usage : **Programming Quotes\
     "
     }

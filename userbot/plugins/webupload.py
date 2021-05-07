@@ -149,12 +149,12 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "webupload": "**Plugin :** `webupload`\
-    \n\n•  **Syntax : **`.webupload` --(`fileio`|`oload`|`anonfiles`|`transfer`|`filebin`|`anonymousfiles`|`vshare`|`bayfiles`) or \
-    \n         `.webupload` (path of file) --(`fileio`|`oload`|`anonfiles`|`transfer`|`filebin`|`anonymousfiles`|`vshare`|`bayfiles`)\
+        "webupload": "**Plugin :** __webupload__\
+    \n\n•  **Syntax : **__.webupload__ --(__fileio__|__oload__|__anonfiles__|__transfer__|__filebin__|__anonymousfiles__|__vshare__|__bayfiles__) or \
+    \n         __.webupload__ (path of file) --(__fileio__|__oload__|__anonfiles__|__transfer__|__filebin__|__anonymousfiles__|__vshare__|__bayfiles__)\
     \n•  **Usage : **__Upload the file to web according to your choice__\
-    \n•  **Example : **`.webupload --anonfiles` tag this to a file\
-    \n\n•  **Syntax :** `.labstack` Reply to a media file or provide a directory\
+    \n•  **Example : **__.webupload --anonfiles__ tag this to a file\
+    \n\n•  **Syntax :** __.labstack__ Reply to a media file or provide a directory\
     \n•  **Usage : **__Upload the file to labstack for 7 days.__"
     }
 )

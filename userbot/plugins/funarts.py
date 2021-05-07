@@ -6,7 +6,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "`━━━━━┓ \n┓┓┓┓┓┃\n┓┓┓┓┓┃　ヽ○ノ ⇦ Me When You Joined \n┓┓┓┓┓┃.     /　 \n┓┓┓┓┓┃ ノ) \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
+    mentions = "__━━━━━┓ \n┓┓┓┓┓┃\n┓┓┓┓┓┃　ヽ○ノ ⇦ Me When You Joined \n┓┓┓┓┓┃.     /　 \n┓┓┓┓┓┃ ノ) \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃__"
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
         chat, filter=ChannelParticipantsAdmins
@@ -26,7 +26,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "`😏/\n/▌ \n/ \\n████\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\😦\n╬╬/▌\n╬╬/\`"
+    mentions = "__😏/\n/▌ \n/ \\n████\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\n╬╬\😦\n╬╬/▌\n╬╬/\__"
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
         chat, filter=ChannelParticipantsAdmins
@@ -46,7 +46,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "`😲💨  🔥\n/|\     🔥🔥\n/ \   🔥🔥🔥`"
+    mentions = "__😲💨  🔥\n/|\     🔥🔥\n/ \   🔥🔥🔥__"
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
         chat, filter=ChannelParticipantsAdmins
@@ -66,7 +66,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "`.      😎\n          |\👐\n         / \\\n━━━━━┓ ＼＼ \n┓┓┓┓┓┃\n┓┓┓┓┓┃ ヽ😩ノ\n┓┓┓┓┓┃ 　 /　\n┓┓┓┓┓┃  ノ)　 \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃`"
+    mentions = "__.      😎\n          |\👐\n         / \\\n━━━━━┓ ＼＼ \n┓┓┓┓┓┃\n┓┓┓┓┓┃ ヽ😩ノ\n┓┓┓┓┓┃ 　 /　\n┓┓┓┓┓┃  ノ)　 \n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃\n┓┓┓┓┓┃__"
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
         chat, filter=ChannelParticipantsAdmins
@@ -86,7 +86,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "`📔📚             📚\n📓📚📖  😫  📚📚📓\n📕📚📚  📝  📗💻📘\n📖⁣📖📖📖📖📖📖📖📖`"
+    mentions = "__📔📚             📚\n📓📚📖  😫  📚📚📓\n📕📚📚  📝  📗💻📘\n📖⁣📖📖📖📖📖📖📖📖__"
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
         chat, filter=ChannelParticipantsAdmins
@@ -135,16 +135,16 @@ async def test(event):
 
 CMD_HELP.update(
     {
-        "funarts": """**Plugin : **`funarts`
+        "funarts": """**Plugin : **__funarts__
 
 **Commands : **
-  •  `.join`
-  •  `.climb`
-  •  `.aag`
-  •  `.push`
-  •  `.work`
-  •  `.lmoon`
-  •  `.city`
+  •  __.join__
+  •  __.climb__
+  •  __.aag__
+  •  __.push__
+  •  __.work__
+  •  __.lmoon__
+  •  __.city__
   
 **Function : **__Just like art plugin this are some other arts__"""
     }

@@ -46,7 +46,7 @@ async def monito_p_m_s(event):
                     LOG_CHATS_.COUNT = 0
                 LOG_CHATS_.NEWPM = await event.client.send_message(
                     Config.PM_LOGGER_GROUP_ID,
-                    f"👤{_format.mentionuser(sender.first_name , sender.id)} has sent a new message \nId : `{chat.id}`",
+                    f"👤{_format.mentionuser(sender.first_name , sender.id)} has sent a new message \nId : __{chat.id}__",
                 )
             try:
                 if event.message:
@@ -78,13 +78,13 @@ async def log_tagged_messages(event):
     except Exception as e:
         LOGS.info(str(e))
     messaget = media_type(event)
-    resalt = f"#TAGS \n<b>Group : </b><code>{hmm.title}</code>"
+    resalt = f"#TAGS \n<b>Group : </b>__{hmm.title}__"
     if full is not None:
         resalt += (
             f"\n<b>From : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
         )
     if messaget is not None:
-        resalt += f"\n<b>Message type : </b><code>{messaget}</code>"
+        resalt += f"\n<b>Message type : </b>__{messaget}__"
     else:
         resalt += f"\n<b>Message : </b>{event.message.message}"
     resalt += f"\n<b>Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
@@ -108,11 +108,11 @@ async def log(log_text):
             textx = user + log_text.pattern_match.group(1)
             await log_text.client.send_message(BOTLOG_CHATID, textx)
         else:
-            await log_text.edit("`What am I supposed to log?`")
+            await log_text.edit("__What am I supposed to log?__")
             return
-        await log_text.edit("`Logged Successfully`")
+        await log_text.edit("__Logged Successfully__")
     else:
-        await log_text.edit("`This feature requires Logging to be enabled!`")
+        await log_text.edit("__This feature requires Logging to be enabled!__")
     await asyncio.sleep(2)
     await log_text.delete()
 
@@ -124,7 +124,7 @@ async def set_no_log_p_m(event):
         if no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.disapprove(chat.id)
             await edit_delete(
-                event, "`logging of messages from this group has been started`", 5
+                event, "__logging of messages from this group has been started__", 5
             )
 
 
@@ -135,7 +135,7 @@ async def set_no_log_p_m(event):
         if not no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.approve(chat.id)
             await edit_delete(
-                event, "`Logging of messages from this chat has been stopped`", 5
+                event, "__Logging of messages from this chat has been stopped__", 5
             )
 
 
@@ -154,16 +154,16 @@ async def set_pmlog(event):
         PMLOG = True
     if PMLOG:
         if h_type:
-            await event.edit("`Pm logging is already enabled`")
+            await event.edit("__Pm logging is already enabled__")
         else:
             addgvar("PMLOG", h_type)
-            await event.edit("`Pm logging is disabled`")
+            await event.edit("__Pm logging is disabled__")
     else:
         if h_type:
             addgvar("PMLOG", h_type)
-            await event.edit("`Pm logging is enabled`")
+            await event.edit("__Pm logging is enabled__")
         else:
-            await event.edit("`Pm logging is already disabled`")
+            await event.edit("__Pm logging is already disabled__")
 
 
 @bot.on(admin_cmd(pattern="grplog (on|off)$"))
@@ -181,30 +181,30 @@ async def set_grplog(event):
         GRPLOG = True
     if GRPLOG:
         if h_type:
-            await event.edit("`Group logging is already enabled`")
+            await event.edit("__Group logging is already enabled__")
         else:
             addgvar("GRPLOG", h_type)
-            await event.edit("`Group logging is disabled`")
+            await event.edit("__Group logging is disabled__")
     else:
         if h_type:
             addgvar("GRPLOG", h_type)
-            await event.edit("`Group logging is enabled`")
+            await event.edit("__Group logging is enabled__")
         else:
-            await event.edit("`Group logging is already disabled`")
+            await event.edit("__Group logging is already disabled__")
 
 
 CMD_HELP.update(
     {
-        "logchats": "**Plugin : **`logchats`\
-        \n\n•  **Syntax : **`.save`\
+        "logchats": "**Plugin : **__logchats__\
+        \n\n•  **Syntax : **__.save__\
         \n•  **Function : **__Saves tagged message in private group .__\
-        \n\n•  **Syntax : **`.log`\
+        \n\n•  **Syntax : **__.log__\
         \n•  **Function : **__By default will log all private chat messages if you use .nolog and want to log again then you need to use this__\
-        \n\n•  **Syntax : **`.nolog`\
+        \n\n•  **Syntax : **__.nolog__\
         \n•  **Function : **__Stops logging from a private chat or group where you used__\
-        \n\n•  **Syntax : **`.pmlog on/off`\
+        \n\n•  **Syntax : **__.pmlog on/off__\
         \n•  **Function : **__To turn on and turn off personal messages logging__\
-        \n\n•  **Syntax : **`.nolog`\
+        \n\n•  **Syntax : **__.nolog__\
         \n•  **Function : **__To turn on and turn off Group messages(tagged) logging__"
     }
 )

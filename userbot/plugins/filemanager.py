@@ -20,13 +20,13 @@ async def lst(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name __{cat}__ check again",
         )
         return
     path = Path(cat) if cat else os.getcwd()
     if os.path.isdir(path):
         if cat:
-            msg = "Folders and Files in `{}` :\n".format(path)
+            msg = "Folders and Files in __{}__ :\n".format(path)
         else:
             msg = "Folders and Files in Current Directory :\n"
         lists = os.listdir(path)
@@ -37,23 +37,23 @@ async def lst(event):
             if not os.path.isdir(catpath):
                 size = os.stat(catpath).st_size
                 if str(contents).endswith((".mp3", ".flac", ".wav", ".m4a")):
-                    files += "🎵" + f"`{contents}`\n"
+                    files += "🎵" + f"__{contents}__\n"
                 if str(contents).endswith((".opus")):
-                    files += "🎙" + f"`{contents}`\n"
+                    files += "🎙" + f"__{contents}__\n"
                 elif str(contents).endswith(
                     (".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")
                 ):
-                    files += "🎞" + f"`{contents}`\n"
+                    files += "🎞" + f"__{contents}__\n"
                 elif str(contents).endswith((".zip", ".tar", ".tar.gz", ".rar")):
-                    files += "🗜" + f"`{contents}`\n"
+                    files += "🗜" + f"__{contents}__\n"
                 elif str(contents).endswith(
                     (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico")
                 ):
-                    files += "🖼" + f"`{contents}`\n"
+                    files += "🖼" + f"__{contents}__\n"
                 else:
-                    files += "📄" + f"`{contents}`\n"
+                    files += "📄" + f"__{contents}__\n"
             else:
-                folders += f"📁`{contents}`\n"
+                folders += f"📁__{contents}__\n"
         msg = msg + folders + files if files or folders else msg + "__empty path__"
     else:
         size = os.stat(path).st_size
@@ -73,11 +73,11 @@ async def lst(event):
         time.ctime(os.path.getctime(path))
         time2 = time.ctime(os.path.getmtime(path))
         time3 = time.ctime(os.path.getatime(path))
-        msg += f"**Location :** `{str(path)}`\n"
-        msg += f"**icon :** `{mode}`\n"
-        msg += f"**Size :** `{humanbytes(size)}`\n"
-        msg += f"**Last Modified Time:** `{time2}`\n"
-        msg += f"**Last Accessed Time:** `{time3}`"
+        msg += f"**Location :** __{str(path)}__\n"
+        msg += f"**icon :** __{mode}__\n"
+        msg += f"**Size :** __{humanbytes(size)}__\n"
+        msg += f"**Last Modified Time:** __{time2}__\n"
+        msg += f"**Last Accessed Time:** __{time3}__"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "ls.txt"
@@ -105,16 +105,16 @@ async def lst(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name __{cat}__ check again",
         )
         return
     catcmd = f"rm -rf {path}"
     if os.path.isdir(path):
         await _catutils.runcmd(catcmd)
-        await edit_or_reply(event, f"Succesfully removed `{path}` directory")
+        await edit_or_reply(event, f"Succesfully removed __{path}__ directory")
     else:
         await _catutils.runcmd(catcmd)
-        await edit_or_reply(event, f"Succesfully removed `{path}` file")
+        await edit_or_reply(event, f"Succesfully removed __{path}__ file")
 
 
 @bot.on(admin_cmd(pattern="mkdir(?: |$)(.*)", outgoing=True, command="mkdir"))
@@ -143,7 +143,7 @@ async def _(event):
     await asyncio.sleep(2)
     try:
         await _catutils.runcmd(f"mkdir {original}")
-        await mone.edit(f"Successfully created the directory `{original}`")
+        await mone.edit(f"Successfully created the directory __{original}__")
     except Exception as e:
         await edit_delete(mone, str(e), parse_mode=parse_pre)
 
@@ -172,14 +172,14 @@ async def _(event):
     if not os.path.exists(original):
         await edit_delete(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name __{cat}__ check again",
         )
         return
     mone = await edit_or_reply(event, "copying the file ...", parse_mode=parse_pre)
     await asyncio.sleep(2)
     try:
         await _catutils.runcmd(f"cp -r {original} {location}")
-        await mone.edit(f"Successfully copied the `{original}` to `{location}`")
+        await mone.edit(f"Successfully copied the __{original}__ to __{location}__")
     except Exception as e:
         await edit_delete(mone, str(e), parse_mode=parse_pre)
 
@@ -208,36 +208,36 @@ async def _(event):
     if not os.path.exists(original):
         await edit_delete(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name __{cat}__ check again",
         )
         return
     mone = await edit_or_reply(event, "Moving the file ...", parse_mode=parse_pre)
     await asyncio.sleep(2)
     try:
         shutil.move(original, location)
-        await mone.edit(f"Successfully moved the `{original}` to `{location}`")
+        await mone.edit(f"Successfully moved the __{original}__ to __{location}__")
     except Exception as e:
         await edit_delete(mone, str(e), parse_mode=parse_pre)
 
 
 CMD_HELP.update(
     {
-        "filemanager": "**Plugin :**`filemanager`\
+        "filemanager": "**Plugin :**__filemanager__\
      \n\nList Files plugin for userbot \
-     \n  •  **Syntax :** `.ls`\
+     \n  •  **Syntax :** __.ls__\
      \n  •  **Function :** will return files from current working directory\
      \n\n  •  **Syntax :** .ls path\
      \n  •  **Function :** will return output according to path  \
      \n\n  •  **Syntax :** .ls file path\
      \n  •  **Function :** will return file details\
      \n\nSimple Module for people who dont wanna use shell executor for listing files.\
-     \n\n  •  **Syntax :** `.rem path`\
+     \n\n  •  **Syntax :** __.rem path__\
      \n  •  **Function :** To delete the required item from the bot server\
-     \n\n  •  **Syntax :** `.mkdir foldername`\
+     \n\n  •  **Syntax :** __.mkdir foldername__\
      \n  •  **Function :** Creates a new empty folder in the server\
-     \n\n  •  **Syntax :** `.mvto frompath ; topath`\
+     \n\n  •  **Syntax :** __.mvto frompath ; topath__\
      \n  •  **Function :** Move a file from one location to other location in bot server\
-     \n\n  •  **Syntax :** `.cpto frompath ; topath`\
+     \n\n  •  **Syntax :** __.cpto frompath ; topath__\
      \n  •  **Function :** Copy a file from one location to other location in bot server\
 "
     }

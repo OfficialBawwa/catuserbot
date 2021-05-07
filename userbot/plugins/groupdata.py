@@ -45,7 +45,7 @@ async def _(event):
     except Exception:
         return await edit_or_reply(
             event,
-            f"{_format.mentionuser(user.first_name ,user.id)} `is not admin of this this {event.chat.title} chat`",
+            f"{_format.mentionuser(user.first_name ,user.id)} __is not admin of this this {event.chat.title} chat__",
         )
     output = f"**Admin rights of **{_format.mentionuser(user.first_name ,user.id)} **in {event.chat.title} chat are **\n"
     output += f"__Change info :__ {c_info}\n"
@@ -88,7 +88,7 @@ async def _(event):
             chat, filter=ChannelParticipantsAdmins
         ):
             if not x.deleted and isinstance(x.participant, ChannelParticipantCreator):
-                mentions += "\n 👑 [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n 👑 [{}](tg://user?id={}) __{}__".format(
                     x.first_name, x.id, x.id
                 )
         mentions += "\n"
@@ -96,10 +96,10 @@ async def _(event):
             chat, filter=ChannelParticipantsAdmins
         ):
             if x.deleted:
-                mentions += "\n `{}`".format(x.id)
+                mentions += "\n __{}__".format(x.id)
             else:
                 if isinstance(x.participant, ChannelParticipantAdmin):
-                    mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
+                    mentions += "\n ⚜️ [{}](tg://user?id={}) __{}__".format(
                         x.first_name, x.id, x.id
                     )
     except Exception as e:
@@ -134,11 +134,11 @@ async def _(event):
             chat, filter=ChannelParticipantsBots
         ):
             if isinstance(x.participant, ChannelParticipantAdmin):
-                mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n ⚜️ [{}](tg://user?id={}) __{}__".format(
                     x.first_name, x.id, x.id
                 )
             else:
-                mentions += "\n [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n [{}](tg://user?id={}) __{}__".format(
                     x.first_name, x.id, x.id
                 )
     except Exception as e:
@@ -159,7 +159,7 @@ async def get_users(show):
     await show.get_input_chat()
     if not input_str:
         if not show.is_group:
-            await edit_or_reply(show, "`Are you sure this is a group?`")
+            await edit_or_reply(show, "__Are you sure this is a group?__")
             return
     else:
         mentions_heading = "Users in {} Group: \n".format(input_str)
@@ -167,25 +167,25 @@ async def get_users(show):
         try:
             chat = await show.client.get_entity(input_str)
         except Exception as e:
-            await edit_delete(show, f"`{str(e)}`", 10)
-    catevent = await edit_or_reply(show, "`getting users list wait...`  ")
+            await edit_delete(show, f"__{str(e)}__", 10)
+    catevent = await edit_or_reply(show, "__getting users list wait...__  ")
     try:
         if not show.pattern_match.group(1):
             async for user in show.client.iter_participants(show.chat_id):
                 if not user.deleted:
                     mentions += (
-                        f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
+                        f"\n[{user.first_name}](tg://user?id={user.id}) __{user.id}__"
                     )
                 else:
-                    mentions += f"\nDeleted Account `{user.id}`"
+                    mentions += f"\nDeleted Account __{user.id}__"
         else:
             async for user in show.client.iter_participants(chat.id):
                 if not user.deleted:
                     mentions += (
-                        f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
+                        f"\n[{user.first_name}](tg://user?id={user.id}) __{user.id}__"
                     )
                 else:
-                    mentions += f"\nDeleted Account `{user.id}`"
+                    mentions += f"\nDeleted Account __{user.id}__"
     except Exception as e:
         mentions += " " + str(e) + "\n"
     if len(mentions) > Config.MAX_MESSAGE_SIZE_LIMIT:
@@ -207,7 +207,7 @@ async def get_users(show):
 @bot.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="chatinfo(?: |$)(.*)", allow_sudo=True))
 async def info(event):
-    catevent = await edit_or_reply(event, "`Analysing the chat...`")
+    catevent = await edit_or_reply(event, "__Analysing the chat...__")
     chat = await get_chatinfo(event, catevent)
     caption = await fetch_info(chat, event)
     try:
@@ -215,9 +215,9 @@ async def info(event):
     except Exception as e:
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, f"**Error in chatinfo : **\n`{str(e)}`"
+                BOTLOG_CHATID, f"**Error in chatinfo : **\n__{str(e)}__"
             )
-        await catevent.edit("`An unexpected error has occurred.`")
+        await catevent.edit("__An unexpected error has occurred.__")
 
 
 async def get_chatinfo(event, catevent):
@@ -241,15 +241,15 @@ async def get_chatinfo(event, catevent):
         try:
             chat_info = await event.client(GetFullChannelRequest(chat))
         except ChannelInvalidError:
-            await catevent.edit("`Invalid channel/group`")
+            await catevent.edit("__Invalid channel/group__")
             return None
         except ChannelPrivateError:
             await catevent.edit(
-                "`This is a private channel/group or I am banned from there`"
+                "__This is a private channel/group or I am banned from there__"
             )
             return None
         except ChannelPublicGroupNaError:
-            await catevent.edit("`Channel or supergroup doesn't exist`")
+            await catevent.edit("__Channel or supergroup doesn't exist__")
             return None
         except (TypeError, ValueError) as err:
             await catevent.edit(str(err))
@@ -403,7 +403,7 @@ async def fetch_info(chat, event):
             bots += 1
 
     caption = "<b>CHAT INFO:</b>\n"
-    caption += f"ID: <code>{chat_obj_info.id}</code>\n"
+    caption += f"ID: __{chat_obj_info.id}__\n"
     if chat_title is not None:
         caption += f"{chat_type} name: {chat_title}\n"
     if former_title is not None:  # Meant is the very first title
@@ -420,31 +420,31 @@ async def fetch_info(chat, event):
             f'Creator: <a href="tg://user?id={creator_id}">{creator_firstname}</a>\n'
         )
     if created is not None:
-        caption += f"Created: <code>{created.date().strftime('%b %d, %Y')} - {created.time()}</code>\n"
+        caption += f"Created: __{created.date().strftime('%b %d, %Y')} - {created.time()}__\n"
     else:
-        caption += f"Created: <code>{chat_obj_info.date.date().strftime('%b %d, %Y')} - {chat_obj_info.date.time()}</code> {warn_emoji}\n"
+        caption += f"Created: __{chat_obj_info.date.date().strftime('%b %d, %Y')} - {chat_obj_info.date.time()}__ {warn_emoji}\n"
     caption += f"Data Centre ID: {dc_id}\n"
     if exp_count is not None:
         chat_level = int((1 + sqrt(1 + 7 * exp_count / 14)) / 2)
-        caption += f"{chat_type} level: <code>{chat_level}</code>\n"
+        caption += f"{chat_type} level: __{chat_level}__\n"
     if messages_viewable is not None:
-        caption += f"Viewable messages: <code>{messages_viewable}</code>\n"
+        caption += f"Viewable messages: __{messages_viewable}__\n"
     if messages_sent:
-        caption += f"Messages sent: <code>{messages_sent}</code>\n"
+        caption += f"Messages sent: __{messages_sent}__\n"
     elif messages_sent_alt:
-        caption += f"Messages sent: <code>{messages_sent_alt}</code> {warn_emoji}\n"
+        caption += f"Messages sent: __{messages_sent_alt}__ {warn_emoji}\n"
     if members is not None:
-        caption += f"Members: <code>{members}</code>\n"
+        caption += f"Members: __{members}__\n"
     if admins is not None:
-        caption += f"Administrators: <code>{admins}</code>\n"
+        caption += f"Administrators: __{admins}__\n"
     if bots_list:
-        caption += f"Bots: <code>{bots}</code>\n"
+        caption += f"Bots: __{bots}__\n"
     if members_online:
-        caption += f"Currently online: <code>{members_online}</code>\n"
+        caption += f"Currently online: __{members_online}__\n"
     if restrcited_users is not None:
-        caption += f"Restricted users: <code>{restrcited_users}</code>\n"
+        caption += f"Restricted users: __{restrcited_users}__\n"
     if banned_users is not None:
-        caption += f"Banned users: <code>{banned_users}</code>\n"
+        caption += f"Banned users: __{banned_users}__\n"
     if group_stickers is not None:
         caption += f'{chat_type} stickers: <a href="t.me/addstickers/{chat.full_chat.stickerset.short_name}">{group_stickers}</a>\n'
     caption += "\n"
@@ -454,7 +454,7 @@ async def fetch_info(chat, event):
             hasattr(chat_obj_info, "slowmode_enabled")
             and chat_obj_info.slowmode_enabled
         ):
-            caption += f", <code>{slowmode_time}s</code>\n\n"
+            caption += f", __{slowmode_time}s__\n\n"
         else:
             caption += "\n\n"
         caption += f"Supergroup: {supergroup}\n\n"
@@ -471,22 +471,22 @@ async def fetch_info(chat, event):
     if hasattr(chat_obj_info, "verified"):
         caption += f"Verified by Telegram: {verified}\n\n"
     if description:
-        caption += f"Description: \n<code>{description}</code>\n"
+        caption += f"Description: \n__{description}__\n"
     return caption
 
 
 CMD_HELP.update(
     {
-        "groupdata": "**Plugin : **`groupdata`\
-    \n\n•  **Syntax : **`.adminperm (username/reply)`\
+        "groupdata": "**Plugin : **__groupdata__\
+    \n\n•  **Syntax : **__.adminperm (username/reply)__\
     \n•  **Function : **__Shows you the admin permissions in the group.__\
-    \n\n•  **Syntax : **`.admins or .admins <username of group >`\
+    \n\n•  **Syntax : **__.admins or .admins <username of group >__\
     \n•  **Function : **__Retrieves a list of admins in the chat.__\
-    \n\n•  **Syntax : **`.bots or .bots <username of group >`\
+    \n\n•  **Syntax : **__.bots or .bots <username of group >__\
     \n•  **Function : **__Retrieves a list of bots in the chat.__\
-    \n\n•  **Syntax : **`.users or .users <name of member>`\
+    \n\n•  **Syntax : **__.users or .users <name of member>__\
     \n•  **Function : **__Retrieves all (or queried) users in the chat.__\
-    \n\n•  **Syntax : **`.chatinfo or .chatinfo <username of group>`\
+    \n\n•  **Syntax : **__.chatinfo or .chatinfo <username of group>__\
     \n•  **Function : **__Shows you the total information of the required chat.__"
     }
 )

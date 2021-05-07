@@ -38,7 +38,7 @@ async def fastpurger(event):
                     msgs = []
         elif input_str:
             return await edit_or_reply(
-                event, f"**Error**\n`{input_str} is not an integer. Use proper syntax.`"
+                event, f"**Error**\n__{input_str} is not an integer. Use proper syntax.__"
             )
         else:
             async for msg in event.client.iter_messages(
@@ -53,7 +53,7 @@ async def fastpurger(event):
     else:
         await edit_or_reply(
             event,
-            "`No message specified.`",
+            "__No message specified.__",
         )
         return
     if msgs:
@@ -61,12 +61,12 @@ async def fastpurger(event):
     await event.delete()
     hi = await event.client.send_message(
         event.chat_id,
-        "`Fast purge complete!\nPurged " + str(count) + " messages.`",
+        "__Fast purge complete!\nPurged " + str(count) + " messages.__",
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "#PURGE \n`Purge of " + str(count) + " messages done successfully.`",
+            "#PURGE \n__Purge of " + str(count) + " messages done successfully.__",
         )
     await sleep(5)
     await hi.delete()
@@ -84,10 +84,10 @@ async def purge_from(event):
         purgelist[event.chat_id] = reply_message
         await edit_delete(
             event,
-            "`This Message marked for deletion. Reply to another message with purgeto to delete all messages in between.`",
+            "__This Message marked for deletion. Reply to another message with purgeto to delete all messages in between.__",
         )
     else:
-        await edit_delete(event, "`Reply to a message to let me know what to delete.`")
+        await edit_delete(event, "__Reply to a message to let me know what to delete.__")
 
 
 @bot.on(admin_cmd(pattern="purgeto$"))
@@ -103,12 +103,12 @@ async def purge_to(event):
     except KeyError:
         return await edit_delete(
             event,
-            "`First mark the messsage with purgefrom and then mark purgeto .So, I can delete in between Messages`",
+            "__First mark the messsage with purgefrom and then mark purgeto .So, I can delete in between Messages__",
         )
     if not reply or not from_message:
         return await edit_delete(
             event,
-            "`First mark the messsage with purgefrom and then mark purgeto .So, I can delete in between Messages`",
+            "__First mark the messsage with purgefrom and then mark purgeto .So, I can delete in between Messages__",
         )
     try:
         to_message = await reply_id(event)
@@ -127,15 +127,15 @@ async def purge_to(event):
             await event.client.delete_messages(chat, msgs)
         await edit_delete(
             event,
-            "`Fast purge complete!\nPurged " + str(count) + " messages.`",
+            "__Fast purge complete!\nPurged " + str(count) + " messages.__",
         )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "#PURGE \n`Purge of " + str(count) + " messages done successfully.`",
+                "#PURGE \n__Purge of " + str(count) + " messages done successfully.__",
             )
     except Exception as e:
-        await edit_delete(event, f"**Error**\n`{str(e)}`")
+        await edit_delete(event, f"**Error**\n__{str(e)}__")
 
 
 @bot.on(admin_cmd(pattern="purgeme"))
@@ -156,12 +156,12 @@ async def purgeme(event):
 
     smsg = await event.client.send_message(
         event.chat_id,
-        "**Purge complete!**` Purged " + str(count) + " messages.`",
+        "**Purge complete!**__ Purged " + str(count) + " messages.__",
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "#PURGEME \n`Purge of " + str(count) + " messages done successfully.`",
+            "#PURGEME \n__Purge of " + str(count) + " messages done successfully.__",
         )
     await sleep(5)
     await smsg.delete()
@@ -183,27 +183,27 @@ async def delete_it(event):
                 await msg_src.delete()
                 if BOTLOG:
                     await event.client.send_message(
-                        BOTLOG_CHATID, "#DEL \n`Deletion of message was successful`"
+                        BOTLOG_CHATID, "#DEL \n__Deletion of message was successful__"
                     )
             except rpcbaseerrors.BadRequestError:
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        "`Well, I can't delete a message. I am not an admin`",
+                        "__Well, I can't delete a message. I am not an admin__",
                     )
         elif input_str:
             if not input_str.startswith("var"):
-                await edit_or_reply(event, "`Well the time you mentioned is invalid.`")
+                await edit_or_reply(event, "__Well the time you mentioned is invalid.__")
         else:
             try:
                 await msg_src.delete()
                 await event.delete()
                 if BOTLOG:
                     await event.client.send_message(
-                        BOTLOG_CHATID, "#DEL \n`Deletion of message was successful`"
+                        BOTLOG_CHATID, "#DEL \n__Deletion of message was successful__"
                     )
             except rpcbaseerrors.BadRequestError:
-                await edit_or_reply(event, "`Well, I can't delete a message`")
+                await edit_or_reply(event, "__Well, I can't delete a message__")
     else:
         if not input_Str:
             await event.delete()
@@ -211,16 +211,16 @@ async def delete_it(event):
 
 CMD_HELP.update(
     {
-        "purge": "**Plugin : **`purge`\
-        \n\n•  **Syntax : **`.purge <count> reply`\
+        "purge": "**Plugin : **__purge__\
+        \n\n•  **Syntax : **__.purge <count> reply__\
         \n•  **Function : **__Deletes the x(count) amount of messages from the replied message if you don't use count then deletes all messages from there.__\
-        \n\n•  **Syntax : **`.purgefrom reply`\
+        \n\n•  **Syntax : **__.purgefrom reply__\
         \n•  **Function : **__Will Mark that message as oldest message of interval to delete messages.__\
-        \n\n•  **Syntax : **`.purgeto reply`\
+        \n\n•  **Syntax : **__.purgeto reply__\
         \n•  **Function : **__Will Mark that message as newest message of interval to delete messages and will delete all messages in that interval.__\
-        \n\n•  **Syntax : **`.purgeme <count>`\
+        \n\n•  **Syntax : **__.purgeme <count>__\
         \n•  **Function : **__Deletes x(count) amount of your latest messages.__\
-        \n\n•  **Syntax : **`.del <count> reply`\
+        \n\n•  **Syntax : **__.del <count> reply__\
         \n•  **Function : **__Deletes the message you replied to in x(count) seconds if count is not used then deletes immediately.__"
     }
 )

@@ -1,5 +1,5 @@
 """
-`Credits` @amnd33p
+__Credits__ @amnd33p
 Modified by @mrconfused
 """
 import io
@@ -19,7 +19,7 @@ async def _(event):
     if Config.CHROME_BIN is None:
         await edit_or_reply(event, "Need to install Google Chrome. Module Stopping.")
         return
-    catevent = await edit_or_reply(event, "`Processing ...`")
+    catevent = await edit_or_reply(event, "__Processing ...__")
     start = datetime.now()
     try:
         chrome_options = webdriver.ChromeOptions()
@@ -30,7 +30,7 @@ async def _(event):
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.binary_location = Config.CHROME_BIN
-        await event.edit("`Starting Google Chrome BIN`")
+        await event.edit("__Starting Google Chrome BIN__")
         driver = webdriver.Chrome(chrome_options=chrome_options)
         input_str = event.pattern_match.group(1)
         inputstr = input_str
@@ -39,10 +39,10 @@ async def _(event):
             inputstr = "http://" + input_str
             caturl = url(inputstr)
         if not caturl:
-            await catevent.edit("`The given input is not supported url`")
+            await catevent.edit("__The given input is not supported url__")
             return
         driver.get(inputstr)
-        await catevent.edit("`Calculating Page Dimensions`")
+        await catevent.edit("__Calculating Page Dimensions__")
         height = driver.execute_script(
             "return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);"
         )
@@ -54,14 +54,14 @@ async def _(event):
         # for good measure to make the scroll bars disappear
         im_png = driver.get_screenshot_as_png()
         # saves screenshot of entire page
-        await catevent.edit("`Stoppping Chrome Bin`")
+        await catevent.edit("__Stoppping Chrome Bin__")
         driver.close()
         message_id = None
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
         end = datetime.now()
         ms = (end - start).seconds
-        hmm = f"**url : **{input_str} \n**Time :** `{ms} seconds`"
+        hmm = f"**url : **{input_str} \n**Time :** __{ms} seconds__"
         await catevent.delete()
         with io.BytesIO(im_png) as out_file:
             out_file.name = input_str + ".PNG"
@@ -75,7 +75,7 @@ async def _(event):
                 silent=True,
             )
     except Exception:
-        await catevent.edit(f"`{traceback.format_exc()}`")
+        await catevent.edit(f"__{traceback.format_exc()}__")
 
 
 @bot.on(admin_cmd(pattern="scapture (.*)"))
@@ -87,10 +87,10 @@ async def _(event):
     if Config.SCREEN_SHOT_LAYER_ACCESS_KEY is None:
         await edit_or_reply(
             event,
-            "`Need to get an API key from https://screenshotlayer.com/product and need to set it SCREEN_SHOT_LAYER_ACCESS_KEY !`",
+            "__Need to get an API key from https://screenshotlayer.com/product and need to set it SCREEN_SHOT_LAYER_ACCESS_KEY !__",
         )
         return
-    catevent = await edit_or_reply(event, "`Processing ...`")
+    catevent = await edit_or_reply(event, "__Processing ...__")
     sample_url = "https://api.screenshotlayer.com/api/capture?access_key={}&url={}&fullpage={}&viewport={}&format={}&force={}"
     input_str = event.pattern_match.group(1)
     inputstr = input_str
@@ -99,7 +99,7 @@ async def _(event):
         inputstr = "http://" + input_str
         caturl = url(inputstr)
     if not caturl:
-        await catevent.edit("`The given input is not supported url`")
+        await catevent.edit("__The given input is not supported url__")
         return
     response_api = requests.get(
         sample_url.format(
@@ -110,7 +110,7 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     end = datetime.now()
     ms = (end - start).seconds
-    hmm = f"**url : **{input_str} \n**Time :** `{ms} seconds`"
+    hmm = f"**url : **{input_str} \n**Time :** __{ms} seconds__"
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
             screenshot_image.name = "screencapture.png"
@@ -126,15 +126,15 @@ async def _(event):
             except Exception as e:
                 await catevent.edit(str(e))
     else:
-        await catevent.edit(f"`{response_api.text}`")
+        await catevent.edit(f"__{response_api.text}__")
 
 
 CMD_HELP.update(
     {
-        "screenshot": "**Plugin : **`screenshot`\
-        \n\n**Syntax : **`.ss <url>`\
+        "screenshot": "**Plugin : **__screenshot__\
+        \n\n**Syntax : **__.ss <url>__\
         \n**Function : **__Takes a screenshot of a website and sends the screenshot.__\
-        \n\n**Syntax : **`.scapture <url>`\
+        \n\n**Syntax : **__.scapture <url>__\
         \n**Function : **__Takes a screenshot of a website and sends the screenshot need to set config var for this.__"
     }
 )

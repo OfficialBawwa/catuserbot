@@ -46,13 +46,13 @@ async def _(event):
             )
             os.remove(directory_name)
             cat = directory_name + ".zip"
-            await mone.edit(f"compressed successfully into `{cat}`")
+            await mone.edit(f"compressed successfully into __{cat}__")
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
     elif input_str:
         if not os.path.exists(input_str):
             await mone.edit(
-                f"There is no such directory or file with the name `{input_str}` check again"
+                f"There is no such directory or file with the name __{input_str}__ check again"
             )
             return
         filePaths = zipdir(input_str)
@@ -60,7 +60,7 @@ async def _(event):
         with zip_file:
             for file in filePaths:
                 zip_file.write(file)
-        await mone.edit("Local file compressed to `{}`".format(input_str + ".zip"))
+        await mone.edit("Local file compressed to __{}__".format(input_str + ".zip"))
 
 
 @bot.on(admin_cmd(pattern="unzip ?(.*)"))
@@ -76,7 +76,7 @@ async def _(event):
             start = datetime.now()
             if not zipfile.is_zipfile(path):
                 await mone.edit(
-                    f"`the given file {str(path)} is not zip file to unzip`"
+                    f"__the given file {str(path)} is not zip file to unzip__"
                 )
             destination = os.path.join(
                 Config.TMP_DOWNLOAD_DIRECTORY,
@@ -87,10 +87,10 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                f"unzipped and stored to `{destination}` \n**Time Taken :** `{ms} seconds`"
+                f"unzipped and stored to __{destination}__ \n**Time Taken :** __{ms} seconds__"
             )
         else:
-            await mone.edit(f"I can't find that path `{input_str}`")
+            await mone.edit(f"I can't find that path __{input_str}__")
     else:
         if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
             os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -111,7 +111,7 @@ async def _(event):
             await mone.edit("Unzipping now")
             if not zipfile.is_zipfile(path):
                 await mone.edit(
-                    f"`the given file {str(path)} is not zip file to unzip`"
+                    f"__the given file {str(path)} is not zip file to unzip__"
                 )
             destination = os.path.join(
                 Config.TMP_DOWNLOAD_DIRECTORY,
@@ -122,7 +122,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                f"unzipped and stored to `{destination}` \n**Time Taken :** `{ms} seconds`"
+                f"unzipped and stored to __{destination}__ \n**Time Taken :** __{ms} seconds__"
             )
             os.remove(path)
 
@@ -181,7 +181,7 @@ async def _(event):
             await mone.edit(str(e))
     elif input_str:
         directory_name = input_str
-        await mone.edit("Local file compressed to `{}`".format(directory_name + ".rar"))
+        await mone.edit("Local file compressed to __{}__".format(directory_name + ".rar"))
 
 
 @bot.on(admin_cmd(pattern=("tar ?(.*)")))
@@ -233,7 +233,7 @@ async def _(event):
             await mone.edit(str(e))
     elif input_str:
         directory_name = input_str
-        await mone.edit("Local file compressed to `{}`".format(output))
+        await mone.edit("Local file compressed to __{}__".format(output))
 
 
 async def create_archive(input_directory):
@@ -291,7 +291,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                "Stored the rar to `{}` in {} seconds.".format(downloaded_file_name, ms)
+                "Stored the rar to __{}__ in {} seconds.".format(downloaded_file_name, ms)
             )
         patoolib.extract_archive(downloaded_file_name, outdir=extracted)
         filename = sorted(get_lst_of_files(extracted, []))
@@ -329,7 +329,7 @@ async def _(event):
                     await event.client.send_file(
                         event.chat_id,
                         single_file,
-                        caption=f"UnRarred `{caption_rts}`",
+                        caption=f"UnRarred __{caption_rts}__",
                         force_document=force_document,
                         supports_streaming=supports_streaming,
                         allow_cache=False,
@@ -342,7 +342,7 @@ async def _(event):
                 except Exception as e:
                     await event.client.send_message(
                         event.chat_id,
-                        "{} caused `{}`".format(caption_rts, str(e)),
+                        "{} caused __{}__".format(caption_rts, str(e)),
                         reply_to=event.message.id,
                     )
                     # some media were having some issues
@@ -383,11 +383,11 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                "Stored the tar to `{}` in {} seconds.".format(downloaded_file_name, ms)
+                "Stored the tar to __{}__ in {} seconds.".format(downloaded_file_name, ms)
             )
         with tarfile.TarFile.open(downloaded_file_name, "r") as tar_file:
             tar_file.extractall()
-        await mone.edit(f"unzipped and stored to `{downloaded_file_name[:-4]}`")
+        await mone.edit(f"unzipped and stored to __{downloaded_file_name[:-4]}__")
         os.remove(downloaded_file_name)
 
 
@@ -403,18 +403,18 @@ def get_lst_of_files(input_directory, output_lst):
 
 CMD_HELP.update(
     {
-        "archive": "**Plugin : **`archive`\
-    \n\n  •  **Syntax : **`.zip (reply/path)`\
+        "archive": "**Plugin : **__archive__\
+    \n\n  •  **Syntax : **__.zip (reply/path)__\
     \n  •  **Usage : **it will zip that file which you replied or will zip the folder/file in the given path\
-    \n\n  •  **Syntax : **`.unzip (reply to zip file/path`\
+    \n\n  •  **Syntax : **__.unzip (reply to zip file/path__\
     \n  •  **Usage : **it will unzip that zip file or the zip file in the given path\
-    \n\n  •  **Syntax : **`.rar reply to a file/media`\
+    \n\n  •  **Syntax : **__.rar reply to a file/media__\
     \n  •  **Usage : **it will rar that file/media\
-    \n\n  •  **Syntax : **`.tar reply to a file/media`\
+    \n\n  •  **Syntax : **__.tar reply to a file/media__\
     \n  •  **Usage : **it will tar that file/media\
-    \n\n  •  **Syntax : **`.unrar reply to a .rar file`\
+    \n\n  •  **Syntax : **__.unrar reply to a .rar file__\
     \n  •  **Usage : **it will unrar that .rar file\
-    \n\n  •  **Syntax : **`.untar reply to a .tar`\
+    \n\n  •  **Syntax : **__.untar reply to a .tar__\
     \n  •  **Usage : **it will untar that .tar file\
 "
     }

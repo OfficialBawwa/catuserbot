@@ -40,7 +40,7 @@ async def catbot(catmemes):
     try:
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
-        await output[0].edit(f"**Error: **\n`{str(exc)}`")
+        await output[0].edit(f"**Error: **\n__{str(exc)}__")
         os.remove(download_location)
         return
     cat = f"https://telegra.ph{response[0]}"
@@ -79,7 +79,7 @@ async def catbot(catmemes):
     try:
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
-        await output[0].edit(f"**Error: **\n`{str(exc)}`")
+        await output[0].edit(f"**Error: **\n__{str(exc)}__")
         os.remove(download_location)
         return
     cat = f"https://telegra.ph{response[0]}"
@@ -101,7 +101,7 @@ async def catbot(catmemes):
     else:
         await edit_or_reply(
             catmemes,
-            "**Syntax :** reply to image or sticker with `.trap (name of the person to trap);(trapper name)`",
+            "**Syntax :** reply to image or sticker with __.trap (name of the person to trap);(trapper name)__",
         )
         return
     replied = await catmemes.get_reply_message()
@@ -128,7 +128,7 @@ async def catbot(catmemes):
     try:
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
-        await output[0].edit(f"**Error: **\n`{str(exc)}`")
+        await output[0].edit(f"**Error: **\n__{str(exc)}__")
         os.remove(download_location)
         return
     cat = f"https://telegra.ph{response[0]}"
@@ -150,7 +150,7 @@ async def catbot(catmemes):
     else:
         await edit_or_reply(
             catmemes,
-            "**Syntax :** reply to image or sticker with `.phub (username);(text in comment)`",
+            "**Syntax :** reply to image or sticker with __.phub (username);(text in comment)__",
         )
         return
     replied = await catmemes.get_reply_message()
@@ -177,7 +177,7 @@ async def catbot(catmemes):
     try:
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
-        await output[0].edit(f"**Error: **\n`{str(exc)}`")
+        await output[0].edit(f"**Error: **\n__{str(exc)}__")
         os.remove(download_location)
         return
     cat = f"https://telegra.ph{response[0]}"
@@ -189,14 +189,14 @@ async def catbot(catmemes):
 
 CMD_HELP.update(
     {
-        "trolls": "**Plugin : **`trolls`\
-      \n\n• **Syntax :** `.threats`\
+        "trolls": "**Plugin : **__trolls__\
+      \n\n• **Syntax :** __.threats__\
       \n• **Function :** __Just a troll meme try yourself by replying cmd to image/sticker.__\
-      \n\n• **Syntax :** `.trash`\
+      \n\n• **Syntax :** __.trash__\
       \n• **Function :** __Just a troll meme try yourself by replying cmd to image/sticker.__\
-      \n\n• **Syntax :** `.trap (name of the person to trap);(trapper name)`\
+      \n\n• **Syntax :** __.trap (name of the person to trap);(trapper name)__\
       \n• **Function :** __Just a troll meme try yourself by replying cmd to image/sticker. (trap card)__\
-      \n\n• **Syntax :** `.phub (username);(text in comment)`\
+      \n\n• **Syntax :** __.phub (username);(text in comment)__\
       \n• **Function :** __Just a troll meme try yourself by replying cmd to image/sticker. (pornhub comment)__\
       "
     }

@@ -36,7 +36,7 @@ async def kakashi(killer):
         killer,
         f"__**Commando **__{DEF}          \n\n"
         "_/﹋\_\n"
-        "(҂`_´)\n"
+        "(҂___´)\n"
         f"<,︻╦╤─ ҉ - - - {name}\n"
         "_/﹋\_\n",
     )
@@ -405,25 +405,25 @@ async def bluedevildislike(dislike):
 
 CMD_HELP.update(
     {
-        "art": """**Plugin : **`art`
+        "art": """**Plugin : **__art__
     
 **Commands found in art are **
-  •  `.ded <text>`
-  •  `.killer <text>`
-  •  `.monster`
-  •  `.pig`
-  •  `.gun`
-  •  `.dog`
-  •  `.hello`
-  •  `.hmf`
-  •  `.couple`
-  •  `.sup`
-  •  `.india`
-  •  `.wc`
-  •  `.snk`
-  •  `.bye`
-  •  `.shitos`
-  •  `.dislike`
+  •  __.ded <text>__
+  •  __.killer <text>__
+  •  __.monster__
+  •  __.pig__
+  •  __.gun__
+  •  __.dog__
+  •  __.hello__
+  •  __.hmf__
+  •  __.couple__
+  •  __.sup__
+  •  __.india__
+  •  __.wc__
+  •  __.snk__
+  •  __.bye__
+  •  __.shitos__
+  •  __.dislike__
   
 **Function : **__Different kind of art plugins try out yourself__"""
     }

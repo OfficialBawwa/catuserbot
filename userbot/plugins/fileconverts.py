@@ -50,7 +50,7 @@ async def _(cat):
         else:
             await event.edit("Can't Convert")
     else:
-        await event.edit("Syntax : `.stoi` reply to a Telegram normal sticker")
+        await event.edit("Syntax : __.stoi__ reply to a Telegram normal sticker")
 
 
 @bot.on(admin_cmd(pattern="itos$"))
@@ -85,7 +85,7 @@ async def _(cat):
         else:
             await event.edit("Can't Convert")
     else:
-        await event.edit("Syntax : `.itos` reply to a Telegram normal sticker")
+        await event.edit("Syntax : __.itos__ reply to a Telegram normal sticker")
 
 
 async def silently_send_message(conv, text):
@@ -100,7 +100,7 @@ async def silently_send_message(conv, text):
 async def get(event):
     name = event.text[5:]
     if name is None:
-        await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
+        await edit_or_reply(event, "reply to text message as __.ttf <file name>__")
         return
     m = await event.get_reply_message()
     if m.text:
@@ -110,7 +110,7 @@ async def get(event):
         await event.client.send_file(event.chat_id, name, force_document=True)
         os.remove(name)
     else:
-        await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
+        await edit_or_reply(event, "reply to text message as __.ttf <file name>__")
 
 
 @bot.on(admin_cmd(pattern="ftoi$"))
@@ -161,7 +161,7 @@ async def _(event):
         if len(loc) > 2:
             return await edit_delete(
                 event,
-                "wrong syntax . syntax is `.gif quality ; fps(frames per second)`",
+                "wrong syntax . syntax is __.gif quality ; fps(frames per second)__",
             )
         if len(loc) == 2:
             if 0 < loc[0] < 721:
@@ -180,9 +180,9 @@ async def _(event):
     catreply = await event.get_reply_message()
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not catreply or not catreply.media or not catreply.media.document:
-        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+        return await edit_or_reply(event, "__Stupid!, This is not animated sticker.__")
     if catreply.media.document.mime_type != "application/x-tgsticker":
-        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+        return await edit_or_reply(event, "__Stupid!, This is not animated sticker.__")
     catevent = await edit_or_reply(
         event,
         "Converting this Sticker to GiF...\n This may takes upto few mins..",
@@ -225,7 +225,7 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await edit_or_reply(event, "```Reply to any media file.```")
+        await edit_or_reply(event, "______Reply to any media file.______")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
@@ -233,12 +233,12 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if input_str is None:
-        await edit_or_reply(event, "try `.nfc voice` or`.nfc mp3`")
+        await edit_or_reply(event, "try __.nfc voice__ or__.nfc mp3__")
         return
     if input_str in ["mp3", "voice"]:
         event = await edit_or_reply(event, "converting...")
     else:
-        await edit_or_reply(event, "try `.nfc voice` or`.nfc mp3`")
+        await edit_or_reply(event, "try __.nfc voice__ or__.nfc mp3__")
         return
     try:
         start = datetime.now()
@@ -256,7 +256,7 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         await event.edit(
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            "Downloaded to __{}__ in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
         new_required_file_caption = ""
@@ -332,18 +332,18 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "fileconverts": "**Plugin : **`fileconverts`\
-    \n\n**Syntax : **`.stoi` reply to sticker\
+        "fileconverts": "**Plugin : **__fileconverts__\
+    \n\n**Syntax : **__.stoi__ reply to sticker\
     \n**Usage :**Converts sticker to image\
-    \n\n**Syntax : **`.itos` reply to image\
+    \n\n**Syntax : **__.itos__ reply to image\
     \n**Usage :**Converts image to sticker\
-    \n\n**Syntax :** `.ftoi` reply to image file\
+    \n\n**Syntax :** __.ftoi__ reply to image file\
     \n**Usage :** Converts Given image file to straemable form\
-    \n\n**Syntax :** `.gif` reply to animated sticker\
+    \n\n**Syntax :** __.gif__ reply to animated sticker\
     \n**Usage :** Converts Given animated sticker to gif\
-    \n\n**Syntax :** `.ttf file name` reply to text message\
+    \n\n**Syntax :** __.ttf file name__ reply to text message\
     \n**Usage :** Converts Given text message to required file(given file name)\
-    \n\n**Syntax :**`.nfc voice` or `.nfc mp3` reply to required media to extract voice/mp3 :\
+    \n\n**Syntax :**__.nfc voice__ or __.nfc mp3__ reply to required media to extract voice/mp3 :\
     \n**Usage :**Converts the required media file to voice or mp3 file.\
     "
     }

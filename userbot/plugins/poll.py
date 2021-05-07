@@ -31,10 +31,10 @@ async def pollcreator(catpoll):
             await catpoll.delete()
         except PollOptionInvalidError:
             await edit_or_reply(
-                catpoll, "`A poll option used invalid data (the data may be too long).`"
+                catpoll, "__A poll option used invalid data (the data may be too long).__"
             )
         except ForbiddenError:
-            await edit_or_reply(catpoll, "`This chat has forbidden the polls`")
+            await edit_or_reply(catpoll, "__This chat has forbidden the polls__")
         except exception as e:
             await edit_or_reply(catpoll, str(e))
     else:
@@ -57,25 +57,25 @@ async def pollcreator(catpoll):
             except PollOptionInvalidError:
                 await edit_or_reply(
                     catpoll,
-                    "`A poll option used invalid data (the data may be too long).`",
+                    "__A poll option used invalid data (the data may be too long).__",
                 )
             except ForbiddenError:
-                await edit_or_reply(catpoll, "`This chat has forbidden the polls`")
+                await edit_or_reply(catpoll, "__This chat has forbidden the polls__")
             except Exception as e:
                 await edit_or_reply(catpoll, str(e))
         else:
             await edit_or_reply(
                 catpoll,
-                "Make sure that you used Correct syntax `.poll question ; option1 ; option2`",
+                "Make sure that you used Correct syntax __.poll question ; option1 ; option2__",
             )
 
 
 CMD_HELP.update(
     {
-        "poll": "**Plugin :**`poll`\
-        \n\n**Syntax :** `.poll`\
+        "poll": "**Plugin :**__poll__\
+        \n\n**Syntax :** __.poll__\
         \n**Usage : **If you doesnt give any input it sends a default poll. if you like customize it then use this syntax :\
-        \n `.poll question ; option 1; option2 ;`\
+        \n __.poll question ; option 1; option2 ;__\
         \n ';' this seperates the each option and question \
         "
     }

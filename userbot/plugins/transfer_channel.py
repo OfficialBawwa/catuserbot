@@ -32,9 +32,9 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "transfer_channel": "**Plugin :** `transfer_channel`\
-        \n**Syntax : **`.otransfer [username to whom you want to transfer]`\
-        \n**Usage: **Transfers ownership to the given username for this set this var `TG_2STEP_VERIFICATION_CODE` in heroku with your 2-step verification code \
+        "transfer_channel": "**Plugin :** __transfer_channel__\
+        \n**Syntax : **__.otransfer [username to whom you want to transfer]__\
+        \n**Usage: **Transfers ownership to the given username for this set this var __TG_2STEP_VERIFICATION_CODE__ in heroku with your 2-step verification code \
         "
     }
 )

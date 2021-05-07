@@ -20,47 +20,47 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 async def psu(event):
     uname = platform.uname()
     softw = "**System Information**\n"
-    softw += f"`System   : {uname.system}`\n"
-    softw += f"`Release  : {uname.release}`\n"
-    softw += f"`Version  : {uname.version}`\n"
-    softw += f"`Machine  : {uname.machine}`\n"
+    softw += f"__System   : {uname.system}__\n"
+    softw += f"__Release  : {uname.release}__\n"
+    softw += f"__Version  : {uname.version}__\n"
+    softw += f"__Machine  : {uname.machine}__\n"
     # Boot Time
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)
-    softw += f"`Boot Time: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
+    softw += f"__Boot Time: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}__\n"
     # CPU Cores
     cpuu = "**CPU Info**\n"
-    cpuu += "`Physical cores   : " + str(psutil.cpu_count(logical=False)) + "`\n"
-    cpuu += "`Total cores      : " + str(psutil.cpu_count(logical=True)) + "`\n"
+    cpuu += "__Physical cores   : " + str(psutil.cpu_count(logical=False)) + "__\n"
+    cpuu += "__Total cores      : " + str(psutil.cpu_count(logical=True)) + "__\n"
     # CPU frequencies
     cpufreq = psutil.cpu_freq()
-    cpuu += f"`Max Frequency    : {cpufreq.max:.2f}Mhz`\n"
-    cpuu += f"`Min Frequency    : {cpufreq.min:.2f}Mhz`\n"
-    cpuu += f"`Current Frequency: {cpufreq.current:.2f}Mhz`\n\n"
+    cpuu += f"__Max Frequency    : {cpufreq.max:.2f}Mhz__\n"
+    cpuu += f"__Min Frequency    : {cpufreq.min:.2f}Mhz__\n"
+    cpuu += f"__Current Frequency: {cpufreq.current:.2f}Mhz__\n\n"
     # CPU usage
     cpuu += "**CPU Usage Per Core**\n"
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
-        cpuu += f"`Core {i}  : {percentage}%`\n"
+        cpuu += f"__Core {i}  : {percentage}%__\n"
     cpuu += "**Total CPU Usage**\n"
-    cpuu += f"`All Core: {psutil.cpu_percent()}%`\n"
+    cpuu += f"__All Core: {psutil.cpu_percent()}%__\n"
     # RAM Usage
     svmem = psutil.virtual_memory()
     memm = "**Memory Usage**\n"
-    memm += f"`Total     : {get_size(svmem.total)}`\n"
-    memm += f"`Available : {get_size(svmem.available)}`\n"
-    memm += f"`Used      : {get_size(svmem.used)}`\n"
-    memm += f"`Percentage: {svmem.percent}%`\n"
+    memm += f"__Total     : {get_size(svmem.total)}__\n"
+    memm += f"__Available : {get_size(svmem.available)}__\n"
+    memm += f"__Used      : {get_size(svmem.used)}__\n"
+    memm += f"__Percentage: {svmem.percent}%__\n"
     # Bandwidth Usage
     bw = "**Bandwith Usage**\n"
-    bw += f"`Upload  : {get_size(psutil.net_io_counters().bytes_sent)}`\n"
-    bw += f"`Download: {get_size(psutil.net_io_counters().bytes_recv)}`\n"
+    bw += f"__Upload  : {get_size(psutil.net_io_counters().bytes_sent)}__\n"
+    bw += f"__Download: {get_size(psutil.net_io_counters().bytes_recv)}__\n"
     help_string = f"{str(softw)}\n"
     help_string += f"{str(cpuu)}\n"
     help_string += f"{str(memm)}\n"
     help_string += f"{str(bw)}\n"
     help_string += "**Engine Info**\n"
-    help_string += f"`Python {sys.version}`\n"
-    help_string += f"`Telethon {__version__}`"
+    help_string += f"__Python {sys.version}__\n"
+    help_string += f"__Telethon {__version__}__"
     await event.edit(help_string)
 
 
@@ -93,17 +93,17 @@ async def sysdetails(sysd):
                     --cpu_speed on --cpu_cores physical --kernel_shorthand off --stdout"
     a, b, c, d = await _catutils.runcmd(neo)
     result = str(a) + str(b)
-    await edit_or_reply(sysd, "Neofetch Result: `" + result + "`")
+    await edit_or_reply(sysd, "Neofetch Result: __" + result + "__")
 
 
 CMD_HELP.update(
     {
-        "sysdetails": "**Plugin : **`sysdetails`\
-        \n\n**Syntax : **`.spc`\
+        "sysdetails": "**Plugin : **__sysdetails__\
+        \n\n**Syntax : **__.spc__\
         \n**Function : **__Show system specification.__\
-        \n\n**Syntax : **`.sysd`\
+        \n\n**Syntax : **__.sysd__\
         \n**Function : **__Shows system information using neofetch.__\
-        \n\n**Syntax : **`.cpu`\
+        \n\n**Syntax : **__.cpu__\
         \n**Function : **__shows the cpu information__\
     "
     }

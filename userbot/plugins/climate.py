@@ -39,7 +39,7 @@ async def get_weather(weather):
         return
     if not Config.OPEN_WEATHER_MAP_APPID:
         return await edit_or_reply(
-            weather, "`Get an API key from` https://openweathermap.org/ `first.`"
+            weather, "__Get an API key from__ https://openweathermap.org/ __first.__"
         )
     input_str = "".join(weather.text.split(maxsplit=1)[1:])
     if not input_str:
@@ -60,7 +60,7 @@ async def get_weather(weather):
             try:
                 countrycode = timezone_countries[f"{country}"]
             except KeyError:
-                return await edit_or_reply(weather, "`Invalid country.`")
+                return await edit_or_reply(weather, "__Invalid country.__")
             CITY = newcity[0].strip() + "," + countrycode.strip()
     url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={Config.OPEN_WEATHER_MAP_APPID}"
     async with aiohttp.ClientSession() as _session:
@@ -69,7 +69,7 @@ async def get_weather(weather):
             requesttext = await request.text()
     result = json.loads(requesttext)
     if requeststatus != 200:
-        return await edit_or_reply(weather, "`Invalid country.`")
+        return await edit_or_reply(weather, "__Invalid country.__")
     cityname = result["name"]
     curtemp = result["main"]["temp"]
     humidity = result["main"]["humidity"]
@@ -110,19 +110,19 @@ async def get_weather(weather):
 
     await edit_or_reply(
         weather,
-        f"🌡**Temperature:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
-        + f"🥰**Human Feeling** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n"
-        + f"🥶**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
-        + f"🥵**Max. Temp.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
-        + f"☁️**Humidity:** `{humidity}%`\n"
-        + f"🧧**Pressure** `{pressure} hPa`\n"
-        + f"🌬**Wind:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n"
-        + f"⛈**Cloud:** `{cloud} %`\n"
-        + f"🌄**Sunrise:** `{sun(sunrise)}`\n"
-        + f"🌅**Sunset:** `{sun(sunset)}`\n\n\n"
+        f"🌡**Temperature:** __{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F__\n"
+        + f"🥰**Human Feeling** __{celsius(feel)}°C | {fahrenheit(feel)}°F__\n"
+        + f"🥶**Min. Temp.:** __{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F__\n"
+        + f"🥵**Max. Temp.:** __{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F__\n"
+        + f"☁️**Humidity:** __{humidity}%__\n"
+        + f"🧧**Pressure** __{pressure} hPa__\n"
+        + f"🌬**Wind:** __{kmph[0]} kmh | {mph[0]} mph, {findir}__\n"
+        + f"⛈**Cloud:** __{cloud} %__\n"
+        + f"🌄**Sunrise:** __{sun(sunrise)}__\n"
+        + f"🌅**Sunset:** __{sun(sunset)}__\n\n\n"
         + f"**{desc}**\n"
-        + f"`{cityname}, {fullc_n}`\n"
-        + f"`{time}`\n",
+        + f"__{cityname}, {fullc_n}__\n"
+        + f"__{time}__\n",
     )
 
 
@@ -134,7 +134,7 @@ async def set_default_city(city):
         return
     if not Config.OPEN_WEATHER_MAP_APPID:
         return await edit_or_reply(
-            city, "`Get an API key from` https://openweathermap.org/ `first.`"
+            city, "__Get an API key from__ https://openweathermap.org/ __first.__"
         )
     if not city.pattern_match.group(1):
         CITY = gvarstatus("DEFCITY") or "Delhi"
@@ -154,18 +154,18 @@ async def set_default_city(city):
             try:
                 countrycode = timezone_countries[f"{country}"]
             except KeyError:
-                return await edit_or_reply(city, "`Invalid country.`")
+                return await edit_or_reply(city, "__Invalid country.__")
             CITY = newcity[0].strip() + "," + countrycode.strip()
     url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={Config.OPEN_WEATHER_MAP_APPID}"
     request = requests.get(url)
     result = json.loads(request.text)
     if request.status_code != 200:
-        return await edit_or_reply(city, "`Invalid country.`")
+        return await edit_or_reply(city, "__Invalid country.__")
     addgvar("DEFCITY", CITY)
     cityname = result["name"]
     country = result["sys"]["country"]
     fullc_n = c_n[f"{country}"]
-    await edit_or_reply(city, f"`Set default city as {cityname}, {fullc_n}.`")
+    await edit_or_reply(city, f"__Set default city as {cityname}, {fullc_n}.__")
 
 
 @bot.on(admin_cmd(pattern="weather ?(.*)"))
@@ -195,7 +195,7 @@ async def _(event):
         response_api = await response_api_zero.read()
         with io.BytesIO(response_api) as out_file:
             await event.reply(
-                f"**City : **`{input_str}`", file=out_file, reply_to=reply_to_id
+                f"**City : **__{input_str}__", file=out_file, reply_to=reply_to_id
             )
     try:
         await event.delete()
@@ -205,14 +205,14 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "climate": "**Plugin : **`climate`\
-        \n\n•  **Syntax : **`.climate <city>`\
+        "climate": "**Plugin : **__climate__\
+        \n\n•  **Syntax : **__.climate <city>__\
         \n•  **Function : **__Gets the weather of a city. By default it is Delhi, change it by setcity__\
-        \n\n•  **Syntax : **`.setcity <city> or <country name/code>`\
+        \n\n•  **Syntax : **__.setcity <city> or <country name/code>__\
         \n•  **Function : **__Sets your default city so you can just use .weather or .climate.__\
-        \n\n•  **Syntax : **`.weather <city>`\
+        \n\n•  **Syntax : **__.weather <city>__\
         \n•  **Function : **__Gets the simple climate/weather information a city. By default it is Delhi, change it by setcity cmd__\
-        \n\n•  **Syntax : **`.wttr <city> `\
+        \n\n•  **Syntax : **__.wttr <city> __\
         \n•  **Function : **__sends you the weather information for upcoming 3 days from today.__"
     }
 )

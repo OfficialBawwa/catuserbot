@@ -16,7 +16,7 @@ async def stretch(stret):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(stret, "`GiiiiiiiB sooooooomeeeeeee teeeeeeext!`")
+        await edit_or_reply(stret, "__GiiiiiiiB sooooooomeeeeeee teeeeeeext!__")
         return
 
     count = random.randint(3, 10)
@@ -36,7 +36,7 @@ async def zal(zgfy):
         message = textx.text
     else:
         await edit_or_reply(
-            zgfy, "`gͫ ̆ i̛ ̺ v͇̆ ȅͅ   a̢ͦ   s̴̪ c̸̢ ä̸ rͩͣ y͖͞   t̨͚ é̠ x̢͖  t͔͛`"
+            zgfy, "__gͫ ̆ i̛ ̺ v͇̆ ȅͅ   a̢ͦ   s̴̪ c̸̢ ä̸ rͩͣ y͖͞   t̨͚ é̠ x̢͖  t͔͛__"
         )
         return
 
@@ -71,7 +71,7 @@ async def copypasta(cp_e):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(cp_e, "`😂🅱️IvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!💦`")
+        await edit_or_reply(cp_e, "__😂🅱️IvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!💦__")
         return
 
     reply_text = random.choice(fonts.EMOJIS)
@@ -102,7 +102,7 @@ async def weebify(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await edit_or_reply(event, "`What I am Supposed to Weebify `")
+        await edit_or_reply(event, "__What I am Supposed to Weebify __")
         return
     string = "  ".join(args).lower()
     for normiecharacter in string:
@@ -174,16 +174,16 @@ async def stylish_generator(event):
 
 CMD_HELP.update(
     {
-        "funnyfonts": """**Plugin : **`funnyfonts`
+        "funnyfonts": """**Plugin : **__funnyfonts__
         
 **Commands found in funnyfonts are**
-  •  `.str`
-  •  `.zal`
-  •  `.cp`
-  •  `.weeb`
-  •  `.downside`
-  •  `.subscript`
-  •  `.superscript`
+  •  __.str__
+  •  __.zal__
+  •  __.cp__
+  •  __.weeb__
+  •  __.downside__
+  •  __.subscript__
+  •  __.superscript__
   
 **Function : **__Reply the command to the text message or give input along with command to convert that text to given font style__"""
     }

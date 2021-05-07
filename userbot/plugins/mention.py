@@ -84,20 +84,20 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "mention": """**Plugin : **`mention`
+        "mention": """**Plugin : **__mention__
 
-  •  **Syntax : **`.all`
+  •  **Syntax : **__.all__
   •  **Function : **__tags recent 100 persons in the group may not work for all__  
 
-  •  **Syntax : **`.tagall`
+  •  **Syntax : **__.tagall__
   •  **Function : **__tags recent 100 persons in the group may not work for all__ 
 
-  •  **Syntax : **`.report`
+  •  **Syntax : **__.report__
   •  **Function : **__tags admins in group__  
 
-  •  **Syntax : **`.men username/userid text`
+  •  **Syntax : **__.men username/userid text__
   •  **Function : **__tags that person with the given custom text other way for this is __
-  •  **syntax : **`Hi username[custom text]`
+  •  **syntax : **__Hi username[custom text]__
 """
     }
 )

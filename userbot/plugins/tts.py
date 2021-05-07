@@ -83,7 +83,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "tts": "**Plugin :** `tts`\
+        "tts": "**Plugin :** __tts__\
         \n\nAvailable Commands:\
         \n.tts LanguageCode as reply to a message\
         \n.tts LangaugeCode | text to speak\

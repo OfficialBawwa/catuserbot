@@ -44,7 +44,7 @@ async def ocr_space_file(
 @bot.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="ocr(?: |$)(.*)", allow_sudo=True))
 async def ocr(event):
-    catevent = await edit_or_reply(event, "`Reading...`")
+    catevent = await edit_or_reply(event, "__Reading...__")
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     lang_code = event.pattern_match.group(1)
@@ -55,16 +55,16 @@ async def ocr(event):
     try:
         ParsedText = test_file["ParsedResults"][0]["ParsedText"]
     except BaseException:
-        await catevent.edit("`Couldn't read it.`\n`I guess I need new glasses.`")
+        await catevent.edit("__Couldn't read it.__\n__I guess I need new glasses.__")
     else:
-        await catevent.edit(f"`Here's what I could read from it:`\n\n{ParsedText}")
+        await catevent.edit(f"__Here's what I could read from it:__\n\n{ParsedText}")
     os.remove(downloaded_file_name)
 
 
 CMD_HELP.update(
     {
-        "ocr": "**Plugin : **`ocr`\
-        \n\n**Syntax : **`.ocr <language>`\
+        "ocr": "**Plugin : **__ocr__\
+        \n\n**Syntax : **__.ocr <language>__\
         \n**Function : **Reply to an image or sticker to extract text from it.\n\nGet language codes from [here](https://ocr.space/ocrapi)"
     }
 )

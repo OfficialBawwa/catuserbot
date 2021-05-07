@@ -166,7 +166,7 @@ async def formatJSON(outData):
     jsonData = json.loads(outData)
     res = list(jsonData.keys())
     if "errors" in res:
-        msg += f"**Error** : `{jsonData['errors'][0]['message']}`"
+        msg += f"**Error** : __{jsonData['errors'][0]['message']}__"
         return msg
     jsonData = jsonData["data"]["Media"]
     if "bannerImage" in jsonData.keys():
@@ -237,13 +237,13 @@ async def anilist(event):
     response = requests.post(
         url, json={"query": airing_query, "variables": variables}
     ).json()["data"]["Media"]
-    ms_g = f"**Name**: **{response['title']['romaji']}**(`{response['title']['native']}`)\n**ID**: `{response['id']}`"
+    ms_g = f"**Name**: **{response['title']['romaji']}**(__{response['title']['native']}__)\n**ID**: __{response['id']}__"
     if response["nextAiringEpisode"]:
         airing_time = response["nextAiringEpisode"]["timeUntilAiring"] * 1000
         airing_time_final = t(airing_time)
-        ms_g += f"\n**Episode**: `{response['nextAiringEpisode']['episode']}`\n**Airing In**: `{airing_time_final}`"
+        ms_g += f"\n**Episode**: __{response['nextAiringEpisode']['episode']}__\n**Airing In**: __{airing_time_final}__"
     else:
-        ms_g += f"\n**Episode**:{response['episodes']}\n**Status**: `N/A`"
+        ms_g += f"\n**Episode**:{response['episodes']}\n**Status**: __N/A__"
     await edit_or_reply(event, ms_g)
 
 
@@ -275,13 +275,13 @@ async def anilist(event):
         if title:
             ms_g += f"**{title}**"
             if title_native:
-                ms_g += f"(`{title_native}`)"
+                ms_g += f"(__{title_native}__)"
         if start_date:
-            ms_g += f"\n**Start Date** - `{start_date}`"
+            ms_g += f"\n**Start Date** - __{start_date}__"
         if status:
-            ms_g += f"\n**Status** - `{status}`"
+            ms_g += f"\n**Status** - __{status}__"
         if score:
-            ms_g += f"\n**Score** - `{score}`"
+            ms_g += f"\n**Score** - __{score}__"
         ms_g += "\n**Genres** - "
         for x in json.get("genres", []):
             ms_g += f"{x}, "
@@ -325,14 +325,14 @@ async def anilist(event):
 
 CMD_HELP.update(
     {
-        "anilist": "**Plugin : **`anilist`\
-    \n\n**Syntax : **`.anilist <anime name >`\
+        "anilist": "**Plugin : **__anilist__\
+    \n\n**Syntax : **__.anilist <anime name >__\
     \n**Usage : **Shows you the details of the anime.\
-    \n\n**Syntax : **`.char <character name >`\
+    \n\n**Syntax : **__.char <character name >__\
     \n**Usage : **Shows you the details of that character in anime with pic.\
-    \n\n**Syntax : **`.manga <anime name >`\
+    \n\n**Syntax : **__.manga <anime name >__\
     \n**Usage : **Shows you the details of the manga.\
-    \n\n**Syntax : **`.airing <anime name >`\
+    \n\n**Syntax : **__.airing <anime name >__\
     \n**Usage : **Shows you the time for that current running anime show.\
     "
     }

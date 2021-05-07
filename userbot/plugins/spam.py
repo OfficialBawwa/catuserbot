@@ -66,7 +66,7 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
                     await event.client.send_message(
                         BOTLOG_CHATID,
                         "#SPAM\n"
-                        + f"Spam was executed successfully in {event.chat.title}(`{event.chat_id}`) with {counter} times with below message",
+                        + f"Spam was executed successfully in {event.chat.title}(__{event.chat_id}__) with {counter} times with below message",
                     )
             else:
                 if event.is_private:
@@ -79,7 +79,7 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
                     await event.client.send_message(
                         BOTLOG_CHATID,
                         "#DELAYSPAM\n"
-                        + f"Delay spam was executed successfully in {event.chat.title}(`{event.chat_id}`) with {counter} times with below message with delay {sleeptimet} seconds",
+                        + f"Delay spam was executed successfully in {event.chat.title}(__{event.chat_id}__) with {counter} times with below message with delay {sleeptimet} seconds",
                     )
 
             sandy = await event.client.send_file(BOTLOG_CHATID, sandy)
@@ -92,14 +92,14 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
                     BOTLOG_CHATID,
                     "#SPAM\n"
                     + f"Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with {counter} messages of \n"
-                    + f"`{spam_message}`",
+                    + f"__{spam_message}__",
                 )
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
                     "#SPAM\n"
-                    + f"Spam was executed successfully in {event.chat.title}(`{event.chat_id}`) chat  with {counter} messages of \n"
-                    + f"`{spam_message}`",
+                    + f"Spam was executed successfully in {event.chat.title}(__{event.chat_id}__) chat  with {counter} messages of \n"
+                    + f"__{spam_message}__",
                 )
         else:
             if event.is_private:
@@ -107,14 +107,14 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
                     BOTLOG_CHATID,
                     "#DELAYSPAM\n"
                     + f"Delay Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with delay {sleeptimet} seconds and with {counter} messages of \n"
-                    + f"`{spam_message}`",
+                    + f"__{spam_message}__",
                 )
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
                     "#DELAYSPAM\n"
-                    + f"Delay spam was executed successfully in {event.chat.title}(`{event.chat_id}`) chat with delay {sleeptimet} seconds and with {counter} messages of \n"
-                    + f"`{spam_message}`",
+                    + f"Delay spam was executed successfully in {event.chat.title}(__{event.chat_id}__) chat with delay {sleeptimet} seconds and with {counter} messages of \n"
+                    + f"__{spam_message}__",
                 )
 
 
@@ -126,16 +126,16 @@ async def stickerpack_spam(event):
     reply = await event.get_reply_message()
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await edit_delete(
-            event, "`reply to any sticker to send all stickers in that pack`"
+            event, "__reply to any sticker to send all stickers in that pack__"
         )
     hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     try:
         stickerset_attr = reply.document.attributes[1]
         catevent = await edit_or_reply(
-            event, "`Fetching details of the sticker pack, please wait..`"
+            event, "__Fetching details of the sticker pack, please wait..__"
         )
     except BaseException:
-        await edit_delete(event, "`This is not a sticker. Reply to a sticker.`", 5)
+        await edit_delete(event, "__This is not a sticker. Reply to a sticker.__", 5)
         return
     try:
         get_stickerset = await event.client(
@@ -149,7 +149,7 @@ async def stickerpack_spam(event):
     except Exception:
         return await edit_delete(
             catevent,
-            "`I guess this sticker is not part of any pack so i cant kang this sticker pack try kang for this sticker`",
+            "__I guess this sticker is not part of any pack so i cant kang this sticker pack try kang for this sticker__",
         )
     try:
         hmm = Get(hmm)
@@ -177,7 +177,7 @@ async def stickerpack_spam(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#SPSPAM\n"
-                + f"Sticker Pack Spam was executed successfully in {event.chat.title}(`{event.chat_id}`) chat with pack",
+                + f"Sticker Pack Spam was executed successfully in {event.chat.title}(__{event.chat_id}__) chat with pack",
             )
         await event.client.send_file(BOTLOG_CHATID, reqd_sticker_set.documents[0])
 
@@ -195,13 +195,13 @@ async def tmeme(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#CSPAM\n"
-                + f"Letter Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : `{message}`",
+                + f"Letter Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : __{message}__",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#CSPAM\n"
-                + f"Letter Spam was executed successfully in {event.chat.title}(`{event.chat_id}`) chat with : `{message}`",
+                + f"Letter Spam was executed successfully in {event.chat.title}(__{event.chat_id}__) chat with : __{message}__",
             )
 
 
@@ -218,13 +218,13 @@ async def tmeme(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#WSPAM\n"
-                + f"Word Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : `{message}`",
+                + f"Word Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : __{message}__",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#WSPAM\n"
-                + f"Word Spam was executed successfully in {event.chat.title}(`{event.chat_id}`) chat with : `{message}`",
+                + f"Word Spam was executed successfully in {event.chat.title}(__{event.chat_id}__) chat with : __{message}__",
             )
 
 
@@ -243,18 +243,18 @@ async def spammer(event):
 
 CMD_HELP.update(
     {
-        "spam": "**Plugin : **`spam`\
-        \n\n**  •  Syntax : **`.spam <count> <text>`\
+        "spam": "**Plugin : **__spam__\
+        \n\n**  •  Syntax : **__.spam <count> <text>__\
         \n**  •  Function : **__ Floods text in the chat !!__\
-        \n\n**  •  Syntax : **`.spam <count> reply to media`\
+        \n\n**  •  Syntax : **__.spam <count> reply to media__\
         \n**  •  Function : **__Sends the replied media <count> times !!__\
-        \n\n**  •  Syntax : **`.spspam reply to sticker`\
+        \n\n**  •  Syntax : **__.spspam reply to sticker__\
         \n**  •  Function : **__spams the chat with all stickers in that pack__\
-        \n\n**  •  Syntax : **`.cspam <text>`\
+        \n\n**  •  Syntax : **__.cspam <text>__\
         \n**  •  Function : **__ Spam the text letter by letter.__\
-        \n\n**  •  Syntax : **`.wspam <text>`\
+        \n\n**  •  Syntax : **__.wspam <text>__\
         \n**  •  Function : **__ Spam the text word by word.__\
-        \n\n**  •  Syntax : **`.delayspam <delay> <count> <text>`\
+        \n\n**  •  Syntax : **__.delayspam <delay> <count> <text>__\
         \n**  •  Function : **__ .delayspam but with custom delay.__\
         \n\n\n**Note : Spam at your own risk !!**"
     }

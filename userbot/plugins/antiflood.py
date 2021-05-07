@@ -32,7 +32,7 @@ async def _(event):
             entity=event.chat_id,
             message="""**Automatic AntiFlooder**
 @admin [User](tg://user?id={}) is flooding this chat.
-`{}`""".format(
+__{}__""".format(
                 event.message.sender_id, str(e)
             ),
             reply_to=event.message.id,

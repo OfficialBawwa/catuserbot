@@ -241,21 +241,21 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "animation5": """**Plugin : **`animation5`
+        "animation5": """**Plugin : **__animation5__
         
 **Commands in animation5 are **
-  •  `.loading`
-  •  `.square`
-  •  `.up`
-  •  `.round`
-  •  `.hart`
-  •  `.anim`
-  •  `.fnl`
-  •  `.monkey`
-  •  `.herber`
-  •  `.hand`
-  •  `.gsg`
-  •  `.theart`
+  •  __.loading__
+  •  __.square__
+  •  __.up__
+  •  __.round__
+  •  __.hart__
+  •  __.anim__
+  •  __.fnl__
+  •  __.monkey__
+  •  __.herber__
+  •  __.hand__
+  •  __.gsg__
+  •  __.theart__
   
 **Function : **__Different kinds of animation commands check yourself for their animation .__"""
     }

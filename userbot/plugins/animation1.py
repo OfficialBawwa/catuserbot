@@ -59,7 +59,7 @@ async def _(event):
     await asyncio.sleep(0.5)
     await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
     await asyncio.sleep(0.5)
-    await event.edit("`RIP PLOXXX......`")
+    await event.edit("__RIP PLOXXX......__")
     await asyncio.sleep(2)
 
 
@@ -72,24 +72,24 @@ async def _(event):
     animation_ttl = range(18)
     event = await edit_or_reply(event, "Calling Pavel Durov (ceo of telegram)......")
     animation_chars = [
-        "`Connecting To Telegram Headquarters...`",
-        "`Call Connected.`",
-        "`Telegram: Hello This is Telegram HQ. Who is this?`",
-        f"`Me: Yo this is` {DEFAULTUSER} ,`Please Connect me to my lil bro, Pavel Durov `",
-        "`User Authorised.`",
-        "`Calling Pavel Durov `  `At +916969696969`",
-        "`Private  Call Connected...`",
-        "`Me: Hello Sir, Please Ban This Telegram Account.`",
-        "`Pavel Durov : May I Know Who is This?`",
-        f"`Me: Yo Brah, I Am` {DEFAULTUSER} ",
-        "`Pavel Durov : OMG!!! Long time no see, Wassup cat...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
-        "`Me: Thanks, See You Later Brah.`",
-        "`Pavel Durov : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.`",
-        "`Me: Is There Any Issue/Emergency???`",
-        "`Pavel Durov : Yes Sur, There is A Bug in Telegram v69.6.9.\nI Am Not Able To Fix It. If Possible, Please Help Fix The Bug.`",
-        "`Me: Send Me The App On My Telegram Account, I Will Fix The Bug & Send You.`",
-        "`Pavel Durov : Sure Sur \nTC Bye Bye :)`",
-        "`Private Call Disconnected.`",
+        "__Connecting To Telegram Headquarters...__",
+        "__Call Connected.__",
+        "__Telegram: Hello This is Telegram HQ. Who is this?__",
+        f"__Me: Yo this is__ {DEFAULTUSER} ,__Please Connect me to my lil bro, Pavel Durov __",
+        "__User Authorised.__",
+        "__Calling Pavel Durov __  __At +916969696969__",
+        "__Private  Call Connected...__",
+        "__Me: Hello Sir, Please Ban This Telegram Account.__",
+        "__Pavel Durov : May I Know Who is This?__",
+        f"__Me: Yo Brah, I Am__ {DEFAULTUSER} ",
+        "__Pavel Durov : OMG!!! Long time no see, Wassup cat...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.__",
+        "__Me: Thanks, See You Later Brah.__",
+        "__Pavel Durov : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.__",
+        "__Me: Is There Any Issue/Emergency???__",
+        "__Pavel Durov : Yes Sur, There is A Bug in Telegram v69.6.9.\nI Am Not Able To Fix It. If Possible, Please Help Fix The Bug.__",
+        "__Me: Send Me The App On My Telegram Account, I Will Fix The Bug & Send You.__",
+        "__Pavel Durov : Sure Sur \nTC Bye Bye :)__",
+        "__Private Call Disconnected.__",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -116,7 +116,7 @@ async def _(event):
         "------------------>",
         "------>;(^。^)ノ",
         "(￣ー￣) DEAD",
-        "`Targeted user killed by Headshot 😈.😈.😈.😈.😈.😈.😈......`\n '#Sad_Reacts_Online'\n",
+        "__Targeted user killed by Headshot 😈.😈.😈.😈.😈.😈.😈......__\n '#Sad_Reacts_Online'\n",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -242,7 +242,7 @@ async def timer_blankx(e):
     e = await edit_or_reply(e, "charging")
     txt = (
         e.text[10:]
-        + "\n\n`Tesla Wireless Charging (beta) Started...\nDevice Detected: Nokia 1100\nBattery Percentage:` "
+        + "\n\n__Tesla Wireless Charging (beta) Started...\nDevice Detected: Nokia 1100\nBattery Percentage:__ "
     )
     j = 10
     k = j
@@ -252,26 +252,26 @@ async def timer_blankx(e):
         await asyncio.sleep(1)
     await asyncio.sleep(1)
     await e.edit(
-        "`Tesla Wireless Charging (beta) Completed...\nDevice Detected: Nokia 1100 (Space Grey Varient)\nBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
+        "__Tesla Wireless Charging (beta) Completed...\nDevice Detected: Nokia 1100 (Space Grey Varient)\nBattery Percentage:__ [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
         link_preview=True,
     )
 
 
 CMD_HELP.update(
     {
-        "animation1": """**Plugin : **`animation1`
+        "animation1": """**Plugin : **__animation1__
         
 **Commands in animation1 are **
-  •  `.stupid`
-  •  `.bombs`
-  •  `.call`
-  •  `.kill`
-  •  `.wtf`
-  •  `.ding`
-  •  `.hypno`
-  •  `.candy`
-  •  `.gangasta`
-  •  `.charging` 
+  •  __.stupid__
+  •  __.bombs__
+  •  __.call__
+  •  __.kill__
+  •  __.wtf__
+  •  __.ding__
+  •  __.hypno__
+  •  __.candy__
+  •  __.gangasta__
+  •  __.charging__ 
   
 **Function : **__Different kinds of animation commands check yourself for their animation .__"""
     }

@@ -13,7 +13,7 @@ async def remove_background(event):
     if Config.REM_BG_API_KEY is None:
         return await edit_delete(
             event,
-            "`You have to set REM_BG_API_KEY in Config vars with API token from remove.bg to use this plugin .`",
+            "__You have to set REM_BG_API_KEY in Config vars with API token from remove.bg to use this plugin .__",
             5,
         )
     cmd = event.pattern_match.group(1)
@@ -21,25 +21,25 @@ async def remove_background(event):
     message_id = await reply_id(event)
     if event.reply_to_msg_id and not input_str:
         reply_message = await event.get_reply_message()
-        catevent = await edit_or_reply(event, "`Analysing this Image/Sticker...`")
+        catevent = await edit_or_reply(event, "__Analysing this Image/Sticker...__")
         file_name = os.path.join(Config.TEMP_DIR, "rmbg.png")
         try:
             await event.client.download_media(reply_message, file_name)
         except Exception as e:
-            await edit_delete(catevent, f"`{str(e)}`", 5)
+            await edit_delete(catevent, f"__{str(e)}__", 5)
             return
         else:
-            await catevent.edit("`Removing Background of this media`")
+            await catevent.edit("__Removing Background of this media__")
             file_name = convert_toimage(file_name)
             response = ReTrieveFile(file_name)
             os.remove(file_name)
     elif input_str:
-        catevent = await edit_or_reply(event, "`Removing Background of this media`")
+        catevent = await edit_or_reply(event, "__Removing Background of this media__")
         response = ReTrieveURL(input_str)
     else:
         await edit_delete(
             event,
-            "`Reply to any image or sticker with rmbg/srmbg to get background less png file or webp format or provide image link along with command`",
+            "__Reply to any image or sticker with rmbg/srmbg to get background less png file or webp format or provide image link along with command__",
             5,
         )
         return
@@ -49,7 +49,7 @@ async def remove_background(event):
         with open("backgroundless.png", "wb") as removed_bg_file:
             removed_bg_file.write(response.content)
     else:
-        await edit_delete(catevent, f"`{response.content.decode('UTF-8')}`", 5)
+        await edit_delete(catevent, f"__{response.content.decode('UTF-8')}__", 5)
         return
     if cmd == "srmbg":
         file = convert_tosticker(remove_bg_image, filename="backgroundless.webp")
@@ -103,12 +103,12 @@ def ReTrieveURL(input_url):
 
 CMD_HELP.update(
     {
-        "removebg": """**Plugin : **`removebg`
+        "removebg": """**Plugin : **__removebg__
         
-  •  **Syntax : **`.rmbg <Link to Image> or reply to any image/sticker`
+  •  **Syntax : **__.rmbg <Link to Image> or reply to any image/sticker__
   •  **Function : **__Removes the background of an image/sticker and send as png format__
   
-  •  **Syntax : **`.srmbg <Link to Image> or reply to any image/sticker`
+  •  **Syntax : **__.srmbg <Link to Image> or reply to any image/sticker__
   •  **Function : **__Removes the background an image/sticker and send as sticker format__
 """
     }
