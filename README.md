@@ -37,7 +37,7 @@ A simple Telegram userbot based on Telethon .
    
 ## Disclaimer
 
-__
+```
               YOU ARE FOREWARNED
 Your Telegram account may get banned.   
 Catuserbot or we are not responsible for your account, 
@@ -53,7 +53,7 @@ If you need help ask in our support group
 and we or our friends will try to help you.
 
 Thanks for using our bot 😺
-__
+```
 
 ## Credits
    - Special thanks to [LonamiWebs](https://github.com/LonamiWebs/Telethon/) for Telethon libraray
