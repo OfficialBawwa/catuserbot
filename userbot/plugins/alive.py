@@ -7,7 +7,7 @@ from . import ALIVE_NAME, StartTime, catversion, get_readable_time, mention, rep
 
 DEFAULTUSER = ALIVE_NAME or "cat"
 CAT_IMG = Config.ALIVE_PIC
-CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ MY BOT IS RUNNING SUCCESSFULLY ✮"
+CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ VRO WHAT'S BEVAVIOUR, I'M RUNNING ALSO WITH YOUR ACCOUNT ✮"
 EMOJI = Config.CUSTOM_ALIVE_EMOJI or "  ✥ "
 
 
@@ -22,11 +22,11 @@ async def amireallyalive(alive):
     if CAT_IMG:
         cat_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
         cat_caption += f"**{EMOJI} Database :** __{check_sgnirts}__\n"
-        cat_caption += f"**{EMOJI} Telethon version :** __{version.__version__}\n__"
-        cat_caption += f"**{EMOJI} Catuserbot Version :** __{catversion}__\n"
-        cat_caption += f"**{EMOJI} Python Version :** __{python_version()}\n__"
+        cat_caption += f"**{EMOJI} Tele uththe version :** __{version.__version__}\n__"
+        cat_caption += f"**{EMOJI} Fkin userbot Version :** __{catversion}__\n"
+        cat_caption += f"**{EMOJI} Pykana Version :** __{python_version()}\n__"
         cat_caption += f"**{EMOJI} Uptime :** __{uptime}\n__"
-        cat_caption += f"**{EMOJI} Master:** {mention}\n"
+        cat_caption += f"**{EMOJI} My Fkin Master:** {mention}\n"
         await alive.client.send_file(
             alive.chat_id, CAT_IMG, caption=cat_caption, reply_to=reply_to_id
         )
@@ -36,11 +36,11 @@ async def amireallyalive(alive):
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
             f"**{EMOJI} Database :** __{check_sgnirts}__\n"
-            f"**{EMOJI} Telethon Version :** __{version.__version__}\n__"
-            f"**{EMOJI} Catuserbot Version :** __{catversion}__\n"
-            f"**{EMOJI} Python Version :** __{python_version()}\n__"
+            f"**{EMOJI} Tele uththe Version :** __{version.__version__}\n__"
+            f"**{EMOJI} Fkin userbot Version :** __{catversion}__\n"
+            f"**{EMOJI} Pykana Version :** __{python_version()}\n__"
             f"**{EMOJI} Uptime :** __{uptime}\n__"
-            f"**{EMOJI} Master:** {mention}\n",
+            f"**{EMOJI} My Fkin Master:** {mention}\n",
         )
 
 
@@ -51,11 +51,11 @@ async def amireallyalive(alive):
         return
     tgbotusername = Config.TG_BOT_USERNAME
     reply_to_id = await reply_id(alive)
-    cat_caption = f"**Catuserbot is Up and Running**\n"
-    cat_caption += f"**  -Telethon version :** __{version.__version__}\n__"
-    cat_caption += f"**  -Catuserbot Version :** __{catversion}__\n"
-    cat_caption += f"**  -Python Version :** __{python_version()}\n__"
-    cat_caption += f"**  -Master:** {mention}\n"
+    cat_caption = f"**Cer, Your fkin userbot is Up and Running**\n"
+    cat_caption += f"**  -Tele uththe version :** __{version.__version__}\n__"
+    cat_caption += f"**  -FK userbot Version :** __{catversion}__\n"
+    cat_caption += f"**  -Pykana Version :** __{python_version()}\n__"
+    cat_caption += f"**  -My Fkin Master:** {mention}\n"
     results = await bot.inline_query(tgbotusername, cat_caption)  # pylint:disable=E0602
     await results[0].click(alive.chat_id, reply_to=reply_to_id, hide_via=True)
     await alive.delete()
