@@ -54,7 +54,7 @@ async def set_not_afk(event):
     ):
         shite = await event.client.send_message(
             event.chat_id,
-            "__Back alive! No Longer afk.\nWas afk for " + endtime + "__",
+            "__My fkin master is back online! No Longer afk mf.\nHe was afk for " + endtime + "__",
         )
         AFK_.USERAFK_ON = {}
         AFK_.afk_time = None
@@ -64,7 +64,7 @@ async def set_not_afk(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#AFKFALSE \n__Set AFK mode to False\n"
-                + "Back alive! No Longer afk.\nWas afk for "
+                + "My fkin master is back online! No Longer afk mf.\nHe was afk for "
                 + endtime
                 + "__",
             )
@@ -112,7 +112,7 @@ async def on_afk(event):
                 )
             elif AFK_.reason:
                 message_to_reply = (
-                    f"__I am AFK .\n\nAFK Since {endtime}\nReason : {AFK_.reason}__"
+                    f"__I am AFK .\n\nMy fkin master AFK Since {endtime}\nReason : {AFK_.reason}__"
                 )
             else:
                 message_to_reply = f"__I am AFK .\n\nAFK Since {endtime}\nReason : Not Mentioned ( ಠ ʖ̯ ಠ)__"
@@ -121,7 +121,7 @@ async def on_afk(event):
         elif AFK_.afk_type == "media":
             if AFK_.reason:
                 message_to_reply = (
-                    f"__I am AFK .\n\nAFK Since {endtime}\nReason : {AFK_.reason}__"
+                    f"__I am AFK .\n\nMy fkin master AFK Since {endtime}\nReason : {AFK_.reason}__"
                 )
             else:
                 message_to_reply = f"__I am AFK .\n\nAFK Since {endtime}\nReason : Not Mentioned ( ಠ ʖ̯ ಠ)__"
@@ -211,7 +211,7 @@ async def _(event):
     media_t = media_type(reply)
     if media_t == "Sticker" or not media_t:
         return await edit_or_reply(
-            event, "__You haven't replied to any media to activate media afk__"
+            event, "__Cer, You haven't replied to any media to activate media afk__"
         )
     if not BOTLOG:
         return await edit_or_reply(
@@ -256,7 +256,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "afk": """**Plugin : **__afk__
-__afk means away from keyboard/keypad__
+__Cer, do you know afk means away from keyboard/keypad?__
 
 •  **Syntax : **__.mafk [Optional Reason]__
 •  **Function : **__Sets you as afk and Replies to anyone who tags/PM's you telling them that you are in AFK(reason) with the media which you replied using mafk.__
