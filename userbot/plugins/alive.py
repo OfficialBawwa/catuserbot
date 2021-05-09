@@ -7,7 +7,7 @@ from . import ALIVE_NAME, StartTime, catversion, get_readable_time, mention, rep
 
 DEFAULTUSER = ALIVE_NAME or "cat"
 CAT_IMG = Config.ALIVE_PIC
-CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ VRO WHAT'S BEVAVIOUR, I'M RUNNING ALSO WITH YOUR ACCOUNT ✮"
+CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ ඇයි ඇයි ආආහ්, එහා පැත්තේ run වෙනවා සොව්ඩි ✮"
 EMOJI = Config.CUSTOM_ALIVE_EMOJI or "  ✥ "
 
 
